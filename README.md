@@ -32,6 +32,9 @@ No step requires programmatic access to Arena itself. GitHub is the coordination
 
 ## Reference library
 
+[Reusable session inventory](inventory/README.md) — an optional, read-only-by-default snapshot of the current sandbox and exposed agent tools. Run only when a task needs fresh capability evidence; do not treat historical observations as current-session guarantees. Package installation probes require explicit opt-in.
+
+
 [Capability matrix](docs/capabilities.md) · [GitHub](docs/github.md) · [Research](docs/research.md) · [Browser](docs/browser.md) · [Data handling](docs/data-handling.md) · [Benchmark](docs/benchmark.md) · [Lightweight job ledger](docs/ledger.csv) · [Historical evidence](docs/archive/README.md)
 
 Last curated: 2026-09-26. This is an independent field guide, not official product documentation.
