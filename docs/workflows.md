@@ -1,6 +1,6 @@
 # Where Arena fits
 
-Use this as a decision guide, not a model ranking or guarantee of quota availability.
+Use this as a decision guide, not a model ranking or guarantee of quota availability. **Before selecting a repo or uploading files, apply the [data-handling gate](data-handling.md).** Compare real value with the [benchmark protocol](benchmark.md).
 
 | Workload | How to use Arena | Important gate |
 |---|---|---|
