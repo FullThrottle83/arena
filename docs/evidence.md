@@ -32,3 +32,7 @@ Record: `date, session type, selected repo/branch, command/tool, input fixture, 
 For source-grounded research, fetch all relevant chunks, distinguish search snippets from retrieved pages, attach a source ID and URL to each material claim, and mark contradictions unresolved where appropriate.
 
 For PDFs/Office files distinguish: created → parsed structurally → rendered/opened in a real application → user-accessible.
+
+## Reproducibility correction — 2026-09-26
+
+[Design Spells PR #43](https://github.com/FullThrottle83/design-spells/pull/43) contains a report, JSON and six screenshots but **not the code that launched Chromium**, and it did not run the project's `npm test`. Effective flags in the report do not establish their origin. A new run must commit the actual harness, effective (redacted) command line and existing-suite result before claiming a reproducible browser setup.
