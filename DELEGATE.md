@@ -4,21 +4,21 @@
 
 ## 1. Decide whether to hand off
 
-First use the [data gate](docs/data-handling.md). Use public/synthetic fixtures by default. Do not pass confidential customer material, personal data, unpublished secrets or credentials.
+First use the [data gate](https://github.com/FullThrottle83/arena/blob/main/docs/data-handling.md). Use public/synthetic fixtures by default. Do not pass confidential customer material, personal data, unpublished secrets or credentials.
 
 A task is a candidate when it is **bounded, labor-intensive and cheap to check**, such as: several-source research, local build/test loops, batch documentation or scoped public-repo fixes. Prefer handling it yourself when it is a tiny edit, requires many rapid design choices with the user, involves production/customer secrets, or its result cannot be checked without repeating all the work.
 
-Read only the needed [capability docs](docs/capabilities.md). Past execution does not guarantee current-session access, model, permissions or network.
+Read only the needed [capability docs](https://github.com/FullThrottle83/arena/blob/main/docs/capabilities.md). Past execution does not guarantee current-session access, model, permissions or network.
 
 ## 2. Prepare a reproducible brief
 
-Create `.arena/tasks/<id>.md` in the target repo, using [templates/task.md](templates/task.md). A GitHub issue is an alternative if the user prefers it. Keep it concise and record:
+Create `.arena/tasks/<id>.md` in the target repo, using [templates/task.md](https://github.com/FullThrottle83/arena/blob/main/templates/task.md). A GitHub issue is an alternative if the user prefers it. Keep it concise and record:
 - goal, frozen starting commit, exact scope/out-of-scope paths, inputs and rights;
 - explicit permission for repo writes / package installs, if any;
 - executable acceptance checks or verifiable source/claim criteria;
 - deliverables, `.arena/results/<id>.md`, screenshot/artifact rules and stop conditions.
 
-Do not push a task to a repo that contains data disallowed by [data-handling.md](docs/data-handling.md). Commit the brief to the intended base branch only with the user's authorization.
+Do not push a task to a repo that contains data disallowed by [data-handling.md](https://github.com/FullThrottle83/arena/blob/main/docs/data-handling.md). Commit the brief to the intended base branch only with the user's authorization.
 
 ## 3. Give the user one launch instruction
 
@@ -38,4 +38,4 @@ Classify `ACCEPTABLE / NEEDS_FIX / BLOCKED` using concrete reasons, and report a
 
 ## 5. Measure real usefulness
 
-Use [docs/ledger.csv](docs/ledger.csv) for one row per real task: outcome, user launch/operator minutes, reviewer minutes and an evidence-based `self_cheaper` assessment (YES / NO / UNKNOWN). Do not invent token costs. Do not invent model IDs, credit consumption or token-savings figures. The detailed [benchmark protocol](docs/benchmark.md) is optional for controlled tests, not mandatory paperwork for ordinary jobs.
+Use [docs/ledger.csv](https://github.com/FullThrottle83/arena/blob/main/docs/ledger.csv) for one row per real task: outcome, user launch/operator minutes, reviewer minutes and an evidence-based `self_cheaper` assessment (YES / NO / UNKNOWN). Do not invent token costs. Do not invent model IDs, credit consumption or token-savings figures. The detailed [benchmark protocol](https://github.com/FullThrottle83/arena/blob/main/docs/benchmark.md) is optional for controlled tests, not mandatory paperwork for ordinary jobs.
