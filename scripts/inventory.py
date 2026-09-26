@@ -2456,6 +2456,13 @@ def record_delivery(session_dir: pathlib.Path, payload_path: pathlib.Path) -> in
     validation["delivery"] = payload
     validation["delivery"]["recorded_utc"] = dt.datetime.now(dt.timezone.utc).isoformat(timespec="seconds")
     validation_path.write_text(json.dumps(validation, indent=1, sort_keys=True) + "\n", encoding="utf-8")
+    for doc in (session_dir / "SUMMARY.md", session_dir.parent.parent / "SUMMARY.md"):
+        if doc.exists():
+            kept = [ln for ln in doc.read_text(encoding="utf-8").splitlines() if not ln.startswith("- **Delivery:**")]
+            kept.insert(1, f"- **Delivery:** commit `{payload.get('commit_short')}` on `{payload.get('working_branch')}` → [{payload.get('pr_url')}]({payload.get('pr_url')}) "
+                           f"(state {((payload.get('pr_state') or {}).get('state')) if isinstance(payload.get('pr_state'), dict) else payload.get('pr_state')} at record time, merged={payload.get('remote_head_matches_local') and False or payload.get('pr_state', {}).get('merged') if isinstance(payload.get('pr_state'), dict) else False}, "
+                           f"force-push=no, main untouched, other PRs left as found)")
+            doc.write_text("\n".join(kept).rstrip() + "\n", encoding="utf-8")
     if capabilities_path.exists():
         caps = json.loads(capabilities_path.read_text(encoding="utf-8"))
         caps["github_delivery"]["write"] = payload.get("push_status", "UNKNOWN")

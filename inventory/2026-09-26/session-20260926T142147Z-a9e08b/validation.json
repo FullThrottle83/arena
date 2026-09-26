@@ -17,8 +17,36 @@
   }
  ],
  "delivery": {
-  "note": "run scripts/inventory.py --record-delivery after commit/push/PR to attach delivery evidence",
-  "status": "NOT_YET_DELIVERED"
+  "base_branch": "main",
+  "branch_sharing_check": "arena/01a0dd2c-arena did not exist on origin before this push; no other session uses it",
+  "commit_sha": "9967cfa0dea2e728b1a77dbb2c51eedbdeaf896a",
+  "commit_short": "9967cfa",
+  "credentials_read_or_printed": false,
+  "delivery_method": "git push + gh pr create from the sandbox shell; no dedicated GitHub agent tool exists in this session",
+  "force_push_used": false,
+  "note": "delivery evidence recorded after the inventory scan via scripts/inventory.py --record-delivery; it is the only write-capability proof (repo metadata alone cannot prove push rights)",
+  "other_open_prs_left_untouched": [
+   2,
+   3,
+   6
+  ],
+  "pr_number": 8,
+  "pr_state": {
+   "base": "main",
+   "commits": 1,
+   "head": "arena/01a0dd2c-arena",
+   "merged": false,
+   "state": "OPEN"
+  },
+  "pr_url": "https://github.com/FullThrottle83/arena/pull/8",
+  "push_status": "SUCCEEDED (new branch created on origin from origin/main 43e25c3; no force-push)",
+  "pushed_to_main": false,
+  "recorded_utc": "2026-09-26T14:23:56+00:00",
+  "remote_head_matches_local": true,
+  "remote_head_sha": "9967cfa0dea2e728b1a77dbb2c51eedbdeaf896a",
+  "repository": "FullThrottle83/arena",
+  "verified_utc": "2026-09-26T14:23:37+00:00",
+  "working_branch": "arena/01a0dd2c-arena"
  },
  "directory_listing": [
   {

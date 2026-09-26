@@ -1,4 +1,5 @@
 # Arena Agent Mode — session capability inventory (2026-09-26)
+- **Delivery:** commit `9967cfa` on `arena/01a0dd2c-arena` → [https://github.com/FullThrottle83/arena/pull/8](https://github.com/FullThrottle83/arena/pull/8) (state OPEN at record time, merged=False, force-push=no, main untouched, other PRs left as found)
 
 - **Session/environment:** Debian GNU/Linux 12 (bookworm) · kernel 6.1.158+ · x86_64 · 2 vCPU · 3940 MB · unprivileged_non_root
 - **Discovered counts:** 643 PATH executables · 283 dpkg packages · 3 Python distributions (+305 stdlib modules) · 2 global npm packages (68 node builtins) · 206 shared objects · 6 font files (2 families)

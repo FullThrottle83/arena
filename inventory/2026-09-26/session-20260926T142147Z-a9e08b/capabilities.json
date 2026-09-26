@@ -191,9 +191,11 @@
   "connected_repository": "https://github.com/FullThrottle83/arena.git",
   "gh": "gh version 2.23.0 (2023-02-27 Debian 2.23.0+dfsg1-1)",
   "git": "git version 2.39.5",
+  "pr_open_not_merged": true,
+  "pull_request": "https://github.com/FullThrottle83/arena/pull/8",
   "read": "EXECUTED_NOW",
   "working_branch": "arena/01a0dd2c-arena",
-  "write": "see validation.json -> delivery (verified by the actual push)"
+  "write": "SUCCEEDED (new branch created on origin from origin/main 43e25c3; no force-push)"
  },
  "network": {
   "browser_navigation": {
