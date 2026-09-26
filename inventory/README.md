@@ -11,7 +11,9 @@ python3 scripts/inventory.py --observations inventory/$(date -u +%F)/observation
 
 Output goes to `inventory/<UTC date>/session-<UTC>-<rand>/` and the two human-facing documents are mirrored to
 `inventory/SUMMARY.md` and `inventory/UI-CHECKLIST.md`. Useful flags: `--skip-network`, `--skip-registry`,
-`--skip-install`, `--skip-github`, `--timeout <s>`, `--record-delivery <session_dir> <delivery.json>`.
+`--skip-install`, `--probe-install`, `--skip-github`, `--timeout <s>`, `--record-delivery <session_dir> <delivery.json>`.
+
+Install probes are **off by default**. Obtain operator approval and pass `--probe-install` to run the isolated pip/npm install checks. `--skip-install` overrides that flag. If an explicit `--observations` path is missing or invalid, the run reports an error rather than silently treating the native tool inventory as complete.
 
 ## Layout
 
@@ -33,6 +35,7 @@ Output goes to `inventory/<UTC date>/session-<UTC>-<rand>/` and the two human-fa
 * `INSTALLED` ≠ reachable ≠ executed. A reachable registry index does not prove a package can be installed, built or run here.
 * Three network paths are kept separate and never inferred from one another: **SHELL_HTTP** (sandbox `urllib`), **NATIVE_WEB_FETCH** (the agent's `fetch_page` tool), **BROWSER_NAVIGATION** (requires a browser; typically absent).
 * Failed probes are retained with their error text instead of being dropped; absence of evidence is recorded as `NOT_TESTED`, never as "unavailable everywhere".
+* **Historical snapshot caveat:** the 2026-09-26 `validation.json` says IP addresses and hostnames were not stored, but `network.json` contains **public target** DNS IP addresses and hostnames. The engine now distinguishes those from the sandbox's machine hostname and outbound egress IP. Preserve the original snapshot as evidence rather than rewriting measured records. Its install tests were explicitly approved in that session; future runs require `--probe-install`.
 
 ## Safety envelope
 
