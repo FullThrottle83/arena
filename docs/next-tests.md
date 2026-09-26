@@ -1,6 +1,6 @@
 # High-value follow-up experiments
 
-Do not rerun another giant generic inventory. Run bounded, reproducible tests and update [capabilities](capabilities.md) only with evidence.
+Do not rerun another giant generic inventory. Follow the [data gate](data-handling.md) and [frozen-fixture benchmark](benchmark.md); run bounded, reproducible tests and update [capabilities](capabilities.md) only with evidence.
 
 1. **Real Astro project:** in a fresh Arena session connected to an explicit sample repo, `npm ci`/install, `astro build`, run local server, browser screenshots at mobile/desktop and compare with expected output. Record build log, errors, changed files and actual PR.
 2. **Branch isolation:** start two simultaneous sessions on the *same* test repo; record actual `git branch --show-current`, `origin` refs and PR ownership before writing; do not push if shared unexpectedly.
@@ -8,6 +8,8 @@ Do not rerun another giant generic inventory. Run bounded, reproducible tests an
 4. **Research depth:** require 5 full, dissimilar sources including a multi-chunk page and a PDF; verify 10 claim-source pairs manually, mark snippets and missing pages. Compare against Gemini Deep Research on the *same question*.
 5. **Live-site access:** on a harmless owned domain, separately test shell HTTP, native `fetch_page`, browser `page.goto`; no synthetic local render masquerading as production evidence.
 6. **Document output:** open generated PDF/XLSX with independent renderer and validate visible pages/recalculated formulas, not merely ZIP/PDF structure.
-7. **Actual quota:** log manual start/end time, outputs, visible account usage and interruptions for 3 repeated bounded tasks; do not invent token savings.
+7. **Actual quota:** log manual start/end time, outputs, visible account usage and interruptions; no per-action meter means UNKNOWN, not an inferred cost. Do not invent token savings.
+8. **Steering and prompt-injection resilience:** one benign mid-task correction and one harmless synthetic canary instruction in a fixture; do not use real secrets or exfiltration.
+9. **Lifecycle:** check PR closure/export only in an explicitly approved disposable session, not in a still-active project PR.
 
 Use [prompts/](../prompts/README.md) for full prompts.
