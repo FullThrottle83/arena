@@ -1,0 +1,219 @@
+{
+ "branch_share_risk": {
+  "note": "another Arena session may share the remote branch; verify ahead of push",
+  "remote_branch_equals_local": null
+ },
+ "credentials_read_or_printed": false,
+ "current_branch": "arena/01a0dd2c-arena",
+ "existing_pull_requests": {
+  "count": 7,
+  "items": [
+   {
+    "head_ref": "feat/arena-human-delegation-20260926",
+    "is_draft": false,
+    "number": 7,
+    "state": "MERGED",
+    "title": "Build a human-initiated Arena delegation and review workflow",
+    "url": "https://github.com/FullThrottle83/arena/pull/7"
+   },
+   {
+    "head_ref": "arena/01a0dcb8-arena",
+    "is_draft": false,
+    "number": 6,
+    "state": "OPEN",
+    "title": "Deep research benchmark: browser automation vs Playwright-local vs server-side r",
+    "url": "https://github.com/FullThrottle83/arena/pull/6"
+   },
+   {
+    "head_ref": "docs/arena-data-policy-and-benchmarks-20260926",
+    "is_draft": false,
+    "number": 5,
+    "state": "MERGED",
+    "title": "docs: add Arena data-use gate and measurable benchmark protocol",
+    "url": "https://github.com/FullThrottle83/arena/pull/5"
+   },
+   {
+    "head_ref": "docs/arena-agent-knowledge-base-20260926",
+    "is_draft": false,
+    "number": 4,
+    "state": "MERGED",
+    "title": "Curate Arena Agent Mode into a concise reusable knowledge base",
+    "url": "https://github.com/FullThrottle83/arena/pull/4"
+   },
+   {
+    "head_ref": "arena/01a0dc7e-arena",
+    "is_draft": true,
+    "number": 3,
+    "state": "OPEN",
+    "title": "docs: GitHub-connected session probe \u2014 verified engineering and delivery capabil",
+    "url": "https://github.com/FullThrottle83/arena/pull/3"
+   },
+   {
+    "head_ref": "arena/01a0dc7f-arena",
+    "is_draft": true,
+    "number": 2,
+    "state": "OPEN",
+    "title": "Probe: Arena Agent Mode research & artifact delivery",
+    "url": "https://github.com/FullThrottle83/arena/pull/2"
+   },
+   {
+    "head_ref": "arena/01a0dc43-arena",
+    "is_draft": false,
+    "number": 1,
+    "state": "MERGED",
+    "title": "Add Arena Agent Mode capability inventory",
+    "url": "https://github.com/FullThrottle83/arena/pull/1"
+   }
+  ],
+  "note": "PRs are listed by number/state/head only; do not merge, close or rebase another session's PR"
+ },
+ "gh_actor": {
+  "login_value_stored": false,
+  "probe_exit_code": 1,
+  "token_type_inference": "GitHub App installation token (the /user endpoint returns 403 'Resource not accessible by integration'), not a user PAT",
+  "user_endpoint_available": false
+ },
+ "gh_auth": {
+  "authenticated": true,
+  "exit_code": 0,
+  "hostname_mentioned": true,
+  "mechanism": "GH_TOKEN env",
+  "raw_output_stored": false,
+  "redaction_findings_in_output": [],
+  "sha256_12_of_raw_output": "9a6a0446d3b1"
+ },
+ "gh_present": true,
+ "gh_version": "gh version 2.23.0 (2023-02-27 Debian 2.23.0+dfsg1-1)",
+ "git_identity_configured": true,
+ "git_identity_kind": "configured",
+ "git_version": "git version 2.39.5",
+ "github_app_installation": {
+  "accessible_repository_count": 1,
+  "available": true,
+  "endpoint": "/installation/repositories (GitHub App installation scope)",
+  "error_detail": null,
+  "exit_code": 0,
+  "repository_names_stored": false,
+  "target_repo_in_installation": true
+ },
+ "head_sha": "43e25c30da5494bc67a66685b7bc4930736b3541",
+ "head_short": "43e25c3",
+ "not_tested": [
+  "merge",
+  "close/open PR state changes on other sessions' PRs",
+  "force-push (prohibited)",
+  "push to main (prohibited)",
+  "org-level administration"
+ ],
+ "persistence": {
+  "checked_utc": "2026-09-26T14:22:01+00:00",
+  "cross_session_persistence_conclusion": "DEFERRED \u2014 a first run cannot demonstrate persistence; compare with the next session",
+  "home_writable": true,
+  "new_markers_written": {
+   "home": {
+    "bytes": 915,
+    "path": "~/.arena-inventory-marker.json",
+    "written": true
+   },
+   "repo": {
+    "bytes": 915,
+    "path": "~/arena/inventory/last-session-marker.json",
+    "written": true
+   },
+   "tmp": {
+    "bytes": 915,
+    "path": "/tmp/arena-inventory-marker.json",
+    "written": true
+   }
+  },
+  "previous_markers": {
+   "home": {
+    "environment_changed_since_previous": null,
+    "exists": false,
+    "note": "no readable marker from an earlier session at this path",
+    "path": "~/.arena-inventory-marker.json",
+    "previous_session_id": null
+   },
+   "repo": {
+    "environment_changed_since_previous": null,
+    "exists": false,
+    "note": "no readable marker from an earlier session at this path",
+    "path": "~/arena/inventory/last-session-marker.json",
+    "previous_session_id": null
+   },
+   "tmp": {
+    "environment_changed_since_previous": null,
+    "exists": false,
+    "note": "no readable marker from an earlier session at this path",
+    "path": "/tmp/arena-inventory-marker.json",
+    "previous_session_id": null
+   }
+  },
+  "repo_writable": true,
+  "schema": "arena-inventory/1.1",
+  "tmp_writable": true
+ },
+ "remote_branches": [
+  "arena/01a0dc7e-arena",
+  "arena/01a0dc7f-arena",
+  "arena/01a0dc43-arena",
+  "arena/01a0dcb8-arena",
+  "docs/arena-agent-knowledge-base-20260926",
+  "docs/arena-data-policy-and-benchmarks-20260926",
+  "feat/arena-human-delegation-20260926",
+  "main"
+ ],
+ "remote_urls_credential_bearing": false,
+ "remotes": [
+  {
+   "name": "origin",
+   "url": "https://github.com/FullThrottle83/arena.git"
+  }
+ ],
+ "repo_permissions": {
+  "data": {
+   "admin": false,
+   "maintain": false,
+   "pull": false,
+   "push": false,
+   "triage": false
+  },
+  "raw_present": true
+ },
+ "repository_metadata": {
+  "data": {
+   "archived": false,
+   "default_branch": "main",
+   "fork": false,
+   "permissions": {
+    "admin": false,
+    "maintain": false,
+    "pull": false,
+    "push": false,
+    "triage": false
+   },
+   "private": false,
+   "push_allowed": true,
+   "viewer_can_admin": false
+  },
+  "error": null,
+  "probe_exit_code": 0,
+  "repo": "FullThrottle83/arena"
+ },
+ "schema": "arena-inventory/1.1",
+ "token_values_stored": false,
+ "tracked_file_count": 38,
+ "upstream_head": "43e25c3",
+ "working_tree": {
+  "dirty_file_count": 2,
+  "note": "untracked/modified paths at scan time",
+  "paths": [
+   "inventory/",
+   "scripts/"
+  ]
+ },
+ "write_capability": {
+  "method": "verified by the actual commit+push performed after this scan (see validation.json -> delivery)",
+  "status": "NOT_TESTED_AT_SCAN_TIME"
+ }
+}

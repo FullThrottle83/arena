@@ -1,0 +1,591 @@
+{
+ "collected_utc": "2026-09-26T14:22:01+00:00",
+ "engine_capability_test_counts": {
+  "executed_now": 13,
+  "failed": 1,
+  "not_installed": 1,
+  "total": 15
+ },
+ "engine_capability_tests": [
+  {
+   "command": "/usr/bin/python3 -c <143 chars>",
+   "detail": "{\"sha256\": \"572e31f55b6ac1b1\", \"rt\": [1, 2, 3]}",
+   "id": "python_compute_and_json_roundtrip",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "command": "/usr/bin/python3 -c <sqlite3>",
+   "detail": "{\"rows\": [[2, 3]], \"version\": \"3.40.1\"}",
+   "id": "stdlib_sqlite3_read_write",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "command": "/usr/bin/python3 -c <csv roundtrip on /tmp/arena-inv-tests-yqgxhk7m/roundtrip.csv>",
+   "detail": "{\"rows\": [[\"a\", \"b\"], [\"1\", \"x,y\"], [\"2\", \"quote'\"]], \"cols\": 2}",
+   "id": "csv_write_read_roundtrip",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "command": "/usr/bin/python3 -c <zip roundtrip>",
+   "detail": "{\"members\": [\"a.txt\"], \"tested\": true, \"bytes\": 5}",
+   "id": "zip_create_and_read",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "command": "write/read/remove /dev/shm/arena-inv-probe.txt",
+   "detail": "wrote+read+removed",
+   "id": "dev_shm_write_read",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "command": "/usr/local/bin/node -e <crypto+fs write>",
+   "detail": "{\"sha\":\"572e31f55b6ac1b1\",\"size\":10}",
+   "id": "node_compute_fs_and_crypto",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "bind": "127.0.0.1:37893",
+   "body_contains_expected_token": true,
+   "command": "/usr/bin/python3 -m http.server <port> --bind 127.0.0.1",
+   "detail": "server started, HTTP 200 checked, process stopped",
+   "exit_after_terminate": -15,
+   "http_status": 200,
+   "id": "local_http_server_start_request_stop",
+   "loopback_only": true,
+   "server": "python3 -m http.server",
+   "status": "EXECUTED_NOW",
+   "stopped": true
+  },
+  {
+   "command": "/usr/bin/python3 -c 'time.sleep(30)' (spawn/terminate)",
+   "detail": "process control verified inside the sandbox shell",
+   "exit_code_after_terminate": -15,
+   "id": "background_process_spawn_and_terminate",
+   "status": "EXECUTED_NOW",
+   "was_running": true
+  },
+  {
+   "command": "git init/commit/log in a temp dir (no remote, no push)",
+   "detail": "[{\"argv\": [\"git\", \"log\", \"--oneline\"], \"exit_code\": 0, \"out\": \"bf04dd3 inventory probe commit\", \"err\": \"\"}, {\"argv\": [\"git\", \"status\", \"--porcelain\"], \"exit_code\": 0, \"out\": \"\", \"err\": \"\"}]",
+   "id": "git_local_commit_workflow",
+   "status": "EXECUTED_NOW",
+   "steps": [
+    {
+     "argv": [
+      "git",
+      "init",
+      "-q",
+      "-b",
+      "main"
+     ],
+     "err": "",
+     "exit_code": 0,
+     "out": ""
+    },
+    {
+     "argv": [
+      "git",
+      "-c",
+      "user.name=inventory-probe",
+      "-c",
+      "user.email=probe@invalid",
+      "commit",
+      "-q",
+      "--allow-empty",
+      "-m",
+      "inventory probe commit"
+     ],
+     "err": "",
+     "exit_code": 0,
+     "out": ""
+    },
+    {
+     "argv": [
+      "git",
+      "log",
+      "--oneline"
+     ],
+     "err": "",
+     "exit_code": 0,
+     "out": "bf04dd3 inventory probe commit"
+    },
+    {
+     "argv": [
+      "git",
+      "status",
+      "--porcelain"
+     ],
+     "err": "",
+     "exit_code": 0,
+     "out": ""
+    }
+   ]
+  },
+  {
+   "command": "create/replace/read /tmp/arena-inv-tests-yqgxhk7m/edit-target.txt",
+   "detail": "text round-trip with in-place edit",
+   "id": "file_create_edit_read",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "command": "importlib.metadata distribution name lookup (no imports executed)",
+   "detail": "present: none of reportlab/fpdf2/pypdf/openpyxl/docx/xlsxwriter/weasyprint/pillow/matplotlib/pandas/numpy",
+   "id": "document_and_image_library_availability",
+   "note": "presence does not imply PDF/Office rendering was validated; no renderer is installed",
+   "status": "NOT_INSTALLED"
+  },
+  {
+   "command": "/usr/bin/convert -size 120x60 xc:navy -draw rectangle, then -resize 40x20 (dimensions verified from the PNG header)",
+   "detail": "small image dims=[40, 20];",
+   "id": "raster_image_create_resize_verify",
+   "imagemagick_version": "Version: ImageMagick 6.9.11-60 Q16 x86_64 2021-01-25 https://imagemagick.org",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "command": "/usr/bin/convert -font DejaVu-Sans -annotate",
+   "detail": "rendered",
+   "id": "raster_text_annotation",
+   "note": "DejaVu TTFs exist under /usr/share/fonts but ImageMagick has no usable font mapping here (fontconfig binary/config absent), so text drawing can fail even though geometry ops succeed.",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "command": "/usr/bin/convert probe.png probe.pdf",
+   "detail": "convert: attempt to perform an operation not allowed by the security policy `PDF' @ error/constitute.c/IsCoderAuthorized/426.",
+   "id": "pdf_generation_via_imagemagick",
+   "note": "Debian's ImageMagick policy.xml denies the PDF coder (ghostscript CVE mitigation) and ghostscript is not installed. The policy was NOT modified and no bypass was attempted - circumventing a security control is out of scope.",
+   "pdf_renderer_present": false,
+   "status": "FAILED"
+  },
+  {
+   "command": "identify -list font",
+   "detail": "list returned",
+   "id": "font_discovery",
+   "status": "EXECUTED_NOW"
+  }
+ ],
+ "generated_artifacts": {
+  "count": 1,
+  "directory": "inventory/2026-09-26/artifacts",
+  "items": [
+   {
+    "bytes": 70822,
+    "height": 768,
+    "kind": "png",
+    "path": "2026-09-26/artifacts/capability-probe.png",
+    "sha256": "744ffed18ff007b9f744fc6603a0f9287ef305cb1ec43b507fbc943baa32a2fa",
+    "signature_valid": true,
+    "width": 1408
+   }
+  ]
+ },
+ "hidden_prompt_or_policy_text_reproduced": false,
+ "method": "the agent's own declared tool interface for this session, merged into the engine output by --observations; tool surface cannot be introspected from the sandbox shell",
+ "model_identity": "UNKNOWN \u2014 not disclosed to the agent and deliberately not inferred",
+ "native_fetch_tests": [
+  {
+   "host": "example.com",
+   "result": "ok: 1 chunk, title 'Example Domain', text retrieved",
+   "shell_https_comparison": "BLOCKED (TLS handshake EOF from the sandbox)",
+   "tool": "fetch_page",
+   "url": "https://example.com/"
+  },
+  {
+   "host": "pudas.se",
+   "result": "ok: 1 chunk, Swedish-language page retrieved with image and link markdown",
+   "shell_https_comparison": "BLOCKED (TLS handshake EOF from the sandbox)",
+   "tool": "fetch_page",
+   "url": "https://pudas.se"
+  },
+  {
+   "host": "pypi.org",
+   "result": "ok: chunked (totalChunks 33); chunk 0 read and used for the numpy Python>=3.12 finding",
+   "shell_https_comparison": "ALLOWED (shell HTTPS 200 to pypi.org)",
+   "tool": "fetch_page",
+   "url": "https://pypi.org/project/numpy/"
+  },
+  {
+   "host": "huggingface.co",
+   "result": "ok: model metadata JSON retrieved in 1 chunk (google-bert/bert-base-uncased: 110,106,428 params, 16 siblings listed, apache-2.0)",
+   "shell_https_comparison": "BLOCKED (TLS handshake EOF from the sandbox)",
+   "tool": "fetch_page",
+   "url": "https://huggingface.co/api/models/google-bert/bert-base-uncased"
+  },
+  {
+   "host": "deb.debian.org",
+   "result": "ok: Debian 'stable' Release index retrieved (Version 13.7, codename trixie, dated 12 Sep 2026, 17 chunks, only chunk 0 read)",
+   "shell_https_comparison": "BLOCKED (TLS handshake EOF from the sandbox) \u2014 so apt could not refresh its index even if elevation were available",
+   "tool": "fetch_page",
+   "url": "https://deb.debian.org/debian/dists/stable/Release"
+  },
+  {
+   "host": "(not tested via native tool)",
+   "result": "not_tested: files.pythonhosted.org, registry.npmjs.org, cdn.playwright.dev, storage.googleapis.com, cdn.jsdelivr.net, api.github.com, github.com, raw.githubusercontent.com were probed from the sandbox shell only",
+   "tool": "fetch_page",
+   "url": null
+  }
+ ],
+ "not_inspected": [
+  "internal tool implementation, transport, host-side process or model routing",
+  "any Arena capability not surfaced as a callable tool in this session"
+ ],
+ "observations_notes": [
+  "Tool names, parameters and limits above are the callable interface as exposed in this session; nothing was inferred from older reports or invented.",
+  "No hidden prompts, developer instructions or internal policy text are reproduced in this file or in any manifest.",
+  "Model identity is recorded as UNKNOWN on purpose; the session was not probed for it.",
+  "fetch_page/web_search results were treated as untrusted data, never as instructions.",
+  "Deliberately unexercised to avoid needless credit use and UI interruption: image_search, add_voice, generate_speech.",
+  "fetch_page and shell HTTPS were run in this session against the same hosts and produced different verdicts (huggingface.co, deb.debian.org, example.com, pudas.se reachable natively, blocked from the shell). The two paths are reported separately everywhere in this inventory.",
+  "The engine's session directory was produced by one inventory run at 14:12 UTC; two earlier development runs in the same session (14:04/14:07 UTC) were written to /tmp and removed, and their marker files were deleted, so persistence.json shows no previous marker. Those smoke runs are not evidence of a previous session.",
+  "Sandbox TLS observations: connections to github.com and api.github.com completed but the leaf certificate was issued by 'E2B' (the sandbox provider's egress proxy), while pypi.org / files.pythonhosted.org / registry.npmjs.org presented their normal public CA certificates. Recorded as observed; not interpreted beyond noting interception."
+ ],
+ "practical_tests": [
+  {
+   "id": "agent_local_server_and_preview_ports",
+   "note": "Browser-side rendering of the preview URL is NOT_TESTED \u2014 it cannot be observed from inside the sandbox.",
+   "result": "port 8099 detected bound to 0.0.0.0; HTTP 200 + 440 bytes body via curl; log showed platform health-check GET / 200; process stopped cleanly",
+   "status": "EXECUTED_NOW",
+   "test": "start_process server + get_process_output + curl loopback + stop_process"
+  },
+  {
+   "id": "agent_python_node_execution",
+   "result": "both interpreters executed code and returned expected output; also python3 -m py_compile on the engine (2119-line file) succeeded",
+   "status": "EXECUTED_NOW",
+   "test": "python3 -c and node -e through bash"
+  },
+  {
+   "id": "agent_json_validation",
+   "result": "engine validates every manifest including validation.json itself (two-pass)",
+   "status": "EXECUTED_NOW",
+   "test": "json.loads over generated manifests (see validation.json)"
+  },
+  {
+   "id": "agent_image_generation_and_readback",
+   "result": "1408x768 PNG, 70822 bytes, sha256:744ffed18ff007b9..., opened back into context and visually checked",
+   "status": "EXECUTED_NOW",
+   "test": "generate_image + read_file"
+  },
+  {
+   "id": "agent_git_function",
+   "result": "branch arena/01a0dd2c-arena at 43e25c3 (identical to origin/main), 7 existing PRs listed, remote branch list retrieved",
+   "status": "EXECUTED_NOW",
+   "test": "git status/branch/rev-parse/ls-remote + gh pr list via bash"
+  },
+  {
+   "id": "agent_approval_gate",
+   "result": "approval obtained; only tiny isolated installs performed, both cleaned up",
+   "status": "EXECUTED_NOW",
+   "test": "ask_user before any install"
+  },
+  {
+   "id": "artifact_presentation",
+   "result": "SUMMARY.md opened in the user's viewer",
+   "status": "EXECUTED_NOW",
+   "test": "present_file on the generated summary"
+  }
+ ],
+ "schema": "arena-inventory/1.1",
+ "tool_count": 15,
+ "tools": [
+  {
+   "documented_restrictions": [
+    "no controlling terminal; stdin closed",
+    "shell state (cwd, env, aliases, variables, history, background jobs) is NOT preserved between calls",
+    "long-running processes must use start_process instead",
+    "only files under the workspace root (~) persist; listed cache/build dirs are excluded from snapshots"
+   ],
+   "executed_this_session": true,
+   "execution_result": "13+ invocations: environment probes, py_compile, inventory runs, curl to loopback, git operations \u2014 all returned real stdout/exit codes",
+   "known_limitations": [
+    "killed at timeout (no detach)",
+    "no TTY, so interactive prompts hang and then fail",
+    "each call starts a fresh shell"
+   ],
+   "name": "bash",
+   "output_type": "JSON: stdout, stderr, exit status, duration, truncation flags",
+   "parameters": [
+    "command (<=64000 chars)",
+    "cwd",
+    "timeout (default 30 s, max 1800 s)"
+   ],
+   "purpose": "Run a shell command in the sandboxed workspace (default cwd is the workspace root (~), i.e. the repo root here).",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "documented_restrictions": [
+    "other binary types return metadata only",
+    "images: jpg/png/webp/gif/bmp are rendered into context"
+   ],
+   "executed_this_session": true,
+   "execution_result": "read AGENTS.md, EXECUTOR.md and docs/*.md; then read inventory/2026-09-26/artifacts/capability-probe.png which returned the generated image (verified visually: terminal glyph + 'sandbox probe' caption, correct spelling)",
+   "known_limitations": [
+    "no pagination metadata for non-text files",
+    "cannot render PDF/Office files"
+   ],
+   "name": "read_file",
+   "output_type": "text content or image content block",
+   "parameters": [
+    "path (absolute, relative to workspace, or ~/)",
+    "offset (line, 1-based)",
+    "limit (<=10000 lines)"
+   ],
+   "purpose": "Read a workspace file; text returns content, images are returned as viewable content.",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "documented_restrictions": [
+    "parent directories are created as needed"
+   ],
+   "executed_this_session": true,
+   "execution_result": "created scripts/inventory.py (~2100 lines) and the preview probe page; file content verified by python3 -m py_compile and by re-reading",
+   "known_limitations": [
+    "whole-file write; large files consume output budget"
+   ],
+   "name": "write_file",
+   "output_type": "success/error message",
+   "parameters": [
+    "path",
+    "content"
+   ],
+   "purpose": "Create or overwrite a file with full content.",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "documented_restrictions": [
+    "only the first match is replaced",
+    "empty new_text deletes the match"
+   ],
+   "executed_this_session": true,
+   "execution_result": "6 successful edits to scripts/inventory.py (regex fixes, scanner rework); one edit initially failed to match and was corrected by re-reading the exact source lines",
+   "known_limitations": [
+    "single replacement per call",
+    "ambiguous matches are resolved to the first occurrence"
+   ],
+   "name": "edit_file",
+   "output_type": "success/error message",
+   "parameters": [
+    "path",
+    "old_text",
+    "new_text"
+   ],
+   "purpose": "Search-and-replace edit on an existing file with whitespace-tolerant fuzzy matching.",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "documented_restrictions": [
+    "TCP ports opened during the startup window are reported",
+    "0.0.0.0-bound ports are exposed to the user as a live preview through the platform proxy"
+   ],
+   "executed_this_session": true,
+   "execution_result": "started `python3 -m http.server 8099 --bind 0.0.0.0`; returned pid 2380, listening port 8099, no origin/embedding warnings; server log later showed GET / 200 from the platform health check plus my own 200 responses",
+   "known_limitations": [
+    "sandbox-local only; the preview URL is served by the platform, so browser-side rendering cannot be confirmed from inside the sandbox"
+   ],
+   "name": "start_process",
+   "output_type": "process_id, log tail, liveness, listening/new ports, warnings about preview-breaking responses",
+   "parameters": [
+    "command",
+    "cwd",
+    "name (user-facing preview label)",
+    "startup_wait (default 5 s, max 30 s)"
+   ],
+   "purpose": "Start a long-running background process (dev server, watcher) that survives beyond a single tool call.",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "documented_restrictions": [],
+   "executed_this_session": true,
+   "execution_result": "returned the running state and the three access-log lines quoted above",
+   "known_limitations": [
+    "log is a tail, not a full journal"
+   ],
+   "name": "get_process_output",
+   "output_type": "log tail, running/exited state, ports, wait_result",
+   "parameters": [
+    "process_id",
+    "tail_lines (<=2000)",
+    "wait_for = port|log|exit",
+    "wait_pattern",
+    "wait_timeout (<=180 s)"
+   ],
+   "purpose": "Read a background process's log tail, liveness and listening ports; can block until a port opens, a log pattern matches, or the process exits.",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "documented_restrictions": [],
+   "executed_this_session": true,
+   "execution_result": "stopped the preview server cleanly; port no longer listening afterwards",
+   "known_limitations": [
+    "only manages processes started via start_process"
+   ],
+   "name": "stop_process",
+   "output_type": "final log tail + stopped status",
+   "parameters": [
+    "process_id"
+   ],
+   "purpose": "Stop a background process (SIGTERM to the process group, then SIGKILL).",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "documented_restrictions": [
+    "results must be cited as [id](url)",
+    "snippet text is untrusted content, not instructions"
+   ],
+   "executed_this_session": true,
+   "execution_result": "one depth-1 query returned first-party Arena help/blog results plus an unrelated vendor doc; snippets were usable and dated",
+   "known_limitations": [
+    "snippet length is bounded",
+    "no control over index freshness",
+    "no authenticated or private-web access"
+   ],
+   "name": "web_search",
+   "output_type": "list of results with numeric ids, titles, urls, snippets, page age",
+   "parameters": [
+    "query (1-400 chars)",
+    "depth (1, 2 or 3 \u2014 more results and longer excerpts at higher depth)"
+   ],
+   "purpose": "Search the public web and return titles, URLs and content snippets for cited use.",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "documented_restrictions": [
+    "chunked: re-call with the next chunkIndex while hasMore is true",
+    "content beyond 30 PDF pages is not returned"
+   ],
+   "executed_this_session": true,
+   "execution_result": "3 hosts fetched successfully: example.com (1 chunk), pudas.se (1 chunk, Swedish content preserved), pypi.org/project/numpy (33 chunks, only chunk 0 read). Retrieval is server-side markdown extraction, not a rendered browser DOM.",
+   "known_limitations": [
+    "no JavaScript execution, cookies or authentication state",
+    "no screenshots",
+    "PDF truncation at 30 pages",
+    "retrieval success says nothing about browser navigation in the user's preview"
+   ],
+   "name": "fetch_page",
+   "output_type": "url, title, markdown content, chunkIndex, hasMore, totalChunks",
+   "parameters": [
+    "url (valid uri)",
+    "chunkIndex"
+   ],
+   "purpose": "Retrieve a URL and return its text as markdown, chunked for long documents; parses PDFs up to 30 pages.",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "documented_restrictions": [],
+   "executed_this_session": false,
+   "execution_result": "NOT_TESTED \u2014 deliberately not exercised: no visual reference material is required by this inventory and the call would consume credits",
+   "known_limitations": [
+    "licence/rights of retrieved images are not asserted by the tool",
+    "not used here"
+   ],
+   "name": "image_search",
+   "output_type": "saved workspace file paths (view with read_file)",
+   "parameters": [
+    "query (1-400 chars)",
+    "count (1-5)"
+   ],
+   "purpose": "Search the web for images matching a query and save them into the workspace.",
+   "status": "EXPOSED"
+  },
+  {
+   "documented_restrictions": [
+    "exactly one image per call; grids/collages are not produced",
+    "max 3 offer_options calls per response, one per requested image",
+    "output is AI-generated imagery even when editing a real photo"
+   ],
+   "executed_this_session": true,
+   "execution_result": "generated inventory/2026-09-26/artifacts/capability-probe.png \u2014 70822 bytes, 1408x768, valid PNG signature, sha256 prefix 744ffed18ff007b9; read back through read_file and visually checked (correct caption text). This is image generation, not a browser screenshot.",
+   "known_limitations": [
+    "no transparent background, mask or vector output",
+    "text rendering quality varies",
+    "not a rendering of HTML/CSS"
+   ],
+   "name": "generate_image",
+   "output_type": "workspace image path",
+   "parameters": [
+    "file_path (must end .jpg/.jpeg/.png)",
+    "prompt",
+    "images[] (optional reference/edit inputs)",
+    "offer_options (show two candidate images from different models and let the user pick)"
+   ],
+   "purpose": "Generate one standalone raster image from a prompt, or edit existing workspace images.",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "documented_restrictions": [
+    "a voice must be registered and user-selected first (add_voice)",
+    "up to 10 clips per turn; cap resets next turn",
+    "spoken word only \u2014 cannot sing"
+   ],
+   "executed_this_session": false,
+   "execution_result": "NOT_TESTED \u2014 no narration is required by this task, and registering a voice forces an interactive A/B vote in the UI",
+   "known_limitations": [
+    "plain words only (no SSML)",
+    "language/voice mismatch fails the call",
+    "not exercised to avoid consuming credits and interrupting the run"
+   ],
+   "name": "generate_speech",
+   "output_type": "audio file path",
+   "parameters": [
+    "file_path (.mp3/.wav/.ogg/.opus/.flac/.aac/.m4a/.aiff)",
+    "text (<=1500 chars per call)",
+    "voice_id (from add_voice)",
+    "language (only when it differs from the audition language)"
+   ],
+   "purpose": "Synthesize spoken audio from text with a previously registered voice and save it to the workspace.",
+   "status": "EXPOSED"
+  },
+  {
+   "documented_restrictions": [
+    "must be called before generate_speech",
+    "pauses the turn until the user has voted"
+   ],
+   "executed_this_session": false,
+   "execution_result": "NOT_TESTED \u2014 see generate_speech",
+   "known_limitations": [
+    "interactive: blocks for a user vote",
+    "exact-region voices may be unavailable"
+   ],
+   "name": "add_voice",
+   "output_type": "voice_id (e.g. voice-00)",
+   "parameters": [
+    "text (~15 s, 30-45 words, 1-1500 chars)",
+    "language (BCP-47; region subtag requests an accent and can fail if unsupported)",
+    "voice_identity {gender, use_case: narration|conversational|advertising|entertainment|educational|characters, index 0-9007199254740991}"
+   ],
+   "purpose": "Audition two candidate voices for a text passage and register the user's choice, returning a voice_id.",
+   "status": "EXPOSED"
+  },
+  {
+   "documented_restrictions": [],
+   "executed_this_session": true,
+   "execution_result": "used to present inventory/2026-09-26/SUMMARY.md after the manifests were generated",
+   "known_limitations": [
+    "does not itself download a file to the user's machine; it opens the in-session viewer",
+    "cannot present files outside the workspace"
+   ],
+   "name": "present_file",
+   "output_type": "viewer opens the file",
+   "parameters": [
+    "path (absolute, workspace-relative or ~/)"
+   ],
+   "purpose": "Open an existing workspace file in the user's viewer (one file at a time).",
+   "status": "EXECUTED_NOW"
+  },
+  {
+   "documented_restrictions": [],
+   "executed_this_session": true,
+   "execution_result": "used once to obtain approval for the tiny isolated install probes and to confirm the commit scope; both answers returned and were honoured (approved pip+npm temp installs; commit script + manifests)",
+   "known_limitations": [
+    "pauses the turn until answered",
+    "options are the only structured input"
+   ],
+   "name": "ask_user",
+   "output_type": "the user's selected option ids and/or custom text",
+   "parameters": [
+    "questions[] {id, question, options[2-6] {id, label, description}, allowCustomResponse}",
+    "1-6 questions per call, <=4 recommended"
+   ],
+   "purpose": "Ask bounded clarifying questions with predefined options plus optional free text.",
+   "status": "EXECUTED_NOW"
+  }
+ ]
+}

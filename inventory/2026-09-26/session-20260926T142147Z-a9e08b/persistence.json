@@ -1,0 +1,48 @@
+{
+ "checked_utc": "2026-09-26T14:22:01+00:00",
+ "cross_session_persistence_conclusion": "DEFERRED \u2014 a first run cannot demonstrate persistence; compare with the next session",
+ "home_writable": true,
+ "new_markers_written": {
+  "home": {
+   "bytes": 915,
+   "path": "~/.arena-inventory-marker.json",
+   "written": true
+  },
+  "repo": {
+   "bytes": 915,
+   "path": "~/arena/inventory/last-session-marker.json",
+   "written": true
+  },
+  "tmp": {
+   "bytes": 915,
+   "path": "/tmp/arena-inventory-marker.json",
+   "written": true
+  }
+ },
+ "previous_markers": {
+  "home": {
+   "environment_changed_since_previous": null,
+   "exists": false,
+   "note": "no readable marker from an earlier session at this path",
+   "path": "~/.arena-inventory-marker.json",
+   "previous_session_id": null
+  },
+  "repo": {
+   "environment_changed_since_previous": null,
+   "exists": false,
+   "note": "no readable marker from an earlier session at this path",
+   "path": "~/arena/inventory/last-session-marker.json",
+   "previous_session_id": null
+  },
+  "tmp": {
+   "environment_changed_since_previous": null,
+   "exists": false,
+   "note": "no readable marker from an earlier session at this path",
+   "path": "/tmp/arena-inventory-marker.json",
+   "previous_session_id": null
+  }
+ },
+ "repo_writable": true,
+ "schema": "arena-inventory/1.1",
+ "tmp_writable": true
+}

@@ -1,0 +1,107 @@
+{
+ "browser_and_font_environment": {
+  "browsers": {
+   "brave-browser": {
+    "present": false,
+    "status": "NOT_INSTALLED"
+   },
+   "chrome": {
+    "present": false,
+    "status": "NOT_INSTALLED"
+   },
+   "chrome-headless-shell": {
+    "present": false,
+    "status": "NOT_INSTALLED"
+   },
+   "chromium": {
+    "present": false,
+    "status": "NOT_INSTALLED"
+   },
+   "chromium-browser": {
+    "present": false,
+    "status": "NOT_INSTALLED"
+   },
+   "firefox": {
+    "present": false,
+    "status": "NOT_INSTALLED"
+   },
+   "firefox-esr": {
+    "present": false,
+    "status": "NOT_INSTALLED"
+   },
+   "google-chrome": {
+    "present": false,
+    "status": "NOT_INSTALLED"
+   },
+   "google-chrome-stable": {
+    "present": false,
+    "status": "NOT_INSTALLED"
+   },
+   "headless_shell": {
+    "present": false,
+    "status": "NOT_INSTALLED"
+   },
+   "microsoft-edge": {
+    "present": false,
+    "status": "NOT_INSTALLED"
+   },
+   "playwright": {
+    "present": false,
+    "status": "NOT_INSTALLED"
+   },
+   "puppeteer": {
+    "present": false,
+    "status": "NOT_INSTALLED"
+   }
+  },
+  "fontconfig_present": false
+ },
+ "families": [
+  "DejaVuSans",
+  "DejaVuSerif"
+ ],
+ "family_count_estimate": 2,
+ "files": [
+  {
+   "bytes": 708920,
+   "family_guess": "DejaVuSans",
+   "file": "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+  },
+  {
+   "bytes": 759720,
+   "family_guess": "DejaVuSans",
+   "file": "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf"
+  },
+  {
+   "bytes": 334268,
+   "family_guess": "DejaVuSans",
+   "file": "/usr/share/fonts/truetype/dejavu/DejaVuSansMono-Bold.ttf"
+  },
+  {
+   "bytes": 343140,
+   "family_guess": "DejaVuSans",
+   "file": "/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"
+  },
+  {
+   "bytes": 356668,
+   "family_guess": "DejaVuSerif",
+   "file": "/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf"
+  },
+  {
+   "bytes": 380660,
+   "family_guess": "DejaVuSerif",
+   "file": "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf"
+  }
+ ],
+ "font_file_count": 6,
+ "fontconfig_fc_list_present": false,
+ "method": "filesystem scan; families derived from file names (fontconfig not installed, so no rendered-glyph family list is available)",
+ "roots_scanned": [
+  "/usr/share/fonts",
+  "/usr/local/share/fonts",
+  "~/.fonts",
+  "~/.local/share/fonts",
+  "/usr/share/fonts/truetype"
+ ],
+ "schema": "arena-inventory/1.1"
+}

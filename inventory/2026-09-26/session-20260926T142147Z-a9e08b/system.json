@@ -1,0 +1,304 @@
+{
+ "apt_state": {
+  "apt_update_run": false,
+  "index_populated": false,
+  "note": "apt-get update was NOT run: it mutates system state and requires elevated privileges. Debian package metadata reachability is therefore assessed by reading deb.debian.org over HTTPS only.",
+  "package_index_files_in_var_lib_apt_lists": 0,
+  "sources": {
+   "sources_list_d_entries": [
+    "debian.sources"
+   ],
+   "sources_list_present": false
+  }
+ },
+ "cgroup": {
+  "limits": {
+   "cpu.max": {
+    "cgroup_path": "/sys/fs/cgroup/user/cpu.max",
+    "value": "max 100000"
+   },
+   "memory.current": {
+    "cgroup_path": "/sys/fs/cgroup/user/memory.current",
+    "value": "210350080"
+   },
+   "memory.high": {
+    "cgroup_path": "/sys/fs/cgroup/user/memory.high",
+    "value": "3997061120"
+   },
+   "memory.max": {
+    "cgroup_path": "/sys/fs/cgroup/user/memory.max",
+    "value": "3997061120"
+   },
+   "pids.max": {
+    "cgroup_path": "/sys/fs/cgroup/user/pids.max",
+    "value": "max"
+   }
+  },
+  "mode": "v2",
+  "self_cgroup": "0::/user"
+ },
+ "collected_utc": "2026-09-26T14:21:47+00:00",
+ "cpu": {
+  "conf_cpus": 2,
+  "loadavg_1_5_15": [
+   0.28,
+   0.3,
+   0.15
+  ],
+  "logical": 2,
+  "model_redacted_vendor": "Intel(R) Xeon(R) Processor",
+  "notable_flags": [
+   "aes",
+   "avx",
+   "avx2",
+   "avx512f",
+   "sse4_2"
+  ]
+ },
+ "disk": {
+  "dev_shm": {
+   "available_bytes": 2065637376,
+   "fs_block_size": 4096,
+   "inodes_free": 504305,
+   "inodes_total": 504306,
+   "path": "/dev/shm",
+   "total_bytes": 2065637376,
+   "used_bytes": 0
+  },
+  "home": {
+   "available_bytes": 20689412096,
+   "fs_block_size": 4096,
+   "inodes_free": 5693817,
+   "inodes_total": 5714800,
+   "path": "~",
+   "total_bytes": 21834924032,
+   "used_bytes": 860299264
+  },
+  "root": {
+   "available_bytes": 20689412096,
+   "fs_block_size": 4096,
+   "inodes_free": 5693817,
+   "inodes_total": 5714800,
+   "path": "/",
+   "total_bytes": 21834924032,
+   "used_bytes": 860299264
+  },
+  "tmp": {
+   "available_bytes": 20689412096,
+   "fs_block_size": 4096,
+   "inodes_free": 5693817,
+   "inodes_total": 5714800,
+   "path": "/tmp",
+   "total_bytes": 21834924032,
+   "used_bytes": 860299264
+  },
+  "workspace": {
+   "available_bytes": 20689412096,
+   "fs_block_size": 4096,
+   "inodes_free": 5693817,
+   "inodes_total": 5714800,
+   "path": "~/arena",
+   "total_bytes": 21834924032,
+   "used_bytes": 860299264
+  }
+ },
+ "engine": "scripts/inventory.py",
+ "identity_hashes": {
+  "home_path": "b98d692c4574",
+  "hostname": "e0f69b18636e",
+  "method": "sha256[:12] of raw value; raw values are never stored",
+  "os_user": "04f8996da763"
+ },
+ "kernel": {
+  "machine": "x86_64",
+  "processor": "",
+  "release": "6.1.158+",
+  "sysname": "Linux",
+  "version": "#1 SMP PREEMPT_DYNAMIC Mon May 11 18:48:24 UTC 2026"
+ },
+ "memory_kb": {
+  "Buffers": 40528,
+  "Cached": 220016,
+  "MemAvailable": 3751892,
+  "MemFree": 3688420,
+  "MemTotal": 4034452,
+  "SwapFree": 0,
+  "SwapTotal": 0
+ },
+ "network_env": {
+  "env_var_count": 18,
+  "presence_flags_only": {
+   "ARENA_SANDBOX_ID": false,
+   "CI": false,
+   "GH_HOST": false,
+   "GH_TOKEN": true,
+   "GITHUB_TOKEN": true,
+   "GIT_ASKPASS": false,
+   "GIT_TERMINAL_PROMPT": true,
+   "HTTPS_PROXY": false,
+   "HTTP_PROXY": false,
+   "NODE_OPTIONS": false,
+   "NO_PROXY": false,
+   "NPM_CONFIG_REGISTRY": false,
+   "PIP_INDEX_URL": false,
+   "PORT": false,
+   "PYTHONPATH": false,
+   "SANDBOX_ID": false,
+   "VIRTUAL_ENV": false,
+   "http_proxy": false,
+   "https_proxy": false,
+   "no_proxy": false
+  },
+  "values_stored": false
+ },
+ "os": {
+  "id": "debian",
+  "name": "Debian GNU/Linux",
+  "pretty_name": "Debian GNU/Linux 12 (bookworm)",
+  "version": "12 (bookworm)",
+  "version_codename": "bookworm",
+  "version_id": "12"
+ },
+ "package_managers_present": {
+  "apk": false,
+  "apt": true,
+  "apt-get": true,
+  "conda": false,
+  "corepack": true,
+  "dnf": false,
+  "dpkg": true,
+  "dpkg-query": true,
+  "mamba": false,
+  "npm": true,
+  "npx": true,
+  "pacman": false,
+  "pip": true,
+  "pip3": true,
+  "pnpm": false,
+  "poetry": false,
+  "uv": false,
+  "yarn": true
+ },
+ "rlimits": {
+  "RLIMIT_AS": {
+   "hard": "unlimited",
+   "soft": "unlimited"
+  },
+  "RLIMIT_CORE": {
+   "hard": 0,
+   "soft": 0
+  },
+  "RLIMIT_MEMLOCK": {
+   "hard": 8388608,
+   "soft": 8388608
+  },
+  "RLIMIT_NOFILE": {
+   "hard": 524288,
+   "soft": 1024
+  },
+  "RLIMIT_NPROC": {
+   "hard": 15734,
+   "soft": 15734
+  },
+  "RLIMIT_STACK": {
+   "hard": "unlimited",
+   "soft": 8388608
+  }
+ },
+ "sandbox_security_passive": {
+  "passive_checks": {
+   "apparmor_available": false,
+   "dockerenv_present": false,
+   "escalation_attempted": false,
+   "namespace_tools_present": {
+    "bwrap": false,
+    "capsh": false,
+    "nsenter": true,
+    "pkexec": false,
+    "sudo": true,
+    "unshare": true
+   },
+   "note": "Passive reads only. sudo/namespace utilities were checked for existence; no execution, no 'sudo -l', no namespace creation and no attempt to widen privileges was made.",
+   "pid1_comm": "systemd",
+   "proc_readonly": null,
+   "ptrace_scope": "unavailable",
+   "sandbox_escape_attempted": false,
+   "seccomp_syscall_action": "unavailable",
+   "selinux_available": true,
+   "unprivileged_userns_sysctl": "unavailable",
+   "userns_max_ns_sysctl": "15734"
+  },
+  "proc_self_status_subset": {
+   "CapBnd": "000001ffffffffff",
+   "CapEff": "0000000000000000",
+   "CapPrm": "0000000000000000",
+   "Gid_ge_1000": true,
+   "Gid_is_root": false,
+   "NoNewPrivs": "0",
+   "Seccomp": "0",
+   "Seccomp_filters": "0",
+   "Threads": "1",
+   "Uid_ge_1000": true,
+   "Uid_is_root": false
+  },
+  "process_groups": [
+   "sudo",
+   "user",
+   "users"
+  ],
+  "selected_mounts": [
+   {
+    "fstype": "ext4",
+    "mount": "/",
+    "opts": "rw,relatime,discard"
+   },
+   {
+    "fstype": "tmpfs",
+    "mount": "/dev/shm",
+    "opts": "rw,nosuid,nodev"
+   },
+   {
+    "fstype": "tmpfs",
+    "mount": "/run",
+    "opts": "rw,nosuid,nodev,size=806892k,nr_inodes=819200,mode=755"
+   },
+   {
+    "fstype": "tmpfs",
+    "mount": "/run/lock",
+    "opts": "rw,nosuid,nodev,noexec,relatime,size=5120k"
+   }
+  ],
+  "shells_in_etc_shells": [
+   "/bin/sh",
+   "/usr/bin/sh",
+   "/bin/bash",
+   "/usr/bin/bash",
+   "/bin/rbash",
+   "/usr/bin/rbash",
+   "/bin/dash",
+   "/usr/bin/dash"
+  ]
+ },
+ "schema": "arena-inventory/1.1",
+ "shells": {
+  "login_shell_recorded": false,
+  "path_presence": {
+   "bash": true,
+   "dash": true,
+   "fish": false,
+   "powershell": false,
+   "pwsh": false,
+   "sh": true,
+   "zsh": false
+  },
+  "value_note": "$SHELL value not stored (environment values are never captured)"
+ },
+ "user_privilege": {
+  "category": "unprivileged_non_root",
+  "in_sudo_group": true,
+  "is_root": false,
+  "note": "sudo exists; it was not executed and no credential was used.",
+  "privilege_escalation_attempted": false,
+  "sudo_binary_present": true
+ }
+}

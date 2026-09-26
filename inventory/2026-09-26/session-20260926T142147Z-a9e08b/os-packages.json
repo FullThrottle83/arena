@@ -1,0 +1,1772 @@
+{
+ "by_section": {
+  "admin": 25,
+  "devel": 14,
+  "doc": 1,
+  "fonts": 2,
+  "graphics": 2,
+  "interpreters": 3,
+  "libdevel": 7,
+  "libs": 151,
+  "localization": 1,
+  "misc": 4,
+  "net": 13,
+  "oldlibs": 2,
+  "perl": 4,
+  "python": 17,
+  "shells": 2,
+  "text": 1,
+  "utils": 29,
+  "vcs": 2,
+  "web": 2,
+  "x11": 1
+ },
+ "database_package_count": 283,
+ "dpkg_error": null,
+ "dpkg_exit_code": 0,
+ "installed_count": 283,
+ "method": "dpkg-query metadata (no network, no mutation)",
+ "notable_packages": [
+  "binutils",
+  "ca-certificates",
+  "curl",
+  "fonts-dejavu-core",
+  "g++",
+  "gcc",
+  "gh",
+  "git",
+  "imagemagick",
+  "imagemagick-6-common",
+  "imagemagick-6.q16",
+  "jq",
+  "libc6",
+  "libglib2.0-0",
+  "libjpeg62-turbo",
+  "libpng16-16",
+  "libsqlite3-0",
+  "libssl3",
+  "libx11-6",
+  "make",
+  "openssl",
+  "python3",
+  "python3-distutils",
+  "python3-lib2to3",
+  "python3-minimal",
+  "python3-pip",
+  "python3-pip-whl",
+  "python3-pkg-resources",
+  "python3-setuptools",
+  "python3-setuptools-whl",
+  "python3-venv",
+  "python3-wheel",
+  "python3.11",
+  "python3.11-minimal",
+  "python3.11-venv",
+  "unzip",
+  "wget",
+  "zip",
+  "zlib1g"
+ ],
+ "notable_packages_count": 39,
+ "packages": [
+  {
+   "package": "adduser",
+   "section": "admin",
+   "size_kb": 686,
+   "version": "3.134"
+  },
+  {
+   "package": "apt",
+   "section": "admin",
+   "size_kb": 4232,
+   "version": "2.6.1"
+  },
+  {
+   "package": "base-files",
+   "section": "admin",
+   "size_kb": 341,
+   "version": "12.4+deb12u14"
+  },
+  {
+   "package": "base-passwd",
+   "section": "admin",
+   "size_kb": 247,
+   "version": "3.6.1"
+  },
+  {
+   "package": "bash",
+   "section": "shells",
+   "size_kb": 7164,
+   "version": "5.2.15-2+b13"
+  },
+  {
+   "package": "binutils",
+   "section": "devel",
+   "size_kb": 109,
+   "version": "2.40-2"
+  },
+  {
+   "package": "binutils-common",
+   "section": "devel",
+   "size_kb": 15021,
+   "version": "2.40-2"
+  },
+  {
+   "package": "binutils-x86-64-linux-gnu",
+   "section": "devel",
+   "size_kb": 11428,
+   "version": "2.40-2"
+  },
+  {
+   "package": "bsdutils",
+   "section": "utils",
+   "size_kb": 355,
+   "version": "1:2.38.1-5+deb12u3"
+  },
+  {
+   "package": "build-essential",
+   "section": "devel",
+   "size_kb": 20,
+   "version": "12.9"
+  },
+  {
+   "package": "bzip2",
+   "section": "utils",
+   "size_kb": 121,
+   "version": "1.0.8-5+b1"
+  },
+  {
+   "package": "ca-certificates",
+   "section": "misc",
+   "size_kb": 387,
+   "version": "20230311+deb12u1"
+  },
+  {
+   "package": "chrony",
+   "section": "net",
+   "size_kb": 639,
+   "version": "4.3-2+deb12u2"
+  },
+  {
+   "package": "coreutils",
+   "section": "utils",
+   "size_kb": 18062,
+   "version": "9.1-1"
+  },
+  {
+   "package": "cpp",
+   "section": "interpreters",
+   "size_kb": 30,
+   "version": "4:12.2.0-3"
+  },
+  {
+   "package": "cpp-12",
+   "section": "interpreters",
+   "size_kb": 33848,
+   "version": "12.2.0-14+deb12u1"
+  },
+  {
+   "package": "curl",
+   "section": "web",
+   "size_kb": 489,
+   "version": "7.88.1-10+deb12u14"
+  },
+  {
+   "package": "dash",
+   "section": "shells",
+   "size_kb": 191,
+   "version": "0.5.12-2"
+  },
+  {
+   "package": "debconf",
+   "section": "admin",
+   "size_kb": 491,
+   "version": "1.5.82"
+  },
+  {
+   "package": "debian-archive-keyring",
+   "section": "misc",
+   "size_kb": 293,
+   "version": "2023.3+deb12u2"
+  },
+  {
+   "package": "debianutils",
+   "section": "utils",
+   "size_kb": 243,
+   "version": "5.7-0.5~deb12u1"
+  },
+  {
+   "package": "diffutils",
+   "section": "utils",
+   "size_kb": 1598,
+   "version": "1:3.8-4"
+  },
+  {
+   "package": "dmsetup",
+   "section": "admin",
+   "size_kb": 246,
+   "version": "2:1.02.185-2"
+  },
+  {
+   "package": "dpkg",
+   "section": "admin",
+   "size_kb": 6409,
+   "version": "1.21.23"
+  },
+  {
+   "package": "dpkg-dev",
+   "section": "utils",
+   "size_kb": 1728,
+   "version": "1.21.23"
+  },
+  {
+   "package": "e2fsprogs",
+   "section": "admin",
+   "size_kb": 1497,
+   "version": "1.47.0-2+b2"
+  },
+  {
+   "package": "findutils",
+   "section": "utils",
+   "size_kb": 1746,
+   "version": "4.9.0-4"
+  },
+  {
+   "package": "fontconfig-config",
+   "section": "fonts",
+   "size_kb": 527,
+   "version": "2.14.1-4"
+  },
+  {
+   "package": "fonts-dejavu-core",
+   "section": "fonts",
+   "size_kb": 2960,
+   "version": "2.37-6"
+  },
+  {
+   "package": "fuse3",
+   "section": "utils",
+   "size_kb": 100,
+   "version": "3.14.0-4"
+  },
+  {
+   "package": "g++",
+   "section": "devel",
+   "size_kb": 14,
+   "version": "4:12.2.0-3"
+  },
+  {
+   "package": "g++-12",
+   "section": "devel",
+   "size_kb": 36161,
+   "version": "12.2.0-14+deb12u1"
+  },
+  {
+   "package": "gcc",
+   "section": "devel",
+   "size_kb": 47,
+   "version": "4:12.2.0-3"
+  },
+  {
+   "package": "gcc-12",
+   "section": "devel",
+   "size_kb": 68236,
+   "version": "12.2.0-14+deb12u1"
+  },
+  {
+   "package": "gcc-12-base",
+   "section": "libs",
+   "size_kb": 100,
+   "version": "12.2.0-14+deb12u1"
+  },
+  {
+   "package": "gh",
+   "section": "utils",
+   "size_kb": 39404,
+   "version": "2.23.0+dfsg1-1"
+  },
+  {
+   "package": "git",
+   "section": "vcs",
+   "size_kb": 44890,
+   "version": "1:2.39.5-0+deb12u3"
+  },
+  {
+   "package": "git-man",
+   "section": "doc",
+   "size_kb": 2107,
+   "version": "1:2.39.5-0+deb12u3"
+  },
+  {
+   "package": "gpgv",
+   "section": "utils",
+   "size_kb": 918,
+   "version": "2.2.40-1.1+deb12u2"
+  },
+  {
+   "package": "grep",
+   "section": "utils",
+   "size_kb": 1245,
+   "version": "3.8-5"
+  },
+  {
+   "package": "gzip",
+   "section": "utils",
+   "size_kb": 252,
+   "version": "1.12-1"
+  },
+  {
+   "package": "hicolor-icon-theme",
+   "section": "misc",
+   "size_kb": 441,
+   "version": "0.17-2"
+  },
+  {
+   "package": "hostname",
+   "section": "admin",
+   "size_kb": 46,
+   "version": "3.23+nmu1"
+  },
+  {
+   "package": "imagemagick",
+   "section": "oldlibs",
+   "size_kb": 184,
+   "version": "8:6.9.11.60+dfsg-1.6+deb12u10"
+  },
+  {
+   "package": "imagemagick-6-common",
+   "section": "graphics",
+   "size_kb": 544,
+   "version": "8:6.9.11.60+dfsg-1.6+deb12u10"
+  },
+  {
+   "package": "imagemagick-6.q16",
+   "section": "graphics",
+   "size_kb": 619,
+   "version": "8:6.9.11.60+dfsg-1.6+deb12u10"
+  },
+  {
+   "package": "init-system-helpers",
+   "section": "admin",
+   "size_kb": 133,
+   "version": "1.65.2+deb12u1"
+  },
+  {
+   "package": "iproute2",
+   "section": "net",
+   "size_kb": 3516,
+   "version": "6.1.0-3"
+  },
+  {
+   "package": "iptables",
+   "section": "net",
+   "size_kb": 2408,
+   "version": "1.8.9-2"
+  },
+  {
+   "package": "iputils-ping",
+   "section": "net",
+   "size_kb": 121,
+   "version": "3:20221126-1+deb12u1"
+  },
+  {
+   "package": "jq",
+   "section": "utils",
+   "size_kb": 110,
+   "version": "1.6-2.1+deb12u1"
+  },
+  {
+   "package": "keyutils",
+   "section": "admin",
+   "size_kb": 161,
+   "version": "1.6.3-2"
+  },
+  {
+   "package": "less",
+   "section": "text",
+   "size_kb": 313,
+   "version": "590-2.1~deb12u2"
+  },
+  {
+   "package": "libacl1",
+   "section": "libs",
+   "size_kb": 73,
+   "version": "2.3.1-3"
+  },
+  {
+   "package": "libaom3",
+   "section": "libs",
+   "size_kb": 5546,
+   "version": "3.6.0-1+deb12u2"
+  },
+  {
+   "package": "libapparmor1",
+   "section": "libs",
+   "size_kb": 109,
+   "version": "3.0.8-3"
+  },
+  {
+   "package": "libapt-pkg6.0",
+   "section": "libs",
+   "size_kb": 3297,
+   "version": "2.6.1"
+  },
+  {
+   "package": "libargon2-1",
+   "section": "libs",
+   "size_kb": 56,
+   "version": "0~20171227-0.3+deb12u1"
+  },
+  {
+   "package": "libasan8",
+   "section": "libs",
+   "size_kb": 8017,
+   "version": "12.2.0-14+deb12u1"
+  },
+  {
+   "package": "libatomic1",
+   "section": "libs",
+   "size_kb": 45,
+   "version": "12.2.0-14+deb12u1"
+  },
+  {
+   "package": "libattr1",
+   "section": "libs",
+   "size_kb": 59,
+   "version": "1:2.5.1-4"
+  },
+  {
+   "package": "libaudit-common",
+   "section": "libs",
+   "size_kb": 22,
+   "version": "1:3.0.9-1"
+  },
+  {
+   "package": "libaudit1",
+   "section": "libs",
+   "size_kb": 150,
+   "version": "1:3.0.9-1"
+  },
+  {
+   "package": "libbinutils",
+   "section": "devel",
+   "size_kb": 2469,
+   "version": "2.40-2"
+  },
+  {
+   "package": "libblkid1",
+   "section": "libs",
+   "size_kb": 398,
+   "version": "2.38.1-5+deb12u3"
+  },
+  {
+   "package": "libbpf1",
+   "section": "libs",
+   "size_kb": 385,
+   "version": "1:1.1.2-0+deb12u1"
+  },
+  {
+   "package": "libbrotli1",
+   "section": "libs",
+   "size_kb": 783,
+   "version": "1.0.9-2+b6"
+  },
+  {
+   "package": "libbsd0",
+   "section": "libs",
+   "size_kb": 202,
+   "version": "0.11.7-2"
+  },
+  {
+   "package": "libbz2-1.0",
+   "section": "libs",
+   "size_kb": 106,
+   "version": "1.0.8-5+b1"
+  },
+  {
+   "package": "libc-bin",
+   "section": "libs",
+   "size_kb": 2042,
+   "version": "2.36-9+deb12u14"
+  },
+  {
+   "package": "libc-dev-bin",
+   "section": "libdevel",
+   "size_kb": 94,
+   "version": "2.36-9+deb12u14"
+  },
+  {
+   "package": "libc6",
+   "section": "libs",
+   "size_kb": 13001,
+   "version": "2.36-9+deb12u14"
+  },
+  {
+   "package": "libc6-dev",
+   "section": "libdevel",
+   "size_kb": 11975,
+   "version": "2.36-9+deb12u14"
+  },
+  {
+   "package": "libcap-ng0",
+   "section": "libs",
+   "size_kb": 65,
+   "version": "0.8.3-1+b3"
+  },
+  {
+   "package": "libcap2",
+   "section": "libs",
+   "size_kb": 95,
+   "version": "1:2.66-4+deb12u3+b1"
+  },
+  {
+   "package": "libcap2-bin",
+   "section": "utils",
+   "size_kb": 133,
+   "version": "1:2.66-4+deb12u3+b1"
+  },
+  {
+   "package": "libcbor0.8",
+   "section": "libs",
+   "size_kb": 98,
+   "version": "0.8.0-2+b1"
+  },
+  {
+   "package": "libcc1-0",
+   "section": "libs",
+   "size_kb": 136,
+   "version": "12.2.0-14+deb12u1"
+  },
+  {
+   "package": "libcom-err2",
+   "section": "libs",
+   "size_kb": 55,
+   "version": "1.47.0-2+b2"
+  },
+  {
+   "package": "libcrypt-dev",
+   "section": "libdevel",
+   "size_kb": 341,
+   "version": "1:4.4.33-2"
+  },
+  {
+   "package": "libcrypt1",
+   "section": "libs",
+   "size_kb": 233,
+   "version": "1:4.4.33-2"
+  },
+  {
+   "package": "libcryptsetup12",
+   "section": "libs",
+   "size_kb": 563,
+   "version": "2:2.6.1-4~deb12u2"
+  },
+  {
+   "package": "libctf-nobfd0",
+   "section": "devel",
+   "size_kb": 301,
+   "version": "2.40-2"
+  },
+  {
+   "package": "libctf0",
+   "section": "devel",
+   "size_kb": 232,
+   "version": "2.40-2"
+  },
+  {
+   "package": "libcurl3-gnutls",
+   "section": "libs",
+   "size_kb": 828,
+   "version": "7.88.1-10+deb12u14"
+  },
+  {
+   "package": "libcurl4",
+   "section": "libs",
+   "size_kb": 840,
+   "version": "7.88.1-10+deb12u14"
+  },
+  {
+   "package": "libdav1d6",
+   "section": "libs",
+   "size_kb": 1616,
+   "version": "1.0.0-2+deb12u1"
+  },
+  {
+   "package": "libdb5.3",
+   "section": "libs",
+   "size_kb": 1833,
+   "version": "5.3.28+dfsg2-1"
+  },
+  {
+   "package": "libde265-0",
+   "section": "libs",
+   "size_kb": 470,
+   "version": "1.0.11-1+deb12u2"
+  },
+  {
+   "package": "libdebconfclient0",
+   "section": "libs",
+   "size_kb": 37,
+   "version": "0.270"
+  },
+  {
+   "package": "libdeflate0",
+   "section": "libs",
+   "size_kb": 161,
+   "version": "1.14-1"
+  },
+  {
+   "package": "libdevmapper1.02.1",
+   "section": "libs",
+   "size_kb": 474,
+   "version": "2:1.02.185-2"
+  },
+  {
+   "package": "libdpkg-perl",
+   "section": "perl",
+   "size_kb": 1987,
+   "version": "1.21.23"
+  },
+  {
+   "package": "libedit2",
+   "section": "libs",
+   "size_kb": 258,
+   "version": "3.1-20221030-2"
+  },
+  {
+   "package": "libelf1",
+   "section": "libs",
+   "size_kb": 1036,
+   "version": "0.188-2.1"
+  },
+  {
+   "package": "liberror-perl",
+   "section": "perl",
+   "size_kb": 73,
+   "version": "0.17029-2"
+  },
+  {
+   "package": "libevent-core-2.1-7",
+   "section": "libs",
+   "size_kb": 302,
+   "version": "2.1.12-stable-8"
+  },
+  {
+   "package": "libexpat1",
+   "section": "libs",
+   "size_kb": 388,
+   "version": "2.5.0-1+deb12u2"
+  },
+  {
+   "package": "libext2fs2",
+   "section": "libs",
+   "size_kb": 535,
+   "version": "1.47.0-2+b2"
+  },
+  {
+   "package": "libfdisk1",
+   "section": "libs",
+   "size_kb": 533,
+   "version": "2.38.1-5+deb12u3"
+  },
+  {
+   "package": "libffi8",
+   "section": "libs",
+   "size_kb": 68,
+   "version": "3.4.4-1"
+  },
+  {
+   "package": "libfftw3-double3",
+   "section": "libs",
+   "size_kb": 2259,
+   "version": "3.3.10-1"
+  },
+  {
+   "package": "libfido2-1",
+   "section": "libs",
+   "size_kb": 241,
+   "version": "1.12.0-2+b1"
+  },
+  {
+   "package": "libfontconfig1",
+   "section": "libs",
+   "size_kb": 579,
+   "version": "2.14.1-4"
+  },
+  {
+   "package": "libfreetype6",
+   "section": "libs",
+   "size_kb": 886,
+   "version": "2.12.1+dfsg-5+deb12u4"
+  },
+  {
+   "package": "libfuse3-3",
+   "section": "libs",
+   "size_kb": 305,
+   "version": "3.14.0-4"
+  },
+  {
+   "package": "libgcc-12-dev",
+   "section": "libdevel",
+   "size_kb": 14284,
+   "version": "12.2.0-14+deb12u1"
+  },
+  {
+   "package": "libgcc-s1",
+   "section": "libs",
+   "size_kb": 140,
+   "version": "12.2.0-14+deb12u1"
+  },
+  {
+   "package": "libgcrypt20",
+   "section": "libs",
+   "size_kb": 1592,
+   "version": "1.10.1-3+deb12u1"
+  },
+  {
+   "package": "libgdbm-compat4",
+   "section": "libs",
+   "size_kb": 70,
+   "version": "1.23-3"
+  },
+  {
+   "package": "libgdbm6",
+   "section": "libs",
+   "size_kb": 129,
+   "version": "1.23-3"
+  },
+  {
+   "package": "libglib2.0-0",
+   "section": "libs",
+   "size_kb": 4135,
+   "version": "2.74.6-2+deb12u9"
+  },
+  {
+   "package": "libgmp10",
+   "section": "libs",
+   "size_kb": 855,
+   "version": "2:6.2.1+dfsg1-1.1"
+  },
+  {
+   "package": "libgnutls30",
+   "section": "libs",
+   "size_kb": 3396,
+   "version": "3.7.9-2+deb12u7"
+  },
+  {
+   "package": "libgomp1",
+   "section": "libs",
+   "size_kb": 312,
+   "version": "12.2.0-14+deb12u1"
+  },
+  {
+   "package": "libgpg-error0",
+   "section": "libs",
+   "size_kb": 192,
+   "version": "1.46-1"
+  },
+  {
+   "package": "libgprofng0",
+   "section": "devel",
+   "size_kb": 3958,
+   "version": "2.40-2"
+  },
+  {
+   "package": "libgssapi-krb5-2",
+   "section": "libs",
+   "size_kb": 425,
+   "version": "1.20.1-2+deb12u5"
+  },
+  {
+   "package": "libheif1",
+   "section": "libs",
+   "size_kb": 659,
+   "version": "1.15.1-1+deb12u1"
+  },
+  {
+   "package": "libhogweed6",
+   "section": "libs",
+   "size_kb": 463,
+   "version": "3.8.1-2"
+  },
+  {
+   "package": "libicu72",
+   "section": "libs",
+   "size_kb": 36170,
+   "version": "72.1-3+deb12u1"
+  },
+  {
+   "package": "libidn2-0",
+   "section": "libs",
+   "size_kb": 439,
+   "version": "2.3.3-1+b1"
+  },
+  {
+   "package": "libip4tc2",
+   "section": "libs",
+   "size_kb": 66,
+   "version": "1.8.9-2"
+  },
+  {
+   "package": "libip6tc2",
+   "section": "libs",
+   "size_kb": 66,
+   "version": "1.8.9-2"
+  },
+  {
+   "package": "libisl23",
+   "section": "libs",
+   "size_kb": 2302,
+   "version": "0.25-1.1"
+  },
+  {
+   "package": "libitm1",
+   "section": "libs",
+   "size_kb": 115,
+   "version": "12.2.0-14+deb12u1"
+  },
+  {
+   "package": "libjansson4",
+   "section": "libs",
+   "size_kb": 101,
+   "version": "2.14-2"
+  },
+  {
+   "package": "libjbig0",
+   "section": "libs",
+   "size_kb": 84,
+   "version": "2.1-6.1"
+  },
+  {
+   "package": "libjpeg62-turbo",
+   "section": "libs",
+   "size_kb": 677,
+   "version": "1:2.1.5-2"
+  },
+  {
+   "package": "libjq1",
+   "section": "utils",
+   "size_kb": 361,
+   "version": "1.6-2.1+deb12u1"
+  },
+  {
+   "package": "libjson-c5",
+   "section": "libs",
+   "size_kb": 109,
+   "version": "0.16-2"
+  },
+  {
+   "package": "libk5crypto3",
+   "section": "libs",
+   "size_kb": 261,
+   "version": "1.20.1-2+deb12u5"
+  },
+  {
+   "package": "libkeyutils1",
+   "section": "libs",
+   "size_kb": 40,
+   "version": "1.6.3-2"
+  },
+  {
+   "package": "libkmod2",
+   "section": "libs",
+   "size_kb": 141,
+   "version": "30+20221128-1"
+  },
+  {
+   "package": "libkrb5-3",
+   "section": "libs",
+   "size_kb": 1077,
+   "version": "1.20.1-2+deb12u5"
+  },
+  {
+   "package": "libkrb5support0",
+   "section": "libs",
+   "size_kb": 134,
+   "version": "1.20.1-2+deb12u5"
+  },
+  {
+   "package": "liblcms2-2",
+   "section": "libs",
+   "size_kb": 428,
+   "version": "2.14-2+deb12u1"
+  },
+  {
+   "package": "libldap-2.5-0",
+   "section": "libs",
+   "size_kb": 553,
+   "version": "2.5.13+dfsg-5"
+  },
+  {
+   "package": "liblerc4",
+   "section": "libs",
+   "size_kb": 649,
+   "version": "4.0.0+ds-2"
+  },
+  {
+   "package": "liblqr-1-0",
+   "section": "libs",
+   "size_kb": 76,
+   "version": "0.4.2-2.1"
+  },
+  {
+   "package": "liblsan0",
+   "section": "libs",
+   "size_kb": 2942,
+   "version": "12.2.0-14+deb12u1"
+  },
+  {
+   "package": "libltdl7",
+   "section": "libs",
+   "size_kb": 421,
+   "version": "2.4.7-7~deb12u1"
+  },
+  {
+   "package": "liblz4-1",
+   "section": "libs",
+   "size_kb": 169,
+   "version": "1.9.4-1"
+  },
+  {
+   "package": "liblzma5",
+   "section": "libs",
+   "size_kb": 333,
+   "version": "5.4.1-1"
+  },
+  {
+   "package": "libmagickcore-6.q16-6",
+   "section": "libs",
+   "size_kb": 6647,
+   "version": "8:6.9.11.60+dfsg-1.6+deb12u10"
+  },
+  {
+   "package": "libmagickwand-6.q16-6",
+   "section": "libs",
+   "size_kb": 1387,
+   "version": "8:6.9.11.60+dfsg-1.6+deb12u10"
+  },
+  {
+   "package": "libmd0",
+   "section": "libs",
+   "size_kb": 79,
+   "version": "1.0.4-2"
+  },
+  {
+   "package": "libmnl0",
+   "section": "libs",
+   "size_kb": 46,
+   "version": "1.0.4-3"
+  },
+  {
+   "package": "libmount1",
+   "section": "libs",
+   "size_kb": 454,
+   "version": "2.38.1-5+deb12u3"
+  },
+  {
+   "package": "libmpc3",
+   "section": "libs",
+   "size_kb": 149,
+   "version": "1.3.1-1"
+  },
+  {
+   "package": "libmpfr6",
+   "section": "libs",
+   "size_kb": 1177,
+   "version": "4.2.0-1"
+  },
+  {
+   "package": "libncursesw6",
+   "section": "libs",
+   "size_kb": 412,
+   "version": "6.4-4"
+  },
+  {
+   "package": "libnetfilter-conntrack3",
+   "section": "libs",
+   "size_kb": 139,
+   "version": "1.0.9-3"
+  },
+  {
+   "package": "libnettle8",
+   "section": "libs",
+   "size_kb": 520,
+   "version": "3.8.1-2"
+  },
+  {
+   "package": "libnfnetlink0",
+   "section": "libs",
+   "size_kb": 51,
+   "version": "1.0.2-2"
+  },
+  {
+   "package": "libnfsidmap1",
+   "section": "libs",
+   "size_kb": 276,
+   "version": "1:2.6.2-4+deb12u1"
+  },
+  {
+   "package": "libnftables1",
+   "section": "libs",
+   "size_kb": 920,
+   "version": "1.0.6-2+deb12u2"
+  },
+  {
+   "package": "libnftnl11",
+   "section": "libs",
+   "size_kb": 233,
+   "version": "1.2.4-2"
+  },
+  {
+   "package": "libnghttp2-14",
+   "section": "libs",
+   "size_kb": 220,
+   "version": "1.52.0-1+deb12u3"
+  },
+  {
+   "package": "libnsl-dev",
+   "section": "libdevel",
+   "size_kb": 345,
+   "version": "1.3.0-2"
+  },
+  {
+   "package": "libnsl2",
+   "section": "libs",
+   "size_kb": 127,
+   "version": "1.3.0-2"
+  },
+  {
+   "package": "libnuma1",
+   "section": "libs",
+   "size_kb": 71,
+   "version": "2.0.16-1"
+  },
+  {
+   "package": "libonig5",
+   "section": "libs",
+   "size_kb": 666,
+   "version": "6.9.8-1"
+  },
+  {
+   "package": "libopenjp2-7",
+   "section": "libs",
+   "size_kb": 479,
+   "version": "2.5.0-2+deb12u3"
+  },
+  {
+   "package": "libp11-kit0",
+   "section": "libs",
+   "size_kb": 1408,
+   "version": "0.24.1-2"
+  },
+  {
+   "package": "libpam-modules",
+   "section": "admin",
+   "size_kb": 1031,
+   "version": "1.5.2-6+deb12u2"
+  },
+  {
+   "package": "libpam-modules-bin",
+   "section": "admin",
+   "size_kb": 227,
+   "version": "1.5.2-6+deb12u2"
+  },
+  {
+   "package": "libpam-runtime",
+   "section": "admin",
+   "size_kb": 876,
+   "version": "1.5.2-6+deb12u2"
+  },
+  {
+   "package": "libpam0g",
+   "section": "libs",
+   "size_kb": 215,
+   "version": "1.5.2-6+deb12u2"
+  },
+  {
+   "package": "libpcre2-8-0",
+   "section": "libs",
+   "size_kb": 685,
+   "version": "10.42-1"
+  },
+  {
+   "package": "libperl5.36",
+   "section": "libs",
+   "size_kb": 28864,
+   "version": "5.36.0-7+deb12u3"
+  },
+  {
+   "package": "libpng16-16",
+   "section": "libs",
+   "size_kb": 417,
+   "version": "1.6.39-2+deb12u5"
+  },
+  {
+   "package": "libproc2-0",
+   "section": "libs",
+   "size_kb": 232,
+   "version": "2:4.0.2-3"
+  },
+  {
+   "package": "libpsl5",
+   "section": "libs",
+   "size_kb": 96,
+   "version": "0.21.2-1"
+  },
+  {
+   "package": "libpython3-stdlib",
+   "section": "python",
+   "size_kb": 27,
+   "version": "3.11.2-1+b1"
+  },
+  {
+   "package": "libpython3.11-minimal",
+   "section": "python",
+   "size_kb": 5214,
+   "version": "3.11.2-6+deb12u7"
+  },
+  {
+   "package": "libpython3.11-stdlib",
+   "section": "python",
+   "size_kb": 8328,
+   "version": "3.11.2-6+deb12u7"
+  },
+  {
+   "package": "libquadmath0",
+   "section": "libs",
+   "size_kb": 292,
+   "version": "12.2.0-14+deb12u1"
+  },
+  {
+   "package": "libreadline8",
+   "section": "libs",
+   "size_kb": 475,
+   "version": "8.2-1.3"
+  },
+  {
+   "package": "librtmp1",
+   "section": "libs",
+   "size_kb": 146,
+   "version": "2.4+20151223.gitfa8646d.1-2+b2"
+  },
+  {
+   "package": "libsasl2-2",
+   "section": "libs",
+   "size_kb": 167,
+   "version": "2.1.28+dfsg-10"
+  },
+  {
+   "package": "libsasl2-modules-db",
+   "section": "libs",
+   "size_kb": 77,
+   "version": "2.1.28+dfsg-10"
+  },
+  {
+   "package": "libseccomp2",
+   "section": "libs",
+   "size_kb": 148,
+   "version": "2.5.4-1+deb12u1"
+  },
+  {
+   "package": "libselinux1",
+   "section": "libs",
+   "size_kb": 199,
+   "version": "3.4-1+b6"
+  },
+  {
+   "package": "libsemanage-common",
+   "section": "libs",
+   "size_kb": 37,
+   "version": "3.4-1"
+  },
+  {
+   "package": "libsemanage2",
+   "section": "libs",
+   "size_kb": 297,
+   "version": "3.4-1+b5"
+  },
+  {
+   "package": "libsepol2",
+   "section": "libs",
+   "size_kb": 775,
+   "version": "3.4-2.1"
+  },
+  {
+   "package": "libsmartcols1",
+   "section": "libs",
+   "size_kb": 289,
+   "version": "2.38.1-5+deb12u3"
+  },
+  {
+   "package": "libsqlite3-0",
+   "section": "libs",
+   "size_kb": 1682,
+   "version": "3.40.1-2+deb12u2"
+  },
+  {
+   "package": "libss2",
+   "section": "libs",
+   "size_kb": 71,
+   "version": "1.47.0-2+b2"
+  },
+  {
+   "package": "libssh2-1",
+   "section": "libs",
+   "size_kb": 357,
+   "version": "1.10.0-3+b1"
+  },
+  {
+   "package": "libssl3",
+   "section": "libs",
+   "size_kb": 6030,
+   "version": "3.0.20-1~deb12u2"
+  },
+  {
+   "package": "libstdc++-12-dev",
+   "section": "libdevel",
+   "size_kb": 19446,
+   "version": "12.2.0-14+deb12u1"
+  },
+  {
+   "package": "libstdc++6",
+   "section": "libs",
+   "size_kb": 2686,
+   "version": "12.2.0-14+deb12u1"
+  },
+  {
+   "package": "libsystemd-shared",
+   "section": "libs",
+   "size_kb": 5350,
+   "version": "252.39-1~deb12u2"
+  },
+  {
+   "package": "libsystemd0",
+   "section": "libs",
+   "size_kb": 909,
+   "version": "252.39-1~deb12u2"
+  },
+  {
+   "package": "libtasn1-6",
+   "section": "libs",
+   "size_kb": 116,
+   "version": "4.19.0-2+deb12u1"
+  },
+  {
+   "package": "libtiff6",
+   "section": "libs",
+   "size_kb": 716,
+   "version": "4.5.0-6+deb12u4"
+  },
+  {
+   "package": "libtinfo6",
+   "section": "libs",
+   "size_kb": 541,
+   "version": "6.4-4"
+  },
+  {
+   "package": "libtirpc-common",
+   "section": "libs",
+   "size_kb": 35,
+   "version": "1.3.3+ds-1"
+  },
+  {
+   "package": "libtirpc-dev",
+   "section": "libdevel",
+   "size_kb": 717,
+   "version": "1.3.3+ds-1"
+  },
+  {
+   "package": "libtirpc3",
+   "section": "libs",
+   "size_kb": 226,
+   "version": "1.3.3+ds-1"
+  },
+  {
+   "package": "libtsan2",
+   "section": "libs",
+   "size_kb": 7815,
+   "version": "12.2.0-14+deb12u1"
+  },
+  {
+   "package": "libubsan1",
+   "section": "libs",
+   "size_kb": 2652,
+   "version": "12.2.0-14+deb12u1"
+  },
+  {
+   "package": "libudev1",
+   "section": "libs",
+   "size_kb": 240,
+   "version": "252.39-1~deb12u2"
+  },
+  {
+   "package": "libunistring2",
+   "section": "libs",
+   "size_kb": 1807,
+   "version": "1.0-2"
+  },
+  {
+   "package": "libuuid1",
+   "section": "libs",
+   "size_kb": 79,
+   "version": "2.38.1-5+deb12u3"
+  },
+  {
+   "package": "libwebp7",
+   "section": "libs",
+   "size_kb": 544,
+   "version": "1.2.4-0.2+deb12u1"
+  },
+  {
+   "package": "libwebpdemux2",
+   "section": "libs",
+   "size_kb": 120,
+   "version": "1.2.4-0.2+deb12u1"
+  },
+  {
+   "package": "libwebpmux3",
+   "section": "libs",
+   "size_kb": 144,
+   "version": "1.2.4-0.2+deb12u1"
+  },
+  {
+   "package": "libwrap0",
+   "section": "libs",
+   "size_kb": 110,
+   "version": "7.6.q-32"
+  },
+  {
+   "package": "libx11-6",
+   "section": "libs",
+   "size_kb": 1562,
+   "version": "2:1.8.4-2+deb12u2"
+  },
+  {
+   "package": "libx11-data",
+   "section": "x11",
+   "size_kb": 1577,
+   "version": "2:1.8.4-2+deb12u2"
+  },
+  {
+   "package": "libx265-199",
+   "section": "libs",
+   "size_kb": 16203,
+   "version": "3.5-2+b1"
+  },
+  {
+   "package": "libxau6",
+   "section": "libs",
+   "size_kb": 42,
+   "version": "1:1.0.9-1"
+  },
+  {
+   "package": "libxcb1",
+   "section": "libs",
+   "size_kb": 296,
+   "version": "1.15-1"
+  },
+  {
+   "package": "libxdmcp6",
+   "section": "libs",
+   "size_kb": 53,
+   "version": "1:1.1.2-3"
+  },
+  {
+   "package": "libxext6",
+   "section": "libs",
+   "size_kb": 132,
+   "version": "2:1.3.4-1+b1"
+  },
+  {
+   "package": "libxml2",
+   "section": "libs",
+   "size_kb": 1867,
+   "version": "2.9.14+dfsg-1.3~deb12u5"
+  },
+  {
+   "package": "libxtables12",
+   "section": "libs",
+   "size_kb": 101,
+   "version": "1.8.9-2"
+  },
+  {
+   "package": "libxxhash0",
+   "section": "libs",
+   "size_kb": 99,
+   "version": "0.8.1-1"
+  },
+  {
+   "package": "libzstd1",
+   "section": "libs",
+   "size_kb": 785,
+   "version": "1.5.4+dfsg2-5"
+  },
+  {
+   "package": "linux-libc-dev",
+   "section": "devel",
+   "size_kb": 7007,
+   "version": "6.1.174-1"
+  },
+  {
+   "package": "login",
+   "section": "admin",
+   "size_kb": 2550,
+   "version": "1:4.13+dfsg1-1+deb12u2"
+  },
+  {
+   "package": "logsave",
+   "section": "admin",
+   "size_kb": 50,
+   "version": "1.47.0-2+b2"
+  },
+  {
+   "package": "make",
+   "section": "devel",
+   "size_kb": 1592,
+   "version": "4.3-4.1"
+  },
+  {
+   "package": "mawk",
+   "section": "interpreters",
+   "size_kb": 263,
+   "version": "1.3.4.20200120-3.1"
+  },
+  {
+   "package": "media-types",
+   "section": "net",
+   "size_kb": 92,
+   "version": "10.0.0"
+  },
+  {
+   "package": "mount",
+   "section": "admin",
+   "size_kb": 393,
+   "version": "2.38.1-5+deb12u3"
+  },
+  {
+   "package": "ncurses-base",
+   "section": "misc",
+   "size_kb": 379,
+   "version": "6.4-4"
+  },
+  {
+   "package": "ncurses-bin",
+   "section": "utils",
+   "size_kb": 636,
+   "version": "6.4-4"
+  },
+  {
+   "package": "netbase",
+   "section": "admin",
+   "size_kb": 36,
+   "version": "6.4"
+  },
+  {
+   "package": "netcat-openbsd",
+   "section": "net",
+   "size_kb": 108,
+   "version": "1.219-1"
+  },
+  {
+   "package": "nfs-common",
+   "section": "net",
+   "size_kb": 1111,
+   "version": "1:2.6.2-4+deb12u1"
+  },
+  {
+   "package": "nftables",
+   "section": "net",
+   "size_kb": 176,
+   "version": "1.0.6-2+deb12u2"
+  },
+  {
+   "package": "openssh-client",
+   "section": "net",
+   "size_kb": 5801,
+   "version": "1:9.2p1-2+deb12u10"
+  },
+  {
+   "package": "openssh-server",
+   "section": "net",
+   "size_kb": 1930,
+   "version": "1:9.2p1-2+deb12u10"
+  },
+  {
+   "package": "openssh-sftp-server",
+   "section": "net",
+   "size_kb": 217,
+   "version": "1:9.2p1-2+deb12u10"
+  },
+  {
+   "package": "openssl",
+   "section": "utils",
+   "size_kb": 2310,
+   "version": "3.0.20-1~deb12u2"
+  },
+  {
+   "package": "passwd",
+   "section": "admin",
+   "size_kb": 2827,
+   "version": "1:4.13+dfsg1-1+deb12u2"
+  },
+  {
+   "package": "patch",
+   "section": "vcs",
+   "size_kb": 248,
+   "version": "2.7.6-7"
+  },
+  {
+   "package": "perl",
+   "section": "perl",
+   "size_kb": 670,
+   "version": "5.36.0-7+deb12u3"
+  },
+  {
+   "package": "perl-base",
+   "section": "perl",
+   "size_kb": 7639,
+   "version": "5.36.0-7+deb12u3"
+  },
+  {
+   "package": "perl-modules-5.36",
+   "section": "libs",
+   "size_kb": 17817,
+   "version": "5.36.0-7+deb12u3"
+  },
+  {
+   "package": "procps",
+   "section": "admin",
+   "size_kb": 2091,
+   "version": "2:4.0.2-3"
+  },
+  {
+   "package": "python3",
+   "section": "python",
+   "size_kb": 81,
+   "version": "3.11.2-1+b1"
+  },
+  {
+   "package": "python3-distutils",
+   "section": "python",
+   "size_kb": 638,
+   "version": "3.11.2-3"
+  },
+  {
+   "package": "python3-lib2to3",
+   "section": "python",
+   "size_kb": 365,
+   "version": "3.11.2-3"
+  },
+  {
+   "package": "python3-minimal",
+   "section": "python",
+   "size_kb": 111,
+   "version": "3.11.2-1+b1"
+  },
+  {
+   "package": "python3-pip",
+   "section": "python",
+   "size_kb": 6678,
+   "version": "23.0.1+dfsg-1"
+  },
+  {
+   "package": "python3-pip-whl",
+   "section": "python",
+   "size_kb": 1747,
+   "version": "23.0.1+dfsg-1"
+  },
+  {
+   "package": "python3-pkg-resources",
+   "section": "python",
+   "size_kb": 1052,
+   "version": "66.1.1-1+deb12u2"
+  },
+  {
+   "package": "python3-setuptools",
+   "section": "python",
+   "size_kb": 2534,
+   "version": "66.1.1-1+deb12u2"
+  },
+  {
+   "package": "python3-setuptools-whl",
+   "section": "python",
+   "size_kb": 1316,
+   "version": "66.1.1-1+deb12u2"
+  },
+  {
+   "package": "python3-venv",
+   "section": "python",
+   "size_kb": 6,
+   "version": "3.11.2-1+b1"
+  },
+  {
+   "package": "python3-wheel",
+   "section": "python",
+   "size_kb": 131,
+   "version": "0.38.4-2"
+  },
+  {
+   "package": "python3.11",
+   "section": "python",
+   "size_kb": 650,
+   "version": "3.11.2-6+deb12u7"
+  },
+  {
+   "package": "python3.11-minimal",
+   "section": "python",
+   "size_kb": 6766,
+   "version": "3.11.2-6+deb12u7"
+  },
+  {
+   "package": "python3.11-venv",
+   "section": "python",
+   "size_kb": 28,
+   "version": "3.11.2-6+deb12u7"
+  },
+  {
+   "package": "readline-common",
+   "section": "utils",
+   "size_kb": 89,
+   "version": "8.2-1.3"
+  },
+  {
+   "package": "ripgrep",
+   "section": "utils",
+   "size_kb": 4557,
+   "version": "13.0.0-4+b2"
+  },
+  {
+   "package": "rpcbind",
+   "section": "net",
+   "size_kb": 158,
+   "version": "1.2.6-6+b1"
+  },
+  {
+   "package": "rpcsvc-proto",
+   "section": "libs",
+   "size_kb": 246,
+   "version": "1.4.3-1"
+  },
+  {
+   "package": "runit-helper",
+   "section": "admin",
+   "size_kb": 19,
+   "version": "2.15.2"
+  },
+  {
+   "package": "sed",
+   "section": "utils",
+   "size_kb": 987,
+   "version": "4.9-1+deb12u1"
+  },
+  {
+   "package": "sensible-utils",
+   "section": "utils",
+   "size_kb": 56,
+   "version": "0.0.17+nmu1"
+  },
+  {
+   "package": "socat",
+   "section": "net",
+   "size_kb": 1515,
+   "version": "1.7.4.4-2"
+  },
+  {
+   "package": "sudo",
+   "section": "admin",
+   "size_kb": 6055,
+   "version": "1.9.13p3-1+deb12u4"
+  },
+  {
+   "package": "systemd",
+   "section": "admin",
+   "size_kb": 9668,
+   "version": "252.39-1~deb12u2"
+  },
+  {
+   "package": "systemd-sysv",
+   "section": "admin",
+   "size_kb": 74,
+   "version": "252.39-1~deb12u2"
+  },
+  {
+   "package": "sysvinit-utils",
+   "section": "admin",
+   "size_kb": 100,
+   "version": "3.06-4"
+  },
+  {
+   "package": "tar",
+   "section": "utils",
+   "size_kb": 3144,
+   "version": "1.34+dfsg-1.2+deb12u1"
+  },
+  {
+   "package": "tree",
+   "section": "utils",
+   "size_kb": 113,
+   "version": "2.1.0-1"
+  },
+  {
+   "package": "tzdata",
+   "section": "localization",
+   "size_kb": 2573,
+   "version": "2026b-0+deb12u1"
+  },
+  {
+   "package": "ucf",
+   "section": "utils",
+   "size_kb": 214,
+   "version": "3.0043+nmu1+deb12u1"
+  },
+  {
+   "package": "unzip",
+   "section": "utils",
+   "size_kb": 379,
+   "version": "6.0-28"
+  },
+  {
+   "package": "usr-is-merged",
+   "section": "oldlibs",
+   "size_kb": 13,
+   "version": "37~deb12u1"
+  },
+  {
+   "package": "util-linux",
+   "section": "utils",
+   "size_kb": 4978,
+   "version": "2.38.1-5+deb12u3"
+  },
+  {
+   "package": "util-linux-extra",
+   "section": "utils",
+   "size_kb": 366,
+   "version": "2.38.1-5+deb12u3"
+  },
+  {
+   "package": "wget",
+   "section": "web",
+   "size_kb": 3521,
+   "version": "1.21.3-1+deb12u1"
+  },
+  {
+   "package": "xz-utils",
+   "section": "utils",
+   "size_kb": 1226,
+   "version": "5.4.1-1"
+  },
+  {
+   "package": "zip",
+   "section": "utils",
+   "size_kb": 616,
+   "version": "3.0-13"
+  },
+  {
+   "package": "zlib1g",
+   "section": "libs",
+   "size_kb": 168,
+   "version": "1:1.2.13.dfsg-1"
+  }
+ ],
+ "schema": "arena-inventory/1.1"
+}
