@@ -764,10 +764,10 @@ Each value is copied from the tool's own output; none is inferred.
 |---|---|---|
 | Branch pushed | `arena/01a0dc7e-arena` | `git push -u origin arena/01a0dc7e-arena` |
 | Base commit (from `main`) | `12630762fd28d6fdad782bd99964b961de7f9dd0` | `git rev-parse origin/main` |
-| Commit SHA — probe document | `@@SHA1@@` | `git rev-parse HEAD` after commit 1 |
-| Push result | `@@PUSH@@` | `git push` stderr |
-| Pull request | @@PR@@ | `gh pr create` stdout |
-| PR state | `@@PRSTATE@@` | `gh pr view --json state,isDraft` |
+| Commit SHA — probe document | `55fd468fedff4d90262cc6aa24b91759f1907a66` | `git rev-parse HEAD` after commit 1 |
+| Push result | `* [new branch]  arena/01a0dc7e-arena -> arena/01a0dc7e-arena` | `git push` stderr |
+| Pull request | [pull/3](https://github.com/FullThrottle83/arena/pull/3) — draft | `gh pr create` stdout |
+| PR state | `OPEN, isDraft: true` | `gh pr view --json state,isDraft` |
 
 Both commits touch only `docs/probes/github-connected-session.md`.
 
