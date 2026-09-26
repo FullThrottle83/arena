@@ -24,9 +24,9 @@ No step requires programmatic access to Arena itself. GitHub is the coordination
 ## Where Arena has been useful
 
 - GitHub commit/push/PR, native public research, npm/pip, Python/Node and local servers were demonstrated.
-- Local Chromium checks were demonstrated both on a synthetic fixture and on the real generated **Design Spells static build** ([PR #43](https://github.com/FullThrottle83/design-spells/pull/43)). Its `npm run build` executes `python3 scripts/build.py`; **this was not proof of an Astro runtime or an Astro CLI build**.
+- Local Chromium checks were demonstrated both on a synthetic fixture and on the real generated **Design Spells static build** ([PR #43](https://github.com/FullThrottle83/design-spells/pull/43)). Its `npm run build` executes `python3 scripts/build.py`, and the existing `npm test` suite was **not run in PR #43**; this was not proof of an Astro runtime or an Astro CLI build.
 - A 14-source research exercise with a 36-claim ledger is in [PR #6](https://github.com/FullThrottle83/arena/pull/6); those verification counts are the agent's recorded checks, not an independent accuracy score.
-- The browser package emitted effective security-bypass flags internally during the Design Spells benchmark, despite the script not supplying them. See [browser caveat](docs/browser.md).
+- Design Spells PR #43 recorded `--no-sandbox` and `--disable-web-security` in the effective launch args but did **not** commit the launch script, so the latter flag's origin is unverified. Playwright normally adds `--no-sandbox` unless `chromiumSandbox: true`. See [browser caveat](docs/browser.md).
 
 **Not established:** unrestricted public browser access, exact Agent Mode quotas, a fixed model identity, customer-data confidentiality, or full Lighthouse/WCAG/CWV compliance. Read [limitations](docs/limitations.md) and [modes](docs/modes.md).
 
