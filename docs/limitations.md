@@ -1,5 +1,7 @@
 # Limits and safety boundaries
 
+**Before connecting any repository, read the first-party terms summary and material decision matrix in [data-handling.md](data-handling.md).** The user retains ownership subject to Arena's broad license; third-party model providers may receive content. Do not use confidential client code, personal information or secrets as fixtures. See [Terms of Use](https://help.arena.ai/articles/5629909088-terms-of-use) and [FAQ](https://arena.ai/faq).
+
 - **Selective networking:** shell `curl` and Chromium failed for some public hosts while npm/PyPI and GitHub worked in tested sessions. Native `web_search`/`fetch_page` reached sites that the shell/browser could not. Do not infer a stable universal allowlist or promise unrestricted crawling.
 - **Local browser ≠ live site:** local fixture checks establish rendered DOM and screenshot capability, not the behavior of arbitrary external sites, authentication, headers, third-party scripts or Lighthouse metrics.
 - **Dependency scope:** no browser/Playwright was preinstalled in one session; npm-bundled Chromium worked after explicit approval. Normal Playwright CDN/apt installs failed. Revalidate versions/dependencies each time. Avoid unsafe flags and unknown installation scripts.
