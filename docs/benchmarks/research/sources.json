@@ -1,0 +1,1155 @@
+{
+  "benchmark": {
+    "question": "What practical differences exist between native browser automation, Playwright-based local execution and server-side webpage retrieval in modern AI coding agents? Implications for technical SEO, accessibility testing, JavaScript rendering, network inspection and source-grounded research.",
+    "session_date": "2026-09-26",
+    "repo": "FullThrottle83/arena",
+    "branch": "arena/01a0dcb8-arena",
+    "classifications": [
+      "OFFICIAL_DOCUMENTATION",
+      "EXECUTION_EVIDENCE",
+      "THIRD_PARTY_REPORT",
+      "INFERENCE",
+      "UNVERIFIED"
+    ],
+    "retrieval_method_note": "All source documents were retrieved with the native fetch_page tool; web_search was used only for discovery and its snippets are never cited as evidence. Chunk counts record that every chunk of each multi-chunk document was fetched.",
+    "counts": {
+      "retrieved_external_sources": 14,
+      "official_documentation_sources": 10,
+      "academic_sources": 2,
+      "substantial_multichunk_documents": 8,
+      "execution_evidence_records": 3,
+      "in_repo_reference_docs_consulted": 5,
+      "total_claims": 36,
+      "verified_claims": 31,
+      "unresolved_claims": 5,
+      "failed_retrievals": 5
+    },
+    "counts_note": {
+      "substantial_multichunk_documents": "sources with >=4 retrieved chunks (S02,S04,S06,S07,S08,S09,S11,S12); largest are S04 and S08 at 9 chunks each"
+    }
+  },
+  "sources": [
+    {
+      "source_id": "S01",
+      "title": "Network | Playwright",
+      "url": "https://playwright.dev/docs/network",
+      "publisher": "Microsoft (Playwright project)",
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "publication_date": null,
+      "publication_date_note": "No publication or last-updated date displayed on the retrieved page.",
+      "retrieval": {
+        "method": "fetch_page",
+        "date": "2026-09-26",
+        "chunks_total": 2,
+        "chunks_retrieved": 2,
+        "complete": true
+      },
+      "supports": "Browser-side network monitoring/modification APIs, WebSocket inspection, service-worker blind spot."
+    },
+    {
+      "source_id": "S02",
+      "title": "Understand the JavaScript SEO basics",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/javascript/javascript-seo-basics",
+      "publisher": "Google Search Central",
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "publication_date": "2026-03-04",
+      "publication_date_note": "Page footer states 'Last updated 2026-03-04 UTC.'",
+      "retrieval": {
+        "method": "fetch_page",
+        "date": "2026-09-26",
+        "chunks_total": 4,
+        "chunks_retrieved": 4,
+        "complete": true
+      },
+      "supports": "Crawl/render/index pipeline, headless Chromium rendering, SSR recommendation, JS canonical/History-API/lazy-loading guidance."
+    },
+    {
+      "source_id": "S03",
+      "title": "Fix Search-related JavaScript problems",
+      "url": "https://developers.google.com/search/docs/crawling-indexing/javascript/fix-search-javascript",
+      "publisher": "Google Search Central",
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "publication_date": "2025-12-18",
+      "publication_date_note": "Page footer states 'Last updated 2025-12-18 UTC.'",
+      "retrieval": {
+        "method": "fetch_page",
+        "date": "2026-09-26",
+        "chunks_total": 2,
+        "chunks_retrieved": 2,
+        "complete": true
+      },
+      "supports": "WRS state clearing, Googlebot capability limits (no WebGL/WebSocket/WebRTC, permission prompts declined), caching-header behavior, Rich Results Test/URL Inspection rendered-DOM debugging."
+    },
+    {
+      "source_id": "S04",
+      "title": "Easy Checks - A First Review of Web Accessibility",
+      "url": "https://www.w3.org/WAI/test-evaluate/preliminary/",
+      "publisher": "W3C Web Accessibility Initiative (WAI)",
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "publication_date": null,
+      "publication_date_note": "No publication or update date displayed on the retrieved page.",
+      "retrieval": {
+        "method": "fetch_page",
+        "date": "2026-09-26",
+        "chunks_total": 9,
+        "chunks_retrieved": 9,
+        "complete": true
+      },
+      "supports": "What automated checks can and cannot decide (alt text, contrast 4.5:1, keyboard/focus, structure), explicit 'not definitive' limitation. Substantial multi-chunk document (9/9 chunks)."
+    },
+    {
+      "source_id": "S05",
+      "title": "Request Interception | Puppeteer",
+      "url": "https://pptr.dev/guides/network-interception",
+      "publisher": "Google (Puppeteer project)",
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "publication_date": null,
+      "publication_date_note": "No publication date; page header shows documentation version '25.12.0' at retrieval.",
+      "retrieval": {
+        "method": "fetch_page",
+        "date": "2026-09-26",
+        "chunks_total": 3,
+        "chunks_retrieved": 3,
+        "complete": true
+      },
+      "supports": "Interception semantics: requests stall unless continued/responded/aborted; cooperative intercept mode."
+    },
+    {
+      "source_id": "S06",
+      "title": "The Automated Accessibility Coverage Report",
+      "url": "https://www.deque.com/automated-accessibility-coverage-report/",
+      "urls": [
+        "https://www.deque.com/automated-accessibility-coverage-report/",
+        "https://accessibility.deque.com/hubfs/Accessibility-Coverage-Report.pdf"
+      ],
+      "publisher": "Deque Systems (axe-core vendor)",
+      "classification": "THIRD_PARTY_REPORT",
+      "publication_date": null,
+      "publication_date_note": "No publication date in the HTML page or the PDF. Search-engine metadata suggested 2021-03-10 for the PDF, but that date is not present in the retrieved source and is therefore not recorded as the publication date.",
+      "retrieval": {
+        "method": "fetch_page",
+        "date": "2026-09-26",
+        "chunks_total": 6,
+        "chunks_retrieved": 6,
+        "complete": true,
+        "chunks_note": "HTML 3/3 and PDF 3/3 (one source, two retrievals)."
+      },
+      "supports": "57.38%-of-issues automated coverage claim, methodology (13,000+ pages, ~300,000 issues, 16/50 WCAG SC), 'disprove 20-30%' framing."
+    },
+    {
+      "source_id": "S07",
+      "title": "ACCESS: Prompt Engineering for Automated Web Accessibility Violation Corrections (arXiv:2401.16450)",
+      "url": "https://arxiv.org/abs/2401.16450",
+      "urls": [
+        "https://arxiv.org/abs/2401.16450",
+        "https://arxiv.org/pdf/2401.16450"
+      ],
+      "publisher": "arXiv (Huang et al.; conference paper noted as ICLR 2024 in the retrieved PDF header)",
+      "classification": "THIRD_PARTY_REPORT",
+      "publication_date": "2024-02-10",
+      "publication_date_note": "arXiv abs page: submitted 28 Jan 2024 (v1), last revised 10 Feb 2024 (v2).",
+      "retrieval": {
+        "method": "fetch_page",
+        "date": "2026-09-26",
+        "chunks_total": 6,
+        "chunks_retrieved": 6,
+        "complete": true,
+        "chunks_note": "abs page 1/1 and PDF 5/5 (one source, two retrievals)."
+      },
+      "supports": "Academic use of the Playwright API to collect accessibility violations; 51.303% severity-score reduction result; limits of line-level DOM correction."
+    },
+    {
+      "source_id": "S08",
+      "title": "Playwright MCP README (raw)",
+      "url": "https://raw.githubusercontent.com/microsoft/playwright-mcp/main/README.md",
+      "publisher": "Microsoft (microsoft/playwright-mcp)",
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "publication_date": null,
+      "publication_date_note": "README carries no date; the repository page retrieved in the same session showed the latest commit dated Sep 25, 2026 and 589 commits on main.",
+      "retrieval": {
+        "method": "fetch_page",
+        "date": "2026-09-26",
+        "chunks_total": 9,
+        "chunks_retrieved": 9,
+        "complete": true
+      },
+      "supports": "Agent-native browser automation: accessibility-snapshot-first design, network/console tools, capability flags, security-boundary caveat, CLI-vs-MCP token trade-off. Substantial multi-chunk document (9/9 chunks)."
+    },
+    {
+      "source_id": "S09",
+      "title": "RFC 9309: Robots Exclusion Protocol",
+      "url": "https://www.rfc-editor.org/rfc/rfc9309.html",
+      "publisher": "IETF / RFC Editor (Koster, Illyes, Zeller, Sassman)",
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "publication_date": "2022-09",
+      "publication_date_note": "RFC header: 'Published: September 2022', Standards Track.",
+      "retrieval": {
+        "method": "fetch_page",
+        "date": "2026-09-26",
+        "chunks_total": 5,
+        "chunks_retrieved": 5,
+        "complete": true
+      },
+      "supports": "Crawler obligations for server-side retrieval: robots.txt matching, UA product tokens, 4xx/5xx handling, 24h caching, 500 KiB parsing limit, 'not access authorization'."
+    },
+    {
+      "source_id": "S10",
+      "title": "Lighthouse (overview)",
+      "url": "https://developer.chrome.com/docs/lighthouse/",
+      "publisher": "Google (Chrome for Developers)",
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "publication_date": null,
+      "publication_date_note": "No date displayed on the retrieved overview page.",
+      "retrieval": {
+        "method": "fetch_page",
+        "date": "2026-09-26",
+        "chunks_total": 1,
+        "chunks_retrieved": 1,
+        "complete": true
+      },
+      "supports": "Lighthouse channels (PageSpeed Insights, DevTools, CLI, Node) and audit categories; can audit pages requiring authentication."
+    },
+    {
+      "source_id": "S11",
+      "title": "Benchmarking web accessibility evaluation tools: measuring the harm of sole reliance on automated tests (W4A '13)",
+      "url": "https://dl.acm.org/doi/10.1145/2461121.2461124",
+      "publisher": "ACM (Vigo, Brown, Conway)",
+      "classification": "THIRD_PARTY_REPORT",
+      "publication_date": "2013-05-13",
+      "publication_date_note": "ACM DL 'Publication History: Published: 13 May 2013'; proceedings W4A '13, May 2013.",
+      "retrieval": {
+        "method": "fetch_page",
+        "date": "2026-09-26",
+        "chunks_total": 4,
+        "chunks_retrieved": 4,
+        "complete": true
+      },
+      "supports": "Academic counter-measurement: coverage at most 50% of SC, completeness 14-38%, correctness 66-71% for 6 tools."
+    },
+    {
+      "source_id": "S12",
+      "title": "Chrome DevTools MCP Tool Reference",
+      "url": "https://raw.githubusercontent.com/ChromeDevTools/chrome-devtools-mcp/main/docs/tool-reference.md",
+      "publisher": "Google (ChromeDevTools GitHub organization)",
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "publication_date": null,
+      "publication_date_note": "Auto-generated doc carries no date; no repository-date check was performed for this file.",
+      "retrieval": {
+        "method": "fetch_page",
+        "date": "2026-09-26",
+        "chunks_total": 5,
+        "chunks_retrieved": 5,
+        "complete": true
+      },
+      "supports": "Agent-facing DevTools surface: network request inspection incl. Cookie/Set-Cookie headers, Lighthouse audit tool (excludes performance), performance traces/Core Web Vitals, emulation, a11y-tree snapshots."
+    },
+    {
+      "source_id": "S13",
+      "title": "Automated testing using axe-core and PA11Y - DWP Accessibility Manual",
+      "url": "https://accessibility-manual.dwp.gov.uk/best-practice/automated-testing-using-axe-core-and-pa11y",
+      "publisher": "UK Department for Work and Pensions",
+      "classification": "THIRD_PARTY_REPORT",
+      "publication_date": null,
+      "publication_date_note": "No publication or update date displayed on the retrieved page.",
+      "retrieval": {
+        "method": "fetch_page",
+        "date": "2026-09-26",
+        "chunks_total": 1,
+        "chunks_retrieved": 1,
+        "complete": true
+      },
+      "supports": "'around 35%' automated accessibility coverage claim; axe-core needs a browser; PA11Y runs Puppeteer headless Chrome; axe result categories."
+    },
+    {
+      "source_id": "S14",
+      "title": "Lighthouse accessibility score",
+      "url": "https://developer.chrome.com/docs/lighthouse/accessibility/scoring",
+      "publisher": "Google (Chrome for Developers)",
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "publication_date": "2025-10-22",
+      "publication_date_note": "Page footer states 'Last updated 2025-10-22 UTC.'",
+      "retrieval": {
+        "method": "fetch_page",
+        "date": "2026-09-26",
+        "chunks_total": 2,
+        "chunks_retrieved": 2,
+        "complete": true
+      },
+      "supports": "Score = weighted average of pass/fail axe-based audits; weighting from axe user impact assessments; manual audits excluded from score."
+    }
+  ],
+  "execution_evidence": [
+    {
+      "evidence_id": "E1",
+      "date": "2026-09-26",
+      "classification": "EXECUTION_EVIDENCE",
+      "title": "Local fixture: server-side fetch vs Playwright rendering, network visibility, axe injection",
+      "location": "/tmp/pwnode/ (results.json, server-log.ndjson, fixture/, exp.mjs, fixture-render.png)",
+      "environment": "Node v22.22.3; playwright-core@1.63.0; @sparticuz/chromium@153.0.0 (headless shell 153.0.8010.0); axe-core@4.11.0; launch args only --disable-dev-shm-usage --disable-gpu; LD_LIBRARY_PATH=/tmp/al2023/lib:/tmp; no --no-sandbox or --disable-web-security.",
+      "observations": {
+        "server_side_fetch": "HTTP 200; raw HTML contained empty containers '<div id=\"app\"></div>' and '<ul id=\"data-list\"></ul>'; no API data; server access log showed exactly one request 'GET /' with User-Agent 'node'.",
+        "playwright_local": "Rendered DOM had 1 child in #app and 3 list items (alpha/beta/gamma); document.title changed to 'Bench fixture (rendered)'; network log showed GET / plus GET /api/data both HTTP 200; console captured 'log: FIXTURE_CONSOLE_LOG'; server log for browser showed User-Agent HeadlessChrome/153.0.8010.0 for both requests.",
+        "axe_on_rendered_page": "axe.run returned 5 violation rules: button-name (critical), color-contrast (serious), image-alt (critical), landmark-one-main (moderate), region (moderate); 13 passes, 0 incomplete.",
+        "screenshot": "PNG 24,044 bytes, PNG signature valid, sha256 aad9e6db5e14a9bdd0e637fe16b77bf84a069964e7f55f2b5ab9e8a9ffdc6dbb.",
+        "external_navigation": "page.goto('https://example.com/') failed: net::ERR_CONNECTION_CLOSED."
+      }
+    },
+    {
+      "evidence_id": "E2",
+      "date": "2026-09-26",
+      "classification": "EXECUTION_EVIDENCE",
+      "title": "Shell HTTPS (server-side retrieval from sandbox) vs native fetch_page egress",
+      "environment": "curl from the Arena sandbox shell.",
+      "observations": "curl exit/status: https://registry.npmjs.org/ -> 200; https://github.com/ -> 200; https://developers.google.com/ -> 000; https://playwright.dev/ -> 000; https://example.com/ -> 000. In the same session the native fetch_page tool fully retrieved content from playwright.dev, developers.google.com, w3.org, rfc-editor.org, dl.acm.org, arxiv.org, deque.com and raw.githubusercontent.com.",
+      "interpretation": "Retrieval channel and host are interacting variables; shell HTTP(S) failure is not evidence that a document is unreachable to the agent."
+    },
+    {
+      "evidence_id": "E3",
+      "date": "2026-09-26",
+      "classification": "EXECUTION_EVIDENCE",
+      "title": "Local Chromium cannot navigate public sites in this environment",
+      "observations": "Headless Chromium 153.0.8010.0 navigation to https://example.com/ failed with net::ERR_CONNECTION_CLOSED; identical failure mode to the prior session documented in docs/browser.md and docs/capabilities.md (B14).",
+      "consequence": "No live public-site browser audit, screenshot or Lighthouse run is claimed for this session."
+    }
+  ],
+  "in_repo_references": [
+    {
+      "path": "docs/research.md",
+      "use": "Workflow rule: fetch all chunks; snippets are not evidence; fetch_page is not a raw HTML/JS capture."
+    },
+    {
+      "path": "docs/evidence.md",
+      "use": "Classification scheme and rule that a bibliography URL is not proof of a claim."
+    },
+    {
+      "path": "docs/capabilities.md",
+      "use": "Prior-session capability boundaries (browser B01-B15, failed public navigation)."
+    },
+    {
+      "path": "docs/browser.md",
+      "use": "Tested npm-bundled Chromium recipe and no-bypass-flags rule."
+    },
+    {
+      "path": "docs/limitations.md",
+      "use": "Selective networking and local-browser-vs-live-site limits."
+    }
+  ],
+  "claims": [
+    {
+      "claim_id": "C01",
+      "text": "Playwright exposes APIs to monitor and modify all browser network traffic (HTTP and HTTPS), including XHR and fetch requests.",
+      "source_ids": [
+        "S01"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S01",
+        "location": "chunk 0, Introduction",
+        "quote": "Playwright provides APIs to monitor and modify browser network traffic, both HTTP and HTTPS. Any requests that a page does, including XHRs and fetch requests, can be tracked, modified and handled."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked against retrieved chunk 0"
+      }
+    },
+    {
+      "claim_id": "C02",
+      "text": "Playwright can make network events disappear from its own routing/observation layer when service workers take over; the documented workaround is serviceWorkers: 'block'.",
+      "source_ids": [
+        "S01"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S01",
+        "location": "chunk 1, Missing Network Events and Service Workers",
+        "quote": "If you're using Playwright's native browserContext.route() and page.route(), and it appears network events are missing, disable Service Workers by setting serviceWorkers to 'block'."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked against retrieved chunk 1"
+      }
+    },
+    {
+      "claim_id": "C03",
+      "text": "Playwright supports WebSocket inspection, mocking and modification out of the box via page.on('websocket').",
+      "source_ids": [
+        "S01"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S01",
+        "location": "chunk 1, WebSockets",
+        "quote": "Playwright supports WebSockets inspection, mocking and modifying out of the box."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked against retrieved chunk 1"
+      }
+    },
+    {
+      "claim_id": "C04",
+      "text": "Google Search processes JavaScript pages in three phases (crawling, rendering, indexing) and renders with headless Chromium once resources allow.",
+      "source_ids": [
+        "S02"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S02",
+        "location": "chunk 1, How Google processes JavaScript",
+        "quote": "Google processes JavaScript web apps in three main phases: 1. Crawling 2. Rendering 3. Indexing ... Once Google's resources allow, a headless Chromium renders the page and executes the JavaScript."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked against retrieved chunk 1"
+      }
+    },
+    {
+      "claim_id": "C05",
+      "text": "Google explicitly recommends server-side or pre-rendering anyway, because it speeds pages up and 'not all bots can run JavaScript'.",
+      "source_ids": [
+        "S02"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S02",
+        "location": "chunk 1",
+        "quote": "Keep in mind that server-side or pre-rendering is still a great idea because it makes your website faster for users and crawlers, and not all bots can run JavaScript."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked against retrieved chunk 1"
+      }
+    },
+    {
+      "claim_id": "C06",
+      "text": "The Google JavaScript SEO basics page was last updated 2026-03-04 UTC.",
+      "source_ids": [
+        "S02"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S02",
+        "location": "chunk 2, page footer",
+        "quote": "Last updated 2026-03-04 UTC."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "footer re-checked against retrieved chunk 2"
+      }
+    },
+    {
+      "claim_id": "C07",
+      "text": "Google's Web Rendering Service does not retain state across page loads: localStorage, sessionStorage and HTTP cookies are cleared across page loads.",
+      "source_ids": [
+        "S03"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S03",
+        "location": "chunk 1, item 05",
+        "quote": "WRS does not retain state across page loads: Local Storage and Session Storage data are cleared across page loads. HTTP Cookies are cleared across page loads."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked against retrieved chunk 1"
+      }
+    },
+    {
+      "claim_id": "C08",
+      "text": "Googlebot retrieves content over HTTP requests only and does not support WebSockets or WebRTC; it also declines user-permission requests and does not support WebGL.",
+      "source_ids": [
+        "S03"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S03",
+        "location": "chunk 1, items 03 and 08; chunk 0",
+        "quote": "Googlebot uses HTTP requests to retrieve content from your server. It does not support other types of connections, such as WebSockets or WebRTC connections."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quotes re-checked against retrieved chunks 0-1; WebGL and permission claims verified in same chunks ('Expect Googlebot to decline user permission requests'; 'Googlebot doesn't support WebGL')"
+      }
+    },
+    {
+      "claim_id": "C09",
+      "text": "Googlebot caches aggressively and WRS may ignore caching headers, which can make its rendering use outdated JS/CSS; Google recommends content fingerprinting.",
+      "source_ids": [
+        "S03",
+        "S02"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S03",
+        "location": "chunk 1, item 06 (same text in S02 chunk 2, Use long-lived caching)",
+        "quote": "Googlebot caches aggressively in order to reduce network requests and resource usage. WRS may ignore caching headers. This may lead WRS to use outdated JavaScript or CSS resources."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked against retrieved chunk 1 of S03 and chunk 2 of S02"
+      }
+    },
+    {
+      "claim_id": "C10",
+      "text": "Google's official debugging path for rendering is the Rich Results Test or URL Inspection Tool, which show loaded resources, JavaScript console output/exceptions and the rendered DOM; the fix-search-javascript page was last updated 2025-12-18 UTC.",
+      "source_ids": [
+        "S03"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S03",
+        "location": "chunk 0, step 01; chunk 1 footer",
+        "quote": "To test how Google crawls and renders a URL, use the Rich Results Test or the URL Inspection Tool in Search Console. You can see loaded resources, JavaScript console output and exceptions, rendered DOM, and more information."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked against chunk 0; footer 'Last updated 2025-12-18 UTC.' re-checked against chunk 1"
+      }
+    },
+    {
+      "claim_id": "C11",
+      "text": "W3C guidance: automated tests can tell you whether alt is missing, but judging whether alt text is appropriate requires seeing the image in context.",
+      "source_ids": [
+        "S04"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S04",
+        "location": "chunk 1, Image text alternatives",
+        "quote": "Automated tests can tell you if alt is missing. To determine if the alternative text is appropriate, you need to see the image and judge it in context."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked against retrieved chunk 1"
+      }
+    },
+    {
+      "claim_id": "C12",
+      "text": "W3C states its easy checks are not definitive: a page can pass them and still have significant accessibility barriers.",
+      "source_ids": [
+        "S04"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S04",
+        "location": "chunk 8, Next steps",
+        "quote": "The checks on this page are not definitive; a web page could seem to pass these checks, yet still have significant accessibility barriers."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked against retrieved chunk 8"
+      }
+    },
+    {
+      "claim_id": "C13",
+      "text": "W3C gives 4.5:1 as the minimum default contrast ratio for normal-size text and treats contrast as one of several checks that require observing the rendered page.",
+      "source_ids": [
+        "S04"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S04",
+        "location": "chunk 3, Contrast ratio",
+        "quote": "Web pages should also have a minimum contrast by default: a contrast ratio of at least 4.5:1 for normal-size text."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked against retrieved chunk 3"
+      }
+    },
+    {
+      "claim_id": "C14",
+      "text": "In Puppeteer, once request interception is enabled every request stalls unless it is continued, responded to, or aborted.",
+      "source_ids": [
+        "S05"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S05",
+        "location": "chunk 0",
+        "quote": "Once request interception is enabled, every request will stall unless it's continued, responded or aborted."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked against retrieved chunk 0"
+      }
+    },
+    {
+      "claim_id": "C15",
+      "text": "Deque reports 57.38% of accessibility issues were detected by automated tests (169,242 of 294,958 issues) across 13,000+ page states and nearly 300,000 issues, using axe-core, excluding false positives and counting repeated template issues once.",
+      "source_ids": [
+        "S06"
+      ],
+      "classification": "THIRD_PARTY_REPORT",
+      "evidence": {
+        "source_id": "S06",
+        "location": "HTML chunks 0-2 and PDF chunks 1-2",
+        "quote": "On average across all the audits included in the sample data, we found that 57.38% of total issues were identified using Deque's automated tests."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "57.38% figure and totals (169,242 auto / 125,716 manual / 294,958 total) re-checked in HTML chunk 1 Table 1 and PDF chunk 1; methodology re-checked in HTML chunks 0-2"
+      }
+    },
+    {
+      "claim_id": "C16",
+      "text": "Deque found automated issues for only 16 of 50 WCAG 2.1 Level AA success criteria - which Deque itself says supports the commonly cited 20-30% SC-based coverage figure - while arguing issue-volume is the better denominator.",
+      "source_ids": [
+        "S06"
+      ],
+      "classification": "THIRD_PARTY_REPORT",
+      "evidence": {
+        "source_id": "S06",
+        "location": "HTML chunk 0 / PDF chunk 0",
+        "quote": "In our analysis we found automated issues for 16 out of the 50 Success Criteria under WCAG 2.1 Level AA. This supports the 20 to 30% automated coverage claims that many experts claim today."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked against retrieved HTML chunk 0 and PDF chunk 0"
+      }
+    },
+    {
+      "claim_id": "C17",
+      "text": "The ACCESS academic paper collected web accessibility violations using the Playwright API (about 25 URLs, 171 violation rows) and reported a 51.303% severity-score reduction using GPT-3.5-turbo-16K with ReAct prompting.",
+      "source_ids": [
+        "S07"
+      ],
+      "classification": "THIRD_PARTY_REPORT",
+      "evidence": {
+        "source_id": "S07",
+        "location": "PDF chunk 1 (Section 2.1) and PDF chunk 2 (Table 2)",
+        "quote": "We used the Playwright API to perform tests on website URLs and acquire web accessibility violation errors (e.g. empty headings, image tags without alternate text, and website links without discernible text)."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "methodology quote re-checked in PDF chunk 1; Table 2 row 'GPT-3.5-turbo-16K | ReAct | 614 / 24.56 | 299 / 11.96 | 51.303%' re-checked in PDF chunk 2"
+      }
+    },
+    {
+      "claim_id": "C18",
+      "text": "The ACCESS paper (arXiv:2401.16450) was submitted 28 Jan 2024 and last revised 10 Feb 2024 (v2); it is listed as 11 pages, 6 figures.",
+      "source_ids": [
+        "S07"
+      ],
+      "classification": "THIRD_PARTY_REPORT",
+      "evidence": {
+        "source_id": "S07",
+        "location": "abs page",
+        "quote": "[Submitted on 28 Jan 2024 (v1), last revised 10 Feb 2024 (this version, v2)]"
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "re-checked against retrieved abs page"
+      }
+    },
+    {
+      "claim_id": "C19",
+      "text": "Playwright MCP is an MCP server that lets LLMs interact with web pages through structured accessibility snapshots, explicitly bypassing the need for screenshots or visually-tuned models.",
+      "source_ids": [
+        "S08"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S08",
+        "location": "chunk 0",
+        "quote": "This server enables LLMs to interact with web pages through structured accessibility snapshots, bypassing the need for screenshots or visually-tuned models."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked against retrieved chunk 0"
+      }
+    },
+    {
+      "claim_id": "C20",
+      "text": "Microsoft's own Playwright MCP README advises coding agents to consider the Playwright CLI+SKILLS instead of MCP because MCP loads large tool schemas and verbose accessibility trees into model context, while MCP suits loops that benefit from persistent state and rich introspection.",
+      "source_ids": [
+        "S08"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S08",
+        "location": "chunk 0, Playwright MCP vs Playwright CLI",
+        "quote": "CLI invocations are more token-efficient: they avoid loading large tool schemas and verbose accessibility trees into the model context"
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked against retrieved chunk 0"
+      }
+    },
+    {
+      "claim_id": "C21",
+      "text": "Playwright MCP exposes network and console introspection to agents: browser_network_requests lists requests since page load and browser_network_request returns full details including headers and body; browser_console_messages returns console output; route-based mocking is opt-in via --caps=network.",
+      "source_ids": [
+        "S08"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S08",
+        "location": "chunks 4-6",
+        "quote": "browser_network_requests: Returns a numbered list of network requests since loading the page. Use browser_network_request with the number to get full details. ... browser_network_request: Returns full details (headers and body) of a single network request"
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "tool descriptions re-checked against retrieved chunks 5-6"
+      }
+    },
+    {
+      "claim_id": "C22",
+      "text": "Playwright MCP states explicitly that it is not a security boundary.",
+      "source_ids": [
+        "S08"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S08",
+        "location": "chunk 4, Security",
+        "quote": "Playwright MCP is **not** a security boundary."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked against retrieved chunk 4"
+      }
+    },
+    {
+      "claim_id": "C23",
+      "text": "RFC 9309 (September 2022) obliges crawlers to obey matching robots.txt groups; the product token SHOULD be a substring of the User-Agent header; if robots.txt is unreachable (5xx) the crawler MUST assume complete disallow, while an unavailable (4xx) robots.txt MAY allow access to any resources.",
+      "source_ids": [
+        "S09"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S09",
+        "location": "chunks 0-2",
+        "quote": "If the robots.txt file is unreachable due to server or network errors, this means the robots.txt file is undefined and the crawler MUST assume complete disallow."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked against chunk 2; UA-token rule re-checked in chunk 1; publication date 'September 2022' re-checked in chunk 0 header"
+      }
+    },
+    {
+      "claim_id": "C24",
+      "text": "RFC 9309 says the rules are not a form of access authorization, recommends robots.txt caching of no more than 24 hours, and requires a parsing limit of at least 500 KiB.",
+      "source_ids": [
+        "S09"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S09",
+        "location": "chunks 0 and 3",
+        "quote": "These rules are not a form of access authorization."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked chunk 0; 'SHOULD NOT use the cached version for more than 24 hours' and 'The parsing limit MUST be at least 500 kibibytes' re-checked chunk 3"
+      }
+    },
+    {
+      "claim_id": "C25",
+      "text": "Vigo, Brown and Conway (W4A '13) measured 6 automated accessibility tools and found coverage of at most 50% of WCAG 2.0 success criteria, completeness of 14-38%, and correctness of 66-71% for the higher-completeness tools.",
+      "source_ids": [
+        "S11"
+      ],
+      "classification": "THIRD_PARTY_REPORT",
+      "evidence": {
+        "source_id": "S11",
+        "location": "chunk 0, Abstract",
+        "quote": "Coverage is very narrow as, at most, 50% of the success criteria are covered. Similarly, completeness ranges between 14% and 38%; however, some of the tools that exhibit higher completeness scores produce lower correctness scores (66-71%)"
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked against retrieved chunk 0; publication date re-checked chunk 2 ('Published: 13 May 2013')"
+      }
+    },
+    {
+      "claim_id": "C26",
+      "text": "Chrome DevTools MCP gives agents DevTools-grade inspection: list_network_requests/get_network_request (documented as useful for Cookie and Set-Cookie headers), lighthouse_audit for accessibility/SEO/best-practices (excluding performance), performance traces for Core Web Vitals, and CPU/network/UA/viewport emulation.",
+      "source_ids": [
+        "S12"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S12",
+        "location": "chunks 1-2",
+        "quote": "get_network_request: ... Useful for inspecting request headers (including 'Cookie') and response headers (including 'Set-Cookie' and directives)."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "re-checked against retrieved chunks 1-2 (network section); lighthouse_audit description and emulate fields re-checked in same chunks"
+      }
+    },
+    {
+      "claim_id": "C27",
+      "text": "UK DWP guidance states that axe-core and PA11Y combined find around 35% of accessibility issues, that axe-core needs a browser, and that PA11Y runs its own headless Chrome via Puppeteer.",
+      "source_ids": [
+        "S13"
+      ],
+      "classification": "THIRD_PARTY_REPORT",
+      "evidence": {
+        "source_id": "S13",
+        "location": "single chunk",
+        "quote": "Axe-core and PA11Y combined will find around 35% of accessibility issues."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked against retrieved page; supporting sentences ('Axe-core needs a browser to work', 'PA11Y uses Puppeteer to run its own headless Chrome browser') re-checked in same page"
+      }
+    },
+    {
+      "claim_id": "C28",
+      "text": "Lighthouse's accessibility score is a weighted average of pass/fail audits, weighted using axe user impact assessments; manual audits and low-impact/best-practices audits do not affect the score; the page was last updated 2025-10-22 UTC.",
+      "source_ids": [
+        "S14"
+      ],
+      "classification": "OFFICIAL_DOCUMENTATION",
+      "evidence": {
+        "source_id": "S14",
+        "location": "chunks 0-1",
+        "quote": "The Lighthouse Accessibility score is a weighted average of all accessibility audits. Weighting is based on axe user impact assessments."
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "quote re-checked chunk 0; 'Manual audits and low-impact / best-practices audits aren't included in the table because they don't affect your score' re-checked chunk 0; footer re-checked chunk 1"
+      }
+    },
+    {
+      "claim_id": "C29",
+      "text": "EXECUTION: On the local fixture, a plain server-side HTTP fetch received the initial HTML with empty JS containers and triggered no XHR, while Playwright (Chromium 153.0.8010.0) rendered JS-injected content, fetched /api/data, updated the title, and captured console output; the server access log distinguished User-Agent 'node' (single GET /) from HeadlessChrome (GET / + GET /api/data).",
+      "source_ids": [
+        "E1"
+      ],
+      "classification": "EXECUTION_EVIDENCE",
+      "evidence": {
+        "source_id": "E1",
+        "location": "/tmp/pwnode/results.json and server-log.ndjson",
+        "quote": "server_side_fetch: app_container_empty_in_raw_html=true, data_list_empty_in_raw_html=true, api_list_items_present=false, server_requests_seen=[GET /]; playwright_local: data_list_items_in_rendered_dom=3, document_title_after_js='Bench fixture (rendered)'"
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "results.json re-read after run; server-log.ndjson shows UA node for the fetch step and HeadlessChrome/153.0.8010.0 for GET / and GET /api/data"
+      }
+    },
+    {
+      "claim_id": "C30",
+      "text": "EXECUTION: axe-core 4.11.0 injected into the Playwright-rendered fixture page reported 5 violating rules (button-name, color-contrast, image-alt, landmark-one-main, region) with 13 passes, demonstrating browser-dependent automated accessibility checks; the captured screenshot is a valid 24,044-byte PNG (sha256 aad9e6db...dc6dbb).",
+      "source_ids": [
+        "E1"
+      ],
+      "classification": "EXECUTION_EVIDENCE",
+      "evidence": {
+        "source_id": "E1",
+        "location": "/tmp/pwnode/results.json",
+        "quote": "axe: violations=[button-name, color-contrast, image-alt, landmark-one-main, region], passes=13, incomplete=0; screenshot bytes=24044, png_signature_ok=true"
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "results.json re-read; PNG signature checked programmatically in exp.mjs"
+      }
+    },
+    {
+      "claim_id": "C31",
+      "text": "EXECUTION: retrieval channels diverged in this session - shell curl failed (HTTP 000) against playwright.dev, developers.google.com and example.com while returning 200 for github.com, and Chromium navigation to example.com failed with net::ERR_CONNECTION_CLOSED, yet native fetch_page fully retrieved multi-chunk content from playwright.dev, developers.google.com, w3.org and other hosts.",
+      "source_ids": [
+        "E2",
+        "E3"
+      ],
+      "classification": "EXECUTION_EVIDENCE",
+      "evidence": {
+        "source_id": "E2",
+        "location": "session command log 2026-09-26",
+        "quote": "https://playwright.dev/ curl -> 000; https://github.com/ -> 200; external_navigation: Error: page.goto: net::ERR_CONNECTION_CLOSED at https://example.com/"
+      },
+      "verification": {
+        "status": "VERIFIED",
+        "date": "2026-09-26",
+        "method": "command output captured in session; fetch_page success evidenced by retrieved chunks of the cited URLs"
+      }
+    },
+    {
+      "claim_id": "C32",
+      "text": "The Deque Automated Accessibility Coverage Report has a definite publication date (search metadata suggested 2021-03-10).",
+      "source_ids": [
+        "S06"
+      ],
+      "classification": "UNVERIFIED",
+      "evidence": {
+        "source_id": "S06",
+        "location": "HTML chunks 0-2, PDF chunks 0-2",
+        "quote": "No date string present in any retrieved chunk."
+      },
+      "verification": {
+        "status": "UNRESOLVED",
+        "date": "2026-09-26",
+        "method": "all 6 chunks of HTML+PDF checked; no publication date in source. Search-result metadata is snippet-level and not treated as source evidence."
+      }
+    },
+    {
+      "claim_id": "C33",
+      "text": "The Deque study used a specific axe-core version.",
+      "source_ids": [
+        "S06"
+      ],
+      "classification": "UNVERIFIED",
+      "evidence": {
+        "source_id": "S06",
+        "location": "HTML chunks 0-2, PDF chunks 0-2",
+        "quote": "Report says only 'the popular open-source Axe-core rules library'; a version is given only for the Resize Text rule change ('version 3.5'), not for the dataset."
+      },
+      "verification": {
+        "status": "UNRESOLVED",
+        "date": "2026-09-26",
+        "method": "checked all retrieved chunks; dataset axe-core version not stated"
+      }
+    },
+    {
+      "claim_id": "C34",
+      "text": "The native fetch_page tool executes JavaScript (or does not) when retrieving a page.",
+      "source_ids": [],
+      "classification": "UNVERIFIED",
+      "evidence": {
+        "source_id": null,
+        "location": "not tested this session",
+        "quote": "docs/research.md states fetch_page is not a raw HTTP header/HTML/JavaScript rendering capture, but no JS-dependence experiment was run against fetch_page."
+      },
+      "verification": {
+        "status": "UNRESOLVED",
+        "date": "2026-09-26",
+        "method": "NOT_TESTED: no controlled JS-dependent page was fetched and compared against a rendered DOM through fetch_page"
+      }
+    },
+    {
+      "claim_id": "C35",
+      "text": "The local Playwright setup can audit arbitrary live public websites in this environment.",
+      "source_ids": [
+        "E3"
+      ],
+      "classification": "UNVERIFIED",
+      "evidence": {
+        "source_id": "E3",
+        "location": "exp.mjs external_navigation step",
+        "quote": "Error: page.goto: net::ERR_CONNECTION_CLOSED at https://example.com/"
+      },
+      "verification": {
+        "status": "UNRESOLVED",
+        "date": "2026-09-26",
+        "method": "FAILED probe: one external navigation attempt failed; no general capability claim can be made either way from a single attempt"
+      }
+    },
+    {
+      "claim_id": "C36",
+      "text": "Full Lighthouse, WCAG conformance or Core Web Vitals results for any site.",
+      "source_ids": [
+        "E1",
+        "E3"
+      ],
+      "classification": "UNVERIFIED",
+      "evidence": {
+        "source_id": "E1",
+        "location": "this session",
+        "quote": "No Lighthouse run was executed; browser egress to public sites failed, so no live audit target existed."
+      },
+      "verification": {
+        "status": "UNRESOLVED",
+        "date": "2026-09-26",
+        "method": "NOT_TESTED this session (consistent with docs/capabilities.md 'Full Lighthouse, WCAG or Core Web Vitals: NOT TESTED')"
+      }
+    }
+  ],
+  "disagreements": [
+    {
+      "id": "D1",
+      "topic": "How much can automated accessibility testing cover?",
+      "positions": [
+        {
+          "source_ids": [
+            "S06"
+          ],
+          "position": "57.38% of issues by volume (Deque, vendor dataset); Deque also concedes only 16/50 WCAG 2.1 AA SC show automated issues."
+        },
+        {
+          "source_ids": [
+            "S11"
+          ],
+          "position": "At most 50% SC coverage, 14-38% completeness, 66-71% correctness (peer-reviewed measurement, 2013)."
+        },
+        {
+          "source_ids": [
+            "S13"
+          ],
+          "position": "axe-core + PA11Y combined find around 35% of issues (UK DWP guidance)."
+        },
+        {
+          "source_ids": [
+            "S04",
+            "S14"
+          ],
+          "position": "W3C says automated checks are non-definitive and require human judgment; Lighthouse excludes manual audits from its score."
+        }
+      ],
+      "note": "The numbers are not directly comparable because denominators differ (issues vs success criteria vs problems) and the datasets differ; Deque explicitly reframes the denominator. Reported as a live disagreement rather than averaged."
+    },
+    {
+      "id": "D2",
+      "topic": "Does JavaScript rendering 'just work' for search engines?",
+      "positions": [
+        {
+          "source_ids": [
+            "S02"
+          ],
+          "position": "Google documents a functioning crawl/render/index pipeline using headless Chromium and indexes rendered HTML."
+        },
+        {
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "position": "The same official docs warn that not all bots run JS, recommend SSR/prerendering, and list WRS limits (state cleared each load, caches ignored, no WebGL/WebSocket/WebRTC, permission prompts declined)."
+        },
+        {
+          "source_ids": [
+            "S02",
+            "S03"
+          ],
+          "position": "Third-party SEO articles go further (e.g. claims that 'Googlebot can't click'), but those interaction claims were not found in the official pages retrieved here."
+        }
+      ],
+      "note": "Tension between official reassurance and official caveats; SSR-vendor style claims were not verified as sources and are excluded."
+    },
+    {
+      "id": "D3",
+      "topic": "Is accessibility risk concentrated in what automation cannot see?",
+      "positions": [
+        {
+          "source_ids": [
+            "S11"
+          ],
+          "position": "Over-reliance on automated tests is measurably harmful; half of success criteria are never even analyzed."
+        },
+        {
+          "source_ids": [
+            "S06"
+          ],
+          "position": "Automation catches a majority of real issues by volume and the 20-30% 'belief' is based on the wrong metric."
+        },
+        {
+          "source_ids": [
+            "S04"
+          ],
+          "position": "W3C's check-by-check guidance repeatedly requires human judgment (alt-text appropriateness, keyboard flows, focus visibility)."
+        }
+      ],
+      "note": "Vendor framing versus independent measurement versus standards guidance; unresolved."
+    },
+    {
+      "id": "D4",
+      "topic": "Browser-based network inspection also has blind spots.",
+      "positions": [
+        {
+          "source_ids": [
+            "S01"
+          ],
+          "position": "Playwright documents that service workers can make requests invisible to page.route/browserContext.route unless serviceWorkers:'block' is set."
+        },
+        {
+          "source_ids": [
+            "S08"
+          ],
+          "position": "Playwright MCP's own origin allow/deny lists 'do not serve as a security boundary'."
+        },
+        {
+          "source_ids": [
+            "E1"
+          ],
+          "position": "Execution shows the complementary blind spot: a server-side fetch never sees the XHR the page would issue (server log: GET / only)."
+        }
+      ],
+      "note": "Neither mode gives a complete network picture."
+    },
+    {
+      "id": "D5",
+      "topic": "Observation modality for agent-native browsers disagrees across vendors.",
+      "positions": [
+        {
+          "source_ids": [
+            "S08"
+          ],
+          "position": "Playwright MCP defaults to accessibility-tree snapshots and says screenshots cannot be used to act ('bypassing the need for screenshots'). Vision input is opt-in (--caps=vision)."
+        },
+        {
+          "source_ids": [
+            "S12"
+          ],
+          "position": "Chrome DevTools MCP provides both a11y snapshots and DevTools-grade traces/Lighthouse/emulation, positioning itself as the inspection surface."
+        }
+      ],
+      "note": "A token/latency-versus-fidelity trade-off; Microsoft's README additionally warns MCP tool schemas and snapshots consume model context."
+    }
+  ],
+  "failed_retrievals": [
+    {
+      "id": "FR1",
+      "attempt": "fetch_page https://pptr.dev/guides/network",
+      "result": "404 'Page Not Found' body returned",
+      "resolution": "Located and fully retrieved the correct URL https://pptr.dev/guides/network-interception (3/3 chunks).",
+      "classification": "EXECUTION_EVIDENCE"
+    },
+    {
+      "id": "FR2",
+      "attempt": "shell curl https://playwright.dev/",
+      "result": "HTTP 000 (connection failed)",
+      "resolution": "Same host fully retrieved via native fetch_page (S01).",
+      "classification": "EXECUTION_EVIDENCE"
+    },
+    {
+      "id": "FR3",
+      "attempt": "shell curl https://developers.google.com/",
+      "result": "HTTP 000 (connection failed)",
+      "resolution": "Same host fully retrieved via native fetch_page (S02, S03).",
+      "classification": "EXECUTION_EVIDENCE"
+    },
+    {
+      "id": "FR4",
+      "attempt": "shell curl https://example.com/",
+      "result": "HTTP 000 (connection failed)",
+      "resolution": "Transport probe only; not needed as a source.",
+      "classification": "EXECUTION_EVIDENCE"
+    },
+    {
+      "id": "FR5",
+      "attempt": "Playwright Chromium navigation to https://example.com/",
+      "result": "net::ERR_CONNECTION_CLOSED",
+      "resolution": "No live public-site browser evidence claimed this session (E3, C37).",
+      "classification": "EXECUTION_EVIDENCE"
+    }
+  ]
+}
