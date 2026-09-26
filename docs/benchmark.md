@@ -1,6 +1,6 @@
 # Benchmark protocol — measurable use, not capability hype
 
-**2026-09-26.** Run only on public/synthetic material under [data-handling.md](data-handling.md). Start with a **single pilot per fixture and platform**. Repeat 3 times only for workflows that pass the pilot and whose additional runs will answer a real question. Three fixtures × three platforms × three repeats is **27 runs**, not a prerequisite to using Arena.
+**2026-09-26.** For day-to-day jobs use the lean [ledger.csv](ledger.csv); this document is for optional controlled comparisons. Run only on public/synthetic material under [data-handling.md](data-handling.md). Start with a **single pilot per fixture and platform**. Repeat 3 times only for workflows that pass the pilot and whose additional runs will answer a real question. Three fixtures × three platforms × three repeats is **27 runs**, not a prerequisite to using Arena.
 
 ## Freeze three independent fixtures
 

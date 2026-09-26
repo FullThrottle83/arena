@@ -11,6 +11,10 @@
 - **Input restrictions:** §3.5 restricts submitting personal/sensitive information, including financial or medical information. Do not rely on redaction being automatic or sufficient.
 - **Restrictions on access:** §5 restricts programmatic/automated access to the Arena service. Ordinary authorized agent tool execution is different from scripting the Arena interface; do not build unauthorized bulk requests or scraping.
 
+## Manual start and access boundary
+
+[Arena Terms §5](https://help.arena.ai/articles/5629909088-terms-of-use) prohibits accessing the Arena service by programmatic/automated means or automatically querying it. The current handoff therefore uses a GitHub task brief and PR for coordination; **the human user opens Arena and submits the task**. Do not drive Arena's UI with another bot, scrape its account state or assert an undocumented Agent Mode API. This does not prohibit legitimate coding/terminal actions *within an authorized Arena session*.
+
 ## Material decision matrix
 
 | Material | Default action | Rationale / gate |
