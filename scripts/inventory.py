@@ -8,9 +8,10 @@ directory. It deliberately does not summarise prior sessions' reports.
 
 Usage
 -----
-    python3 scripts/inventory.py                      # full run, default output dir
+    python3 scripts/inventory.py                      # read-only inventory by default
     python3 scripts/inventory.py --skip-network --skip-registry --skip-install
     python3 scripts/inventory.py --observations inventory/2026-09-26/observations.json
+    python3 scripts/inventory.py --probe-install      # only after explicit approval
     python3 scripts/inventory.py --record-delivery delivery.json   # post-push verification
 
 Safety properties (enforced by construction, see docs in SUMMARY.md):
@@ -1404,7 +1405,7 @@ def collect_install_probes(runner: Runner, tmp_parent: str, do_pip: bool, do_npm
     Never touches system site-packages: pip uses --target and an isolated venv;
     npm uses a temp --prefix. Both trees are deleted afterwards.
     """
-    out: dict = {"schema": SCHEMA, "authorization": "operator approved in-session 2026-09-26: tiny isolated probes only, no system packages, no browser binaries", "results": {}}
+    out: dict = {"schema": SCHEMA, "authorization": "caller explicitly opted in via --probe-install; obtain operator approval before invoking", "results": {}}
     root = pathlib.Path(tmp_parent) / f"arena-inventory-install-{int(time.time())}"
     root.mkdir(parents=True, exist_ok=True)
     out["sandbox_dir"] = redact(str(root))
@@ -1527,7 +1528,7 @@ def collect_network(net: Net) -> dict:
         "hosts": hosts,
         "egress_probe": egress,
         "cloud_metadata": metadata,
-        "egress_ip": {"stored": False, "note": "resolved public IP addresses are not stored (would be a host/network identifier); only reachability outcomes are kept"},
+        "egress_ip": {"stored": False, "note": "outbound egress IP response bodies are not stored; public DNS answer addresses are present under hosts.*.dns"},
         "dns_resolver": {"resolv_names_present": pathlib.Path("/etc/resolv.conf").exists(), "nameserver_count": sum(1 for line in (_read_text("/etc/resolv.conf") or "").splitlines() if line.startswith("nameserver")), "note": "resolver addresses not stored"},
         "proxy_env": {"http_proxy_set": bool(os.environ.get("http_proxy") or os.environ.get("HTTP_PROXY")), "https_proxy_set": bool(os.environ.get("https_proxy") or os.environ.get("HTTPS_PROXY")), "no_proxy_set": bool(os.environ.get("no_proxy") or os.environ.get("NO_PROXY")), "values_stored": False},
         "path_separation": {
@@ -2054,7 +2055,7 @@ def build_validation(session_dir: pathlib.Path, files_written: list[str], runner
         "subprocess_timeouts": {"all_calls_bounded": True, "max_timeout_seconds_used": runner.max_timeout_used, "note": "every Runner.run call passes an explicit timeout= and HTTP probes pass timeout= to urlopen/socket"},
         "failed_commands": {"count": len(runner.failures), "items": runner.failures[:60], "note": "non-zero exits and probe errors are retained rather than silently dropped"},
         "network_safety": {"tls_verification_disabled": False, "port_scans": False, "crawling": False, "arena_platform_automated_access": False, "cloud_metadata_probed": False},
-        "privacy": {"hostnames_stored": False, "usernames_stored": False, "ip_addresses_stored": False, "credential_values_stored": False, "private_repo_names_stored": False},
+        "privacy": {"machine_hostname_stored": False, "public_target_hostnames_stored": True, "usernames_stored": False, "public_dns_ip_addresses_stored": True, "egress_ip_stored": False, "credential_values_stored": False, "private_repo_names_stored": False},
         "capability_tests": (practical or {}).get("counts") or {},
         "capability_tests_failures": [t for t in ((practical or {}).get("tests") or []) if t.get("status") == "FAILED"],
         "limitations": [
@@ -2479,7 +2480,8 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--observations", help="agent-declared observations JSON (native tools, UI checklist, practical tests)")
     parser.add_argument("--skip-network", action="store_true")
     parser.add_argument("--skip-registry", action="store_true")
-    parser.add_argument("--skip-install", action="store_true")
+    parser.add_argument("--probe-install", action="store_true", help="opt in to isolated pip/npm install probes (requires operator approval)")
+    parser.add_argument("--skip-install", action="store_true", help="skip install probes even if --probe-install is provided")
     parser.add_argument("--skip-github", action="store_true")
     parser.add_argument("--timeout", type=float, default=8.0, help="per-request network timeout (max 30)")
     parser.add_argument("--workers", type=int, default=4)
@@ -2516,7 +2518,8 @@ def main(argv: list[str] | None = None) -> int:
     browsers = safe("browsers", lambda: collect_browsers(runner), {"schema": SCHEMA})
     network = ({"schema": SCHEMA, "skipped": True, "counts": {"dns_ok": 0, "https_ok": 0, "https_failed": 0, "tls_handshake_ok": 0}, "hosts": {}} if args.skip_network else safe("network", lambda: collect_network(net), {"schema": SCHEMA, "counts": {}, "hosts": {}}))
     registries = ({"schema": SCHEMA, "skipped": True} if args.skip_registry else safe("registries", lambda: collect_registries(net), {"schema": SCHEMA, "skipped_by_error": True}))
-    installs = ({"schema": SCHEMA, "skipped": True, "results": {}} if args.skip_install else safe("install_probes", lambda: collect_install_probes(runner, tempfile.gettempdir(), do_pip=not args.skip_install, do_npm=not args.skip_install), {"schema": SCHEMA, "results": {}}))
+    install_enabled = args.probe_install and not args.skip_install
+    installs = ({"schema": SCHEMA, "skipped": True, "results": {}, "note": "install probes require explicit --probe-install"} if not install_enabled else safe("install_probes", lambda: collect_install_probes(runner, tempfile.gettempdir(), do_pip=True, do_npm=True), {"schema": SCHEMA, "results": {}}))
     repo = detect_repo(runner)
     github = ({"schema": SCHEMA, "skipped": True} if args.skip_github else safe("github", lambda: collect_github(runner, repo), {"schema": SCHEMA, "collector_error": True}))
     practical = safe("practical_tests", lambda: collect_practical_tests(runner, out_dir), {"schema": SCHEMA, "tests": [], "collector_error": True})
@@ -2535,6 +2538,10 @@ def main(argv: list[str] | None = None) -> int:
             observations = {**observations, **json.loads(observations_path.read_text(encoding="utf-8"))}
         except (OSError, json.JSONDecodeError) as exc:
             observations["observations_error"] = f"{type(exc).__name__}: {str(exc)[:160]}"
+            collector_errors["observations"] = observations["observations_error"]
+    elif args.observations:
+        collector_errors["observations"] = "explicit observations file not found"
+        observations["observations_error"] = collector_errors["observations"]
 
     capabilities = safe(
         "capabilities",
@@ -2568,7 +2575,7 @@ def main(argv: list[str] | None = None) -> int:
             "observations_file": redact(str(observations_path)) if observations_path else None,
             "python": sys.version.split()[0],
             "cwd": redact(os.getcwd()),
-            "skips": {"network": args.skip_network, "registry": args.skip_registry, "install": args.skip_install, "github": args.skip_github},
+            "skips": {"network": args.skip_network, "registry": args.skip_registry, "install": not install_enabled, "github": args.skip_github},
             "collector_errors": collector_errors,
         },
     }
