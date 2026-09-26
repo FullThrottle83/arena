@@ -1,0 +1,360 @@
+{
+  "manifest_version": "1.0",
+  "investigation": {
+    "title": "Arena Agent Mode Complete Capability Inventory",
+    "reference_date": "2026-09-26",
+    "timezone": "UTC",
+    "workspace_root": "/home/user/arena",
+    "scope": "One real Agent Mode session: visible tool schemas, safe runtime probes, and first-party Arena documentation fetched during this session.",
+    "registry_completeness": "The visible function definitions are the complete registry available to this investigator; hidden backend tools, feature flags, and all Arena account capabilities cannot be inspected.",
+    "github_accessed": false,
+    "private_accounts_accessed": false,
+    "credentials_or_environment_dumped": false,
+    "package_or_browser_installed": false,
+    "validation_status": "Validated by the final post-log T-015 check on 2026-09-26 UTC; no edits were made afterward."
+  },
+  "evidence_classifications": {
+    "OFFICIAL_DOCUMENTATION": "First-party documentation was retrieved; this proves the source says it, not independent product behavior.",
+    "EXPOSED_TOOL": "Tool/function schema was visible to this session; not execution evidence.",
+    "EXECUTION_VERIFIED": "Operation ran and returned a recorded result; cite at least one test_id.",
+    "PARTIALLY_VERIFIED": "Only a bounded portion was tested or the observation has a stated gap.",
+    "INFERRED": "Practical conclusion, not a direct product promise.",
+    "NOT_TESTED": "No independent test was run; dependency-blocked tests remain NOT_TESTED.",
+    "UNAVAILABLE": "Not exposed in this session or absent from checked runtime locations; not a global Arena claim."
+  },
+  "visible_tool_registry": {
+    "functions_tool_count": 15,
+    "wrapper_tool": "multi_tool_use.parallel",
+    "tools": [
+      {
+        "id": "functions.web_search",
+        "purpose": "Search public web sources.",
+        "input": "query (up to 400 characters), depth 1-3",
+        "output": "Search result IDs, titles, URLs, descriptions/snippets, sometimes pageAge.",
+        "restrictions": ["Search snippets are not full-page evidence.", "Result IDs are local to a result list."],
+        "evidence_classifications": ["EXPOSED_TOOL", "EXECUTION_VERIFIED"],
+        "test_ids": ["T-002", "T-005"]
+      },
+      {
+        "id": "functions.fetch_page",
+        "purpose": "Retrieve a webpage as chunked Markdown-like text; tool description supports PDF parsing up to 30 pages.",
+        "input": "URL, optional chunkIndex",
+        "output": "Title, URL, content, chunkIndex, hasMore, totalChunks.",
+        "restrictions": ["Long pages require more chunk requests.", "PDF evidence only verified on a one-page public fixture."],
+        "evidence_classifications": ["EXPOSED_TOOL", "EXECUTION_VERIFIED"],
+        "test_ids": ["T-003", "T-004", "T-005"]
+      },
+      {
+        "id": "functions.bash",
+        "purpose": "Run shell commands and child processes in the sandbox.",
+        "input": "command, optional cwd, timeout (default 30 seconds, maximum 1800 seconds)",
+        "output": "stdout, stderr, exit status/code, duration, truncation flags.",
+        "restrictions": ["No controlling terminal.", "stdin is closed."],
+        "evidence_classifications": ["EXPOSED_TOOL", "EXECUTION_VERIFIED"],
+        "test_ids": ["T-001", "T-006", "T-007", "T-009", "T-010", "T-011"]
+      },
+      {
+        "id": "functions.read_file",
+        "purpose": "Read workspace text; display images visibly; return metadata for other binary files.",
+        "input": "path, optional line offset and line limit",
+        "output": "Text, image rendering, or binary metadata.",
+        "restrictions": ["Binary decoding is not promised except visible image handling."],
+        "evidence_classifications": ["EXPOSED_TOOL", "EXECUTION_VERIFIED"],
+        "test_ids": ["T-012", "T-013", "T-014", "T-015"]
+      },
+      {
+        "id": "functions.write_file",
+        "purpose": "Create or overwrite a workspace file from full text content.",
+        "input": "path, complete content",
+        "output": "Write status.",
+        "restrictions": ["Writing does not validate file format."],
+        "evidence_classifications": ["EXPOSED_TOOL", "EXECUTION_VERIFIED"],
+        "test_ids": ["T-013", "T-015"]
+      },
+      {
+        "id": "functions.edit_file",
+        "purpose": "Replace first fuzzy-matched text occurrence in an existing file.",
+        "input": "path, old_text, new_text",
+        "output": "Edit status/message.",
+        "restrictions": ["First match only; not a semantic merge."],
+        "evidence_classifications": ["EXPOSED_TOOL", "EXECUTION_VERIFIED"],
+        "test_ids": ["T-013"]
+      },
+      {
+        "id": "functions.present_file",
+        "purpose": "Open one workspace file in the user's file viewer.",
+        "input": "path",
+        "output": "Viewer action status.",
+        "restrictions": ["A viewer open is not proof of file download."],
+        "evidence_classifications": ["EXPOSED_TOOL", "EXECUTION_VERIFIED"],
+        "test_ids": ["T-014"]
+      },
+      {
+        "id": "functions.start_process",
+        "purpose": "Start a long-running process with an optional live preview port.",
+        "input": "name, command, cwd, startup_wait (maximum 30 seconds)",
+        "output": "Process ID, logs, listening ports, warnings.",
+        "restrictions": ["Preview servers should bind to 0.0.0.0 and accept the proxied host."],
+        "evidence_classifications": ["EXPOSED_TOOL", "EXECUTION_VERIFIED"],
+        "test_ids": ["T-011"]
+      },
+      {
+        "id": "functions.get_process_output",
+        "purpose": "Read process logs/liveness and optionally wait for port/log/exit.",
+        "input": "process_id, tail_lines, wait_for condition, wait pattern, wait_timeout (maximum 180 seconds)",
+        "output": "Log tail, status, ports, wait result.",
+        "evidence_classifications": ["EXPOSED_TOOL", "EXECUTION_VERIFIED"],
+        "test_ids": ["T-011"]
+      },
+      {
+        "id": "functions.stop_process",
+        "purpose": "Stop a process group started by start_process.",
+        "input": "process_id",
+        "output": "Stopped status and final log tail.",
+        "restrictions": ["Tool description says SIGTERM followed by SIGKILL if needed."],
+        "evidence_classifications": ["EXPOSED_TOOL", "EXECUTION_VERIFIED"],
+        "test_ids": ["T-011"]
+      },
+      {
+        "id": "functions.generate_image",
+        "purpose": "Generate a standalone image or edit supplied images.",
+        "input": "file_path, prompt, optional existing image paths, offer_options",
+        "output": "Saved image file path.",
+        "restrictions": ["Output PNG/JPG/JPEG.", "Options mode can pause for user choice."],
+        "evidence_classifications": ["EXPOSED_TOOL", "EXECUTION_VERIFIED"],
+        "test_ids": ["T-012"]
+      },
+      {
+        "id": "functions.image_search",
+        "purpose": "Search for images and save 1-5 results to workspace paths.",
+        "input": "query, count 1-5",
+        "output": "Saved image file paths.",
+        "evidence_classifications": ["EXPOSED_TOOL", "NOT_TESTED"],
+        "test_ids": []
+      },
+      {
+        "id": "functions.add_voice",
+        "purpose": "Audition two voice candidates and register a voice selected by the user.",
+        "input": "plain text audition script, BCP-47 language, voice identity options",
+        "output": "Selected voice_id after user vote.",
+        "restrictions": ["Pauses for user choice; a new pair uses an incremented index."],
+        "evidence_classifications": ["EXPOSED_TOOL", "NOT_TESTED"],
+        "test_ids": []
+      },
+      {
+        "id": "functions.generate_speech",
+        "purpose": "Synthesize spoken-word audio to a supported audio file type.",
+        "input": "file_path, text up to 1500 characters, previously selected voice_id",
+        "output": "Saved audio file.",
+        "restrictions": ["Requires add_voice selection.", "Maximum 10 clips per turn.", "Speech only; not singing."],
+        "evidence_classifications": ["EXPOSED_TOOL", "NOT_TESTED"],
+        "test_ids": []
+      },
+      {
+        "id": "functions.ask_user",
+        "purpose": "Ask clarification questions in a user-facing UI.",
+        "input": "Up to 6 questions, each with 2-4 choices and optional custom response.",
+        "output": "User-selected or custom answers.",
+        "evidence_classifications": ["EXPOSED_TOOL", "NOT_TESTED"],
+        "test_ids": []
+      },
+      {
+        "id": "multi_tool_use.parallel",
+        "purpose": "Invoke independent exposed developer tools together.",
+        "input": "List of tool names and parameter objects.",
+        "output": "Combined results for each call.",
+        "restrictions": ["Wrapper was used; exact concurrency/speedup was not benchmarked."],
+        "evidence_classifications": ["EXPOSED_TOOL", "PARTIALLY_VERIFIED"],
+        "test_ids": ["T-002", "T-003", "T-005"]
+      }
+    ],
+    "not_exposed_in_visible_registry": [
+      {"capability": "Dedicated browser automation / Playwright tool", "classification": "UNAVAILABLE", "test_ids": ["T-001"]},
+      {"capability": "Dedicated screenshot capture tool", "classification": "UNAVAILABLE", "test_ids": []},
+      {"capability": "Dedicated GitHub operation function", "classification": "UNAVAILABLE", "test_ids": ["T-001"]},
+      {"capability": "Dedicated Deep Research function", "classification": "UNAVAILABLE", "test_ids": []},
+      {"capability": "Subagent spawn / scheduler / persistent job queue", "classification": "UNAVAILABLE", "test_ids": []},
+      {"capability": "Audio input / transcription function", "classification": "UNAVAILABLE", "test_ids": []},
+      {"capability": "Video input / generation function", "classification": "UNAVAILABLE", "test_ids": []}
+    ]
+  },
+  "runtime": {
+    "os": "Debian GNU/Linux 12 (bookworm)",
+    "kernel": "Linux 6.1.158+",
+    "architecture": "x86_64",
+    "working_directory": "/home/user/arena",
+    "python": "3.11.2",
+    "pip": "23.0.1",
+    "node": "22.22.3",
+    "npm_npx": "10.9.8",
+    "corepack": "0.34.6",
+    "yarn": "1.22.22",
+    "git": "2.39.5 (version only; no repository operation)",
+    "gh": "2.23.0 (version only; no GitHub access)",
+    "shells_on_path": ["/usr/bin/bash", "/usr/bin/sh"],
+    "other_verified_tools": ["Perl 5.36.0", "GCC 12.2.0", "GNU Make 4.3", "ImageMagick 6.9.11-60", "zip", "unzip", "tar", "curl", "wget", "jq"],
+    "relevant_packages_not_found": ["playwright", "pytest", "ruff", "black", "mypy", "Pillow", "pypdf", "PyPDF2", "pandas", "openpyxl", "python-docx", "python-pptx", "beautifulsoup4", "requests", "httpx", "markdown", "weasyprint", "selenium", "ipython", "jupyter"],
+    "resource_snapshot": {
+      "mem_total_kb": 4034452,
+      "mem_available_kb": 3769572,
+      "swap_total_kb": 0,
+      "nproc": 2,
+      "cpuset_cpus_effective": "0-1",
+      "disk_filesystem": "/dev/root ext4 21G total, 818M used, 20G available",
+      "tmp_and_workspace_same_filesystem": true,
+      "cgroup_memory_cpu_pid_max_visible": false,
+      "interpretation": "Snapshots and shell limits are not a guaranteed Arena resource quota."
+    },
+    "network": {
+      "loopback_http": {"status": "EXECUTION_VERIFIED", "result": "HTTP 200, body loopback-ok", "test_ids": ["T-007"]},
+      "bash_external_https": {"status": "PARTIALLY_VERIFIED", "result": "curl https://example.com failed TLS with OpenSSL SSL_ERROR_SYSCALL, HTTP 000, exit 35", "test_ids": ["T-006"]},
+      "web_tools_external_pages": {"status": "EXECUTION_VERIFIED", "result": "Arena, W3C PDF, and ArXiv sources retrieved via dedicated tools", "test_ids": ["T-002", "T-003", "T-004", "T-005"]}
+    }
+  },
+  "playwright_tests": [
+    {"id": "PW-001", "name": "Playwright package availability", "classification": "UNAVAILABLE", "result": "Python metadata absent; Node workspace resolution absent", "test_ids": ["T-001"]},
+    {"id": "PW-002", "name": "Exact installed version", "classification": "UNAVAILABLE", "result": "No package to version", "test_ids": ["T-001"]},
+    {"id": "PW-003", "name": "Browser executable discovery", "classification": "PARTIALLY_VERIFIED", "result": "No browser on PATH or checked common paths; not an exhaustive filesystem search", "test_ids": ["T-001"]},
+    {"id": "PW-004", "name": "Headless browser launch", "classification": "NOT_TESTED", "reason": "Blocked by missing package/browser; no independent launch failure", "test_ids": []},
+    {"id": "PW-005", "name": "Local HTML browser rendering", "classification": "NOT_TESTED", "reason": "No browser; server HTML response is not rendering", "test_ids": []},
+    {"id": "PW-006", "name": "DOM inspection", "classification": "NOT_TESTED", "test_ids": []},
+    {"id": "PW-007", "name": "Browser screenshot generation", "classification": "NOT_TESTED", "test_ids": []},
+    {"id": "PW-008", "name": "Screenshot artifact delivery", "classification": "NOT_TESTED", "test_ids": []},
+    {"id": "PW-009", "name": "Public HTTPS navigation in browser", "classification": "NOT_TESTED", "reason": "Web page tools worked but are not a browser", "test_ids": []},
+    {"id": "PW-010", "name": "Responsive viewport emulation", "classification": "NOT_TESTED", "test_ids": []},
+    {"id": "PW-011", "name": "Keyboard and pointer interaction", "classification": "NOT_TESTED", "test_ids": []},
+    {"id": "PW-012", "name": "Browser console inspection", "classification": "NOT_TESTED", "test_ids": []},
+    {"id": "PW-013", "name": "Browser network request inspection", "classification": "NOT_TESTED", "test_ids": []},
+    {"id": "PW-014", "name": "PDF generation through browser", "classification": "NOT_TESTED", "test_ids": []},
+    {"id": "PW-015", "name": "Development server preview", "classification": "PARTIALLY_VERIFIED", "result": "Server on 0.0.0.0:8765; HTTP 200 and expected markers; preview port surfaced; no browser rendering", "test_ids": ["T-011"]}
+  ],
+  "artifact_format_tests": [
+    {"format": "Markdown", "file_created": true, "file_validated": "Partial: exact text round-trip", "accessible_in_workspace": "Yes, transiently during test", "download_verified": false, "test_ids": ["T-009"]},
+    {"format": "Plain text", "file_created": true, "file_validated": "UTF-8 round-trip", "accessible_in_workspace": "Yes, transiently during test", "download_verified": false, "test_ids": ["T-009"]},
+    {"format": "JSON", "file_created": true, "file_validated": "Python json.loads and object comparison", "accessible_in_workspace": "Yes, transiently during test", "download_verified": false, "test_ids": ["T-009"]},
+    {"format": "CSV", "file_created": true, "file_validated": "Python csv.reader parsed two rows", "accessible_in_workspace": "Yes, transiently during test", "download_verified": false, "test_ids": ["T-009"]},
+    {"format": "HTML", "file_created": true, "file_validated": "Partial: HTMLParser found html/main; no browser", "accessible_in_workspace": "Yes, transiently during test", "download_verified": false, "test_ids": ["T-009"]},
+    {"format": "PDF", "file_created": true, "file_validated": "Partial: custom header/xref/object-offset/EOF checks; no independent reader", "accessible_in_workspace": "Yes, transiently during test", "download_verified": false, "test_ids": ["T-009"]},
+    {"format": "DOCX", "file_created": true, "file_validated": "Partial: ZIP CRC, required package entries, XML well-formed; not Office/schema validated", "accessible_in_workspace": "Yes, transiently during test", "download_verified": false, "test_ids": ["T-009"]},
+    {"format": "XLSX", "file_created": true, "file_validated": "Partial: ZIP CRC, required package entries, XML well-formed; not Excel/schema validated", "accessible_in_workspace": "Yes, transiently during test", "download_verified": false, "test_ids": ["T-009"]},
+    {"format": "PPTX", "file_created": true, "file_validated": "Partial: ZIP CRC, required package entries, XML well-formed; not PowerPoint/schema validated", "accessible_in_workspace": "Yes, transiently during test", "download_verified": false, "test_ids": ["T-009"]},
+    {"format": "PNG", "file_created": true, "file_validated": "ImageMagick identify returned PNG 1x1", "accessible_in_workspace": "Yes, transiently during test", "download_verified": false, "test_ids": ["T-009"]},
+    {"format": "SVG", "file_created": true, "file_validated": "Partial: XML well-formed and svg root found; no browser", "accessible_in_workspace": "Yes, transiently during test", "download_verified": false, "test_ids": ["T-009"]},
+    {"format": "ZIP", "file_created": true, "file_validated": "zipfile.testzip and member round-trip", "accessible_in_workspace": "Yes, transiently during test", "download_verified": false, "test_ids": ["T-009"]}
+  ],
+  "official_agent_mode_upload_extensions": {
+    "classification": "OFFICIAL_DOCUMENTATION",
+    "formats": ["PNG", "WebP", "JPEG", "PDF", "GIF", "TXT", "MD", "CSV", "HTML", "XML", "CSS", "JavaScript", "JSON"],
+    "source_ids": ["S-01", "S-02"],
+    "numeric_file_size_limit": "Not found in fetched pages",
+    "numeric_file_count_limit": "Unconfirmed: a search snippet said 10, but fetched article did not contain the claim",
+    "upload_ui_tested": false
+  },
+  "research_capabilities": {
+    "multi_query_search": {"classification": "EXECUTION_VERIFIED", "test_ids": ["T-002", "T-005"]},
+    "official_arena_source_discovery_and_fetch": {"classification": "EXECUTION_VERIFIED", "test_ids": ["T-002", "T-003"]},
+    "multi_chunk_page_retrieval": {"classification": "EXECUTION_VERIFIED", "test_ids": ["T-003"]},
+    "public_pdf_text_retrieval": {"classification": "PARTIALLY_VERIFIED", "test_ids": ["T-004"]},
+    "academic_search_and_first_chunk": {"classification": "PARTIALLY_VERIFIED", "test_ids": ["T-005"]},
+    "contradiction_detection": {"classification": "PARTIALLY_VERIFIED", "test_ids": ["T-003"]},
+    "uploaded_file_corpus_research": {"classification": "NOT_TESTED", "test_ids": []},
+    "dedicated_deep_research_tool": {"classification": "UNAVAILABLE", "test_ids": []},
+    "search_metadata_observed": ["result IDs", "titles", "URLs", "descriptions/snippets", "pageAge on some results"],
+    "fetch_metadata_observed": ["title", "URL", "content", "chunkIndex", "hasMore", "totalChunks"]
+  },
+  "engineering_capabilities": {
+    "python_subprocess": {"classification": "EXECUTION_VERIFIED", "test_ids": ["T-007"]},
+    "python_unittest": {"classification": "EXECUTION_VERIFIED", "test_ids": ["T-010"]},
+    "node_syntax_and_execution": {"classification": "EXECUTION_VERIFIED", "test_ids": ["T-010"]},
+    "gcc_make_build": {"classification": "EXECUTION_VERIFIED", "test_ids": ["T-010"]},
+    "local_http_server_and_preview_port": {"classification": "PARTIALLY_VERIFIED", "test_ids": ["T-011"]},
+    "pytest_lint_static_analysis_packages": {"classification": "UNAVAILABLE", "test_ids": ["T-001"]},
+    "package_installation": {"classification": "NOT_TESTED", "test_ids": []},
+    "github_integration": {"classification": "OFFICIAL_DOCUMENTATION", "session_execution": "NOT_TESTED", "test_ids": [], "source_ids": ["S-01", "S-03", "S-04", "S-05"]},
+    "git_cli_remote_operations": {"classification": "NOT_TESTED", "version_check_test_ids": ["T-001"]},
+    "browser_frontend_testing": {"classification": "NOT_TESTED", "test_ids": []}
+  },
+  "multimodal": {
+    "image_generation": {"classification": "EXECUTION_VERIFIED", "test_ids": ["T-012"]},
+    "image_editing": {"classification": "EXECUTION_VERIFIED", "test_ids": ["T-012"]},
+    "read_file_image_display": {"classification": "EXECUTION_VERIFIED", "test_ids": ["T-012"]},
+    "image_search": {"classification": "NOT_TESTED", "test_ids": []},
+    "screenshot_capture": {"classification": "UNAVAILABLE", "test_ids": []},
+    "screenshot_specific_interpretation": {"classification": "NOT_TESTED", "test_ids": []},
+    "pdf_figure_ocr": {"classification": "NOT_TESTED", "test_ids": []},
+    "audio_input_transcription": {"classification": "UNAVAILABLE", "test_ids": []},
+    "audio_generation": {"classification": "EXPOSED_TOOL", "execution": "NOT_TESTED; requires user-selected voice_id", "test_ids": []},
+    "video_understanding_generation": {"classification": "UNAVAILABLE", "test_ids": []}
+  },
+  "orchestration_and_session": {
+    "parallel_wrapper": {"classification": "PARTIALLY_VERIFIED", "test_ids": ["T-002", "T-003", "T-005"]},
+    "subagents": {"classification": "UNAVAILABLE", "test_ids": []},
+    "context_compaction": {"classification": "OFFICIAL_DOCUMENTATION", "execution": "NOT_TESTED", "source_ids": ["S-10"], "test_ids": []},
+    "workspace_within_session": {"classification": "EXECUTION_VERIFIED", "test_ids": ["T-011", "T-013", "T-014", "T-015"]},
+    "cross_session_persistence": {"classification": "NOT_TESTED", "test_ids": []},
+    "long_running_process": {"classification": "EXECUTION_VERIFIED", "test_ids": ["T-011"]},
+    "scheduler_or_durable_queue": {"classification": "UNAVAILABLE", "test_ids": []},
+    "retry_contract": {"classification": "NOT_TESTED", "test_ids": []},
+    "current_token_balance": {"classification": "NOT_TESTED", "result": "No live account meter exposed to this probe", "test_ids": []}
+  },
+  "practical_use_cases": [
+    {"id": "A", "name": "Deep technical research", "assessment": "INFERRED", "independence": "Yes for bounded accessible-source research; partial for exhaustive/high-stakes research", "evidence_refs": ["T-002", "T-003", "T-004", "T-005", "T-014"]},
+    {"id": "B", "name": "AI tools and coding-agent research", "assessment": "INFERRED", "independence": "Yes for a source-backed briefing; not a fully independent market/benchmark audit", "evidence_refs": ["T-002", "T-003", "T-005"]},
+    {"id": "C", "name": "Website audits", "assessment": "INFERRED", "independence": "Partial; page/source review possible, dynamic technical audit unverified", "evidence_refs": ["T-002", "T-006", "T-011", "PW-004", "PW-015"]},
+    {"id": "D", "name": "SEO and crawl-data processing", "assessment": "INFERRED", "independence": "Yes for modest supplied CSVs; no live crawler evidence", "evidence_refs": ["T-009"]},
+    {"id": "E", "name": "Frontend development and responsive testing", "assessment": "INFERRED", "independence": "Static/prototype work yes; automated responsive QA partial", "evidence_refs": ["T-010", "T-011", "PW-004", "PW-015"]},
+    {"id": "F", "name": "GitHub maintenance", "assessment": "INFERRED", "independence": "Not tested; docs describe connector, but user prohibited connection", "evidence_refs": ["T-001", "S-03", "S-04", "S-05"]},
+    {"id": "G", "name": "Automated code reviews", "assessment": "INFERRED", "independence": "Partial manual review; high-assurance CI/security review not established", "evidence_refs": ["T-007", "T-010", "T-013"]},
+    {"id": "H", "name": "Test generation and execution", "assessment": "INFERRED", "independence": "Yes for existing runnable dependencies; provisioning partial", "evidence_refs": ["T-010"]},
+    {"id": "I", "name": "Documentation and Markdown", "assessment": "INFERRED", "independence": "Yes for ordinary workspace documents", "evidence_refs": ["T-009", "T-013", "T-014", "T-015"]},
+    {"id": "J", "name": "PDF/spreadsheet reporting", "assessment": "INFERRED", "independence": "Partial; structural fixtures only, no application validation", "evidence_refs": ["T-009"]},
+    {"id": "K", "name": "Screenshot capture and visual QA", "assessment": "INFERRED", "independence": "No automated capture; partial image inspection", "evidence_refs": ["T-011", "T-012", "PW-007", "PW-008"]},
+    {"id": "L", "name": "Static website development", "assessment": "INFERRED", "independence": "Small static sites and local HTTP preview yes; deployment unverified", "evidence_refs": ["T-009", "T-010", "T-011"]},
+    {"id": "M", "name": "Agent workflow development", "assessment": "INFERRED", "independence": "Bounded orchestration yes; always-on scheduler/service not exposed", "evidence_refs": ["T-002", "T-011"]},
+    {"id": "N", "name": "Large uploaded datasets", "assessment": "INFERRED", "independence": "Not established for large data; modest chunked data only", "evidence_refs": ["T-001", "T-009"]},
+    {"id": "O", "name": "Coding-agent handoff packages", "assessment": "INFERRED", "independence": "Preparation yes; download/transfer unverified", "evidence_refs": ["T-009", "T-013", "T-014", "T-015"]}
+  ],
+  "official_sources": [
+    {"id": "S-01", "url": "https://help.arena.ai/articles/5432423882-how-to-use-agent-mode", "title": "How to use Agent Mode on Arena", "classification": "OFFICIAL_DOCUMENTATION", "retrieval": "All 3 chunks fetched", "used_for": ["visible product claims", "upload formats", "workspace download", "model transparency"]},
+    {"id": "S-02", "url": "https://help.arena.ai/articles/5595418316-arena-how-to-file-upload", "title": "How to Upload Files into Arena", "classification": "OFFICIAL_DOCUMENTATION", "retrieval": "Full page fetched", "used_for": ["upload formats"]},
+    {"id": "S-03", "url": "https://arena.ai/blog/coding-in-agent-mode", "title": "Coding in Agent Mode: From Idea to Shipping with GitHub", "classification": "OFFICIAL_DOCUMENTATION", "retrieval": "Both chunks fetched; published 2026-08-24, updated 2026-08-26", "used_for": ["GitHub product announcement"]},
+    {"id": "S-04", "url": "https://arena.ai/company/product-changelog", "title": "Product Changelog", "classification": "OFFICIAL_DOCUMENTATION", "retrieval": "Page fetched; August 26, 2026 entry", "used_for": ["GitHub launch status comparison"]},
+    {"id": "S-05", "url": "https://help.arena.ai/articles/1492254790-arena-experiments-github-integration-in-agent-mode", "title": "Arena Experiments: GitHub Integration in Agent Mode", "classification": "OFFICIAL_DOCUMENTATION", "retrieval": "Search excerpt returned; page fetch returned Page Not Found", "used_for": ["staleness/status discrepancy"]},
+    {"id": "S-06", "url": "https://help.arena.ai/articles/1645798556-lmarena-how-to-something-went-wrong-with-this-response-error-message?st_source=ai_mode", "title": "Troubleshooting response error", "classification": "PARTIALLY_VERIFIED", "retrieval": "Search excerpt mentioned 10 uploads; fetched page did not confirm", "used_for": ["unconfirmed upload-count warning"]},
+    {"id": "S-07", "url": "https://help.arena.ai/articles/5476762589-credit-sytem", "title": "How to understand Arena's Credit System", "classification": "OFFICIAL_DOCUMENTATION", "retrieval": "Full page fetched; last updated 9 days ago", "used_for": ["daily-credit mechanics"]},
+    {"id": "S-08", "url": "https://help.arena.ai/articles/3295820808-arena-troubleshooting-daily-usage-limits", "title": "Arena Troubleshooting: Daily Usage Limits", "classification": "OFFICIAL_DOCUMENTATION", "retrieval": "Full page fetched; last updated 3 months ago", "used_for": ["reset/rollout context"]},
+    {"id": "S-09", "url": "https://help.arena.ai/articles/8931786544-arena-how-to-rate-limit", "title": "Arena Troubleshooting: Rate Limit", "classification": "OFFICIAL_DOCUMENTATION", "retrieval": "Full page fetched; last updated 6 months ago", "used_for": ["per-model/overall rate limits"]},
+    {"id": "S-10", "url": "https://help.arena.ai/articles/3975292349-arena-troubleshooting-session-token-limits", "title": "Arena Troubleshooting: Session Token Limits", "classification": "OFFICIAL_DOCUMENTATION", "retrieval": "Full page fetched; last updated 3 months ago", "used_for": ["context compaction and session limits"]},
+    {"id": "S-11", "url": "https://help.arena.ai/articles/3765052346-privacy-policy", "title": "Arena: Privacy Policy", "classification": "OFFICIAL_DOCUMENTATION", "retrieval": "All 7 chunks fetched; printed effective date 2025-12-16", "used_for": ["user content, third-party providers, public sharing, retention"]},
+    {"id": "S-12", "url": "https://help.arena.ai/articles/9130232616-how-to-delete-your-chat-sessions-and-data-from-arena", "title": "How to Delete Your Chat Sessions in Arena", "classification": "OFFICIAL_DOCUMENTATION", "retrieval": "Full page fetched; last updated 3 days ago", "used_for": ["deletion queue/retention"]},
+    {"id": "S-13", "url": "https://arena.ai/blog/agent-mode", "title": "Empowering Users to Get More Done With Agent Mode", "classification": "OFFICIAL_DOCUMENTATION", "retrieval": "Both chunks fetched; published 2026-06-04, updated 2026-06-05", "used_for": ["multi-step workflow description"]},
+    {"id": "S-14", "url": "https://arena.ai/blog/agent-arena-methodology", "title": "Agent Arena: Causal Evaluation of Agents in the Real World", "classification": "OFFICIAL_DOCUMENTATION", "retrieval": "First chunk fetched; more chunks available", "used_for": ["agent leaderboard methodology context"]},
+    {"id": "S-15", "url": "https://www.w3.org/WAI/ER/tests/xhtml/testfiles/resources/pdf/dummy.pdf", "title": "Dummy PDF file", "classification": "EXECUTION_VERIFIED", "retrieval": "One page parsed", "used_for": ["PDF retrieval smoke test"], "test_ids": ["T-004"]},
+    {"id": "S-16", "url": "https://arxiv.org/html/2510.24358v1", "title": "Automatically Benchmarking LLM Code Agents through Agent-driven Annotation and Evaluation", "classification": "PARTIALLY_VERIFIED", "retrieval": "First of 9 chunks fetched", "used_for": ["academic-search smoke test"]},
+    {"id": "S-17", "url": "https://help.arena.ai/articles/1811908126-arena-experiments-agent-mode", "title": "Arena Experiments: Agent Mode", "classification": "PARTIALLY_VERIFIED", "retrieval": "Search result observed; fetch returned Page Not Found", "used_for": ["staleness signal"]}
+  ],
+  "probe_index": [
+    {"id": "T-001", "name": "Runtime/packages/resources", "classification": "EXECUTION_VERIFIED"},
+    {"id": "T-002", "name": "Multi-query search", "classification": "EXECUTION_VERIFIED"},
+    {"id": "T-003", "name": "Official Arena page retrieval", "classification": "EXECUTION_VERIFIED"},
+    {"id": "T-004", "name": "Public PDF retrieval", "classification": "EXECUTION_VERIFIED"},
+    {"id": "T-005", "name": "Academic page search/retrieval", "classification": "PARTIALLY_VERIFIED"},
+    {"id": "T-006", "name": "Direct shell HTTPS", "classification": "PARTIALLY_VERIFIED"},
+    {"id": "T-007", "name": "Subprocess and loopback", "classification": "EXECUTION_VERIFIED"},
+    {"id": "T-008", "name": "cgroup observations", "classification": "EXECUTION_VERIFIED"},
+    {"id": "T-009", "name": "Synthetic file formats", "classification": "EXECUTION_VERIFIED"},
+    {"id": "T-010", "name": "Python/Node/GCC/Make smoke tests", "classification": "EXECUTION_VERIFIED"},
+    {"id": "T-011", "name": "Local server/process lifecycle", "classification": "EXECUTION_VERIFIED"},
+    {"id": "T-012", "name": "Image generation/edit/inspection", "classification": "EXECUTION_VERIFIED"},
+    {"id": "T-013", "name": "Workspace write/edit/read", "classification": "EXECUTION_VERIFIED"},
+    {"id": "T-014", "name": "Main inventory viewer presentation", "classification": "EXECUTION_VERIFIED", "test_ids": ["T-014"]},
+    {"id": "T-015", "name": "Final four-file validation after all report edits", "classification": "EXECUTION_VERIFIED", "test_ids": ["T-015"]}
+  ],
+  "safety_notes": [
+    "No GitHub connection or remote repository operation was performed.",
+    "No private account was accessed.",
+    "No environment-variable values or credentials were printed/copied.",
+    "No dependency, browser, or system package was installed.",
+    "No destructive commands were run; only session-created temporary probes were cleaned up."
+  ]
+}
