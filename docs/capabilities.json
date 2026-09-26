@@ -1,0 +1,97 @@
+{
+  "schema_version": "1.0",
+  "as_of": "2026-09-26",
+  "scope": "Observed Arena Agent Mode sessions; not guaranteed across accounts/sessions.",
+  "evidence_rules": "See docs/evidence.md; OBSERVED is not EXECUTED_NOW.",
+  "capabilities": [
+    {
+      "id": "web.search_fetch",
+      "status": "OBSERVED",
+      "evidence": [
+        "docs/archive/initial-probe/ARENA_AGENT_PROBE_RESULTS.md#research-and-document-retrieval"
+      ]
+    },
+    {
+      "id": "research.deep",
+      "status": "PARTIAL",
+      "evidence": [
+        "docs/archive/probes/research.md"
+      ]
+    },
+    {
+      "id": "runtime.shell_python_node",
+      "status": "OBSERVED",
+      "evidence": [
+        "docs/archive/initial-probe/ARENA_AGENT_PROBE_RESULTS.md"
+      ]
+    },
+    {
+      "id": "runtime.package_install",
+      "status": "OBSERVED",
+      "evidence": [
+        "docs/archive/probes/github-connected-session.md"
+      ]
+    },
+    {
+      "id": "local_http_server",
+      "status": "OBSERVED",
+      "evidence": [
+        "docs/archive/probes/github-connected-session.md"
+      ]
+    },
+    {
+      "id": "github.git_gh_pr",
+      "status": "OBSERVED",
+      "evidence": [
+        "https://github.com/FullThrottle83/arena/pull/2",
+        "https://github.com/FullThrottle83/arena/pull/3"
+      ]
+    },
+    {
+      "id": "github.unique_branch_per_chat",
+      "status": "DISPROVEN_IN_TEST",
+      "evidence": [
+        "https://github.com/FullThrottle83/arena/pull/2"
+      ]
+    },
+    {
+      "id": "browser.preinstalled",
+      "status": "NOT_FOUND_IN_TESTED_BASELINE",
+      "evidence": [
+        "docs/archive/probes/browser-probe.json"
+      ]
+    },
+    {
+      "id": "browser.local_playwright",
+      "status": "OBSERVED_AFTER_INSTALL",
+      "evidence": [
+        "docs/archive/probes/browser-probe.json",
+        "docs/archive/probes/browser-fixture.png"
+      ]
+    },
+    {
+      "id": "browser.external_public_navigation",
+      "status": "FAILED_ONE_TEST",
+      "evidence": [
+        "docs/archive/probes/browser-probe.json#B14"
+      ]
+    },
+    {
+      "id": "site.lighthouse_cwv_wcag",
+      "status": "NOT_TESTED",
+      "evidence": []
+    },
+    {
+      "id": "files.pdf_xlsx",
+      "status": "PARTIAL_STRUCTURE_ONLY",
+      "evidence": [
+        "docs/archive/probes/validation-results.md"
+      ]
+    },
+    {
+      "id": "limits.numeric_quota",
+      "status": "UNKNOWN",
+      "evidence": []
+    }
+  ]
+}
