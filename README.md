@@ -2,7 +2,7 @@
 
 A concise, evidence-based reference for using [Arena Agent Mode](https://arena.ai/agent) for **any project**: coding, GitHub changes, research, static-site QA and file delivery.
 
-**Start here:** [Agent instructions](AGENTS.md) → [Capability matrix](docs/capabilities.md) → [Workflows](docs/workflows.md). Read only the topic you need. The detailed 2026-09-26 experiments and long research reports are archived, not loaded by default.
+**Start here:** [Data handling](docs/data-handling.md) → [Agent instructions](AGENTS.md) → [Capability matrix](docs/capabilities.md) → [Workflows](docs/workflows.md). Read only the topic you need. The detailed 2026-09-26 experiments and long research reports are archived, not loaded by default.
 
 ## Current observed capabilities (2026-09-26)
 
@@ -21,6 +21,8 @@ A concise, evidence-based reference for using [Arena Agent Mode](https://arena.a
 | Public website audit | [Limitations](docs/limitations.md), [Browser](docs/browser.md) |
 | Assess a new tool or claim | [Evidence rules](docs/evidence.md), [Capability matrix](docs/capabilities.md) |
 | Reusable prompts | [prompts/](prompts/README.md) |
+| Data rights / customer data | [Data handling](docs/data-handling.md) |
+| Task usefulness & repeatability | [Benchmark protocol](docs/benchmark.md) |
 
 ## Repository layout
 
