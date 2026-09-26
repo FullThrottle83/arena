@@ -123,15 +123,28 @@ class TestSecretRedaction(unittest.TestCase):
         self.assertNotIn("synthetic-user", out)
         self.assertTrue(out.endswith("@host.invalid/path"))
 
-    def test_authorization_header_is_marked_and_still_flagged_by_the_scan(self):
+    def test_authorization_header_value_is_fully_redacted(self):
         out = inventory.redact(FAKE_AUTH_HEADER)
-        self.assertIn("authorization: <REDACTED>", out)
-        self.assertNotIn("Bearer", out)
-        # Known limitation, pinned deliberately: this pattern replaces only the
-        # scheme word, so trailing credential text can survive redact(). The
-        # structural scan still reports the line (see below), which is why
-        # validation.json can flag what redaction missed.
+        self.assertEqual(out, "authorization: <REDACTED>")
+        self.assertNotIn("syntheticbearervalue", out)
         self.assertEqual(inventory.find_secrets_in_text(FAKE_AUTH_HEADER), ["AUTH_HEADER"])
+        for scheme in ("Bearer", "Basic", "Token"):
+            with self.subTest(scheme=scheme):
+                original = f"prefix\\nAuthorization: {scheme} syntheticvalue\\nnext line"
+                redacted = inventory.redact(original)
+                self.assertNotIn("syntheticvalue", redacted)
+                self.assertIn("authorization: <REDACTED>", redacted)
+                self.assertIn("next line", redacted)
+
+    def test_authorization_header_is_redacted_in_command_output(self):
+        runner = inventory.Runner()
+        result = runner.run(
+            [sys.executable, "-c", "print('Authorization: Bearer syntheticbearervalue')"],
+            label="synthetic authorization header", timeout=5,
+        )
+        self.assertEqual(result["exit_code"], 0)
+        self.assertNotIn("syntheticbearervalue", json.dumps(result))
+        self.assertIn("authorization: <REDACTED>", result["stdout"])
 
     def test_structural_credential_assignment_is_redacted(self):
         out = inventory.redact(FAKE_ASSIGNMENT)
@@ -493,6 +506,8 @@ class TestPersistenceMarkerSemantics(unittest.TestCase):
                 self.assertIs(entry["same_session_self_reference"], False)
                 self.assertIs(entry["usable_for_cross_session_comparison"], True)
                 self.assertEqual(entry["previous_fingerprints"], self.FINGERPRINTS)
+                self.assertIs(entry["fingerprint_match"]["SYSTEM"], False)
+                self.assertIs(entry["environment_changed_since_previous"], True)
                 self.assertIsNotNone(entry["age_hours"])
                 self.assertRegex(entry["previous_collected_utc"], r"^\d{4}-\d{2}-\d{2}T")
 
@@ -505,6 +520,7 @@ class TestPersistenceMarkerSemantics(unittest.TestCase):
             with self.subTest(marker=label):
                 self.assertIs(entry["same_session_self_reference"], True)
                 self.assertIs(entry["usable_for_cross_session_comparison"], False)
+                self.assertIsNone(entry["environment_changed_since_previous"])
         self.assertTrue(result["cross_session_persistence_conclusion"].startswith("DEFERRED"))
 
     def test_unreadable_marker_is_reported_and_replaced(self):
@@ -518,31 +534,25 @@ class TestPersistenceMarkerSemantics(unittest.TestCase):
         self.assertIn("no readable marker", entry["note"])
         self.assertEqual(read_json(self.home / inventory.MARKER_HOME)["session_id"], "session-one")
 
-    def test_drift_flag_is_always_true_with_the_payload_main_supplies_known_defect(self):
-        # Characterization test — pins current behaviour, it is NOT the intended
-        # semantics. collect_persistence() compares `previous["fingerprints"][k]`
-        # against `payload[k]` for k in the *outer* payload, so with the dict
-        # main() passes (build_fingerprints() output + session_id) every key
-        # mismatches and environment_changed_since_previous is always True, even
-        # when nothing changed. session_id is compared too, although
-        # fingerprints deliberately exclude it. Reported as a finding; not fixed
-        # here because this task adds coverage only.
+    def test_unchanged_fingerprints_do_not_report_environment_drift(self):
         unchanged = dict(self.FINGERPRINTS)
         self.collect("session-one", self.payload("session-one", unchanged))
         entry = self.collect("session-two", self.payload("session-two", unchanged))["previous_markers"]["home"]
+        self.assertIs(entry["usable_for_cross_session_comparison"], True)
+        self.assertEqual(entry["fingerprint_match"], {key: True for key in unchanged})
+        self.assertIs(entry["environment_changed_since_previous"], False)
+        self.assertNotIn("session_id", entry["fingerprint_match"])
+
+    def test_missing_or_changed_fingerprint_reports_environment_drift(self):
+        missing = dict(self.FINGERPRINTS)
+        missing.pop("NODE")
+        self.collect("session-one", self.payload("session-one", missing))
+        changed = {**self.FINGERPRINTS, "SYSTEM": "0" * 64}
+        entry = self.collect("session-two", self.payload("session-two", changed))["previous_markers"]["home"]
+        self.assertEqual(entry["fingerprint_match"]["SYSTEM"], False)
+        self.assertEqual(entry["fingerprint_match"]["NODE"], False)
+        self.assertTrue(all(entry["fingerprint_match"][key] for key in ("PYTHON", "EXECUTABLES", "COMBINED")))
         self.assertIs(entry["environment_changed_since_previous"], True)
-        self.assertEqual(sorted(entry["fingerprint_match"]),
-                         ["algorithm", "excluded_from_fingerprints", "field_documentation", "fingerprints",
-                          "payloads", "schema", "session_id", "usage"])
-        self.assertFalse(any(entry["fingerprint_match"].values()))
-        # Given the flat shape the marker file itself stores, unchanged
-        # fingerprints do compare equal — but session_id alone still forces the
-        # drift flag to True.
-        flat = self.collect("session-three", {"session_id": "session-three", **unchanged})["previous_markers"]["home"]
-        self.assertIs(flat["fingerprint_match"]["SYSTEM"], True)
-        self.assertTrue(all(value for key, value in flat["fingerprint_match"].items() if key != "session_id"))
-        self.assertIs(flat["fingerprint_match"]["session_id"], False)
-        self.assertIs(flat["environment_changed_since_previous"], True)
 
     @unittest.skipUnless((REPO_ROOT / ".git").is_dir(), "requires a git checkout")
     def test_repository_marker_is_deliberately_untracked(self):
