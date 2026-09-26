@@ -13,39 +13,61 @@ The separate Drive research document contains broader claims. Its statements abo
 
 Each new investigation must preserve this distinction: **documented product feature ≠ exposed tool ≠ executable operation ≠ deliverable artifact**.
 
-## Run order
+## Run order: GitHub connected in every Arena session
 
-Run **Arena A, B, and C in separate sessions**. Connect GitHub only in Arena A. Start **Gemini DR-1 through DR-6 simultaneously**, each in its own topic lane. Do not launch 20 overlapping general investigations; use their findings to choose second-wave gaps.
+Run **Arena A, B, and C in three distinct GitHub-connected Agent Mode chats**, which can be started concurrently if the account's live usage/rate limits permit it. Each session selects `FullThrottle83/arena`, starts from `main`, works on its **own branch**, edits **non-overlapping paths**, and creates **at most one PR**. Do not work in three prompts inside one chat: Arena's help currently specifies one PR per session. Do not merge/close any PR while its session still needs to push; review all diffs before merging.
+
+Each session must explicitly verify GitHub is toggled on and the repository is selected. A connected session has its own sandbox clone. If the UI chooses a generated working-branch name, record that real name rather than inventing a branch. Request a draft PR if the UI supports it, otherwise an ordinary PR marked "not ready for merge." Never push directly to `main`.
+
+Suggested non-overlapping ownership:
+
+| Session | Branch name if selectable | Owned paths | Deliverable |
+| --- | --- | --- | --- |
+| A — GitHub | `arena/probe-github` | `docs/probes/github-connected-session.md` | One PR with GitHub workflow findings |
+| B — Browser | `arena/probe-browser` | `docs/probes/browser-probe.md`, `docs/probes/browser-probe.json`, optional `docs/probes/assets/browser-fixture.png` | One PR with real browser evidence or blocker |
+| C — Research/artifacts | `arena/probe-artifacts` | `docs/probes/research-artifacts/` only | One PR with sources, generated fixtures and validation |
+
+Run **Gemini DR-1 through DR-6 simultaneously** in separate topic lanes. Avoid launching 20 copies of generic research.
 
 ### Arena A — GitHub-connected coding workflow
 
-Connect only the `FullThrottle83/arena` repository using Arena's GitHub Connector. Work on a new branch, not `main`.
+Open a fresh GitHub-connected Arena Agent session and select `FullThrottle83/arena`.
 
 ```text
-Investigate the GitHub-connected capabilities of this exact Arena Agent Mode session using the connected FullThrottle83/arena repo. Do not alter existing files, merge, or push to main. Identify actual exposed tool calls and the cloned workspace. Read README.md and docs/arena-agent-mode-research-2026-09-26.md. Create one harmless documentation file docs/probes/github-connected-session.md containing the visible repo/branch, exact commands and tool operations, results, permissions that can be safely observed, current limitations, and whether the diff UI works. Run a Markdown/file-existence check. If GitHub delivery is supported, commit to the working branch and create a draft PR for review. Do not invent a PR URL or claim a push succeeded without actual confirmation. Record whether the session exposes a dedicated GitHub tool that the unconnected session did not. Stop after returning a real PR link or an explicit blocker.
+Use the GitHub Connector for the already-selected FullThrottle83/arena repository. Work from main on a dedicated working branch (suggested: arena/probe-github); if Arena assigns a different branch, record it. Do not push to main, touch B/C owned paths, overwrite existing documents, merge or close a PR. Inspect the live connected repo and exact available GitHub operations, sandbox clone, selected branch, and Diff/Checks panels. Read README.md and docs/arena-agent-mode-research-2026-09-26.md. Create ONLY docs/probes/github-connected-session.md with the exact tools/commands used, observed results, safe permission observations, repository and branch details, diff behavior, and what is still unverified. Verify the file exists and review the diff. Commit and push it on this session's branch; create this session's one PR (draft if available). Return its REAL URL or the exact blocker. Stop while the PR is still open.
 ```
 
-**Acceptance:** actual branch, diff, commit and draft PR or an accurately described failure. Do not merge automatically.
+**Acceptance:** observed branch and diff; successful commit/push/PR or a clearly documented failure.
 
-### Arena B — Playwright/browser capability by environment
+### Arena B — Browser/Playwright investigation with GitHub delivery
 
-Use a new session without GitHub. Do not install anything in the initial probe.
+Open a DIFFERENT GitHub-connected Arena Agent session and select the same repo, starting from main. Do not install anything in the initial probe.
 
 ```text
-Perform a narrow forensic browser capability probe in THIS Arena Agent Mode session. Identify whether a browser automation tool is exposed. Inspect Python and Node package metadata for Playwright/Puppeteer/Selenium, check browser executable paths, and record exact command outputs. If an executable and driver already exist, attempt a bounded headless launch; render a small local HTML fixture, inspect its h1, capture a real PNG screenshot, then check whether the output file can be presented. Test external navigation only after local tests pass, and distinguish shell networking from native page-retrieval tools. Do not confuse the preview iframe or image generation with actual browser automation. Do not install packages or browser binaries. Write docs/probes/browser-probe.md and browser-probe.json in the workspace. Mark dependency-blocked checks NOT_TESTED, not FAIL. Stop with exact evidence and a separate optional installation plan that requires my approval.
+Use the connected FullThrottle83/arena repo on a separate branch (suggested: arena/probe-browser). Own ONLY docs/probes/browser-probe.md, docs/probes/browser-probe.json, and optionally docs/probes/assets/browser-fixture.png. Do not touch Session A/C files or main. Inspect the ACTUAL exposed browser-specific tools, Python/Node metadata for Playwright/Puppeteer/Selenium, available browser executables and paths. Record exact results. If a compatible driver and executable exist, attempt a bounded headless launch, render a harmless LOCAL fixture, check its h1, capture an actual PNG screenshot, and validate its signature/dimensions. Do not pretend a preview iframe or generated image is a screenshot. Test public navigation only after local tests pass; distinguish shell networking from native page retrieval. No downloads, browser installs, package installs or sandbox-flag bypasses without my separate approval. Mark blocked dependent checks NOT_TESTED. Commit findings and any genuine small image artifact to this branch and create one PR (draft if available). Provide real PR URL or exact blocker; do not merge/close the PR.
 ```
 
-**Acceptance:** actual import/path/launch outcomes and no fabricated screenshots. Compare with the first session, which did not have the packages/binaries.
+**Acceptance:** actual probe evidence; screenshot only if produced by a real browser; one isolated PR.
 
-### Arena C — research and artifact delivery
+### Arena C — Research and artifact delivery with GitHub
 
-Use a new session without GitHub.
+Open a THIRD GitHub-connected Arena Agent session and select `FullThrottle83/arena` from main.
 
 ```text
-Prove that Arena can deliver a usable source-grounded technical research package. Research the official Arena Agent Mode and coding documentation, retrieve at least three distinct first-party pages, keep URLs and access dates, and note one disagreement or unresolved fact where relevant. Create research.md, sources.json, sample.pdf, and sample.csv using supported tools. Validate Markdown content, JSON syntax, CSV parsing, and PDF structure. Present each generated file through the workspace/file tool where available. Do not claim that I downloaded the files until I confirm it in the UI. Explain the no-GitHub ZIP download path and the limitations of your observed toolset. Return file paths, validation outputs and outstanding checks.
+Use the connected FullThrottle83/arena repo on a separate branch (suggested: arena/probe-artifacts). Work ONLY under docs/probes/research-artifacts/. Do not modify Session A/B files or main. Research Arena Agent Mode using at least three distinct first-party pages and preserve URLs and access dates. Create research.md, sources.json, sample.csv, and a small sample.pdf if real binary PDF generation and GitHub delivery are possible. Produce a validation-results.md with genuine Markdown checks, JSON parse, CSV readback and PDF integrity result; never claim application-level PDF validity from a header-only check. Verify all intended files are in the Git diff; commit and push them to your working branch and open this session's single PR (draft if supported). GitHub is the PRIMARY delivery path; do not rely on a ZIP download. If an artifact cannot be committed, mark it UNDELIVERED and preserve its metadata, rather than inventing a link. Return the actual PR URL or exact blocker. Do not merge/close the PR.
 ```
 
-**Acceptance:** real files; source ledger; demonstrated downstream presentation. User manually confirms ZIP download.
+**Acceptance:** source-grounded files and validation, a real PR, clear classification of binary artifact delivery.
+
+### Parallel coordination and merging
+
+- Start each task in a **separate chat**, not one shared conversation; each gets its own sandbox and working branch.
+- Confirm GitHub is enabled in EACH chat and each sees the same repo. The platform may still apply account-level usage/rate limits; simultaneous completion is not guaranteed.
+- Branches must not share file paths. All three PRs should initially target `main`.
+- Preserve each PR unmerged while its Arena session is active; Arena warns that closing/merging ends GitHub push capability for that session.
+- Review PRs and merge **one at a time** only after each is finished; refresh/rebase if GitHub reports a conflict.
+- One PR per chat is the currently documented constraint. If a task needs another independent PR, start a fresh chat.
+- A later consolidation session may read the merged reports and create `docs/capability-matrix.md`; it should use a fresh branch/PR.
 
 ## Shared Gemini Deep Research requirements
 
@@ -93,7 +115,7 @@ Output: `ARENA_DR_06_LIMITS_AND_FALLBACKS.md`.
 
 After the first wave, create `docs/capability-matrix.md` with columns:
 
-`capability | official_source | arena_unconnected | arena_github_connected | tool_or_package | test_id | output_artifact | confidence | recommended_workload | remaining_gap`.
+`capability | official_source | arena_baseline_unconnected | arena_github_a | arena_github_b | arena_github_c | tool_or_package | test_id | output_artifact | confidence | recommended_workload | remaining_gap`.
 
 Also record which work requires live browser evidence, native web retrieval, a repo, a manual UI step or explicit authorization. Decide ownership of tasks only after these data are available.
 
