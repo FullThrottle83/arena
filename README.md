@@ -1,39 +1,37 @@
-# Arena Agent Mode — field guide
+# Arena Agent Mode — human-initiated delegation kit
 
-A concise, evidence-based reference for using [Arena Agent Mode](https://arena.ai/agent) for **any project**: coding, GitHub changes, research, static-site QA and file delivery.
+**Purpose:** give an AI assistant a lightweight, evidence-based way to prepare work for Arena Agent Mode and review the result. Arena is a supplementary research/coding executor, **not** an automated API backend.
 
-**Start here:** [Data handling](docs/data-handling.md) → [Agent instructions](AGENTS.md) → [Capability matrix](docs/capabilities.md) → [Workflows](docs/workflows.md). Read only the topic you need. The detailed 2026-09-26 experiments and long research reports are archived, not loaded by default.
+**Important:** [Arena Terms §5](https://help.arena.ai/articles/5629909088-terms-of-use) restrict automated/programmatic access to the Arena service. A delegating assistant may prepare a GitHub task brief and later review its PR, but **the user opens Arena, connects the selected repo and submits the task manually**. Do not script Arena's UI, scrape credits or invent an Agent Mode API. Read the [data policy](docs/data-handling.md) before linking a repository.
 
-## Current observed capabilities (2026-09-26)
+## Two different readers
 
-- **Verified in tested sessions:** native web search/page retrieval, bash, Python/Node, npm/pip from reachable registries, local HTTP servers, file creation, image generation/editing, and GitHub commit/push/PR via `git`/`gh`.
-- **Browser proven on a local fixture after installation:** Playwright Core 1.63.0 + npm-bundled Chromium 153.0.8010.0; real DOM/JS, screenshots, responsive checks, interactions, console, requests and PDF. See [browser recipe](docs/browser.md) and [evidence](docs/evidence.md).
-- **Not proven:** arbitrary public-site navigation in Chromium (one test failed with `ERR_CONNECTION_CLOSED`), full WCAG/Lighthouse/CWV audits, unlimited quotas, cross-session `/tmp` persistence, complete long-form Deep Research, or general compatibility across all Arena sessions.
+| Your role | Read first | Responsibility |
+|---|---|---|
+| Claude, ChatGPT, Codex, Gemini, etc. **preparing and reviewing a task** | [DELEGATE.md](DELEGATE.md) | Choose bounded work, write a brief, give the user one launch instruction, review actual PR/diff/tests. |
+| **Arena Agent** executing a task in its connected repo | [EXECUTOR.md](EXECUTOR.md) | Check actual branch/permissions, run the work, deliver a short result file and PR. |
+| Exploring actual Arena capabilities | [AGENTS.md](AGENTS.md) → [capabilities](docs/capabilities.md) | Distinguish observed operations from documentation and untested claims. |
 
-**Do not mistake a package, model claim, AI-generated report, HTTP response or generated image for execution evidence.** Capabilities can differ between sessions and over time.
+## Manual handoff, end to end
 
-## Pick a workflow
+1. Delegator writes `.arena/tasks/0007.md` (or an issue) in the **target project repo**, following [templates/task.md](templates/task.md).
+2. User opens [Arena Agent Mode](https://arena.ai/agent), connects that same project repo and sends the one-line [launch instruction](EXECUTOR.md#one-line-launch).
+3. Arena reads the brief, performs bounded work on the **actual assigned branch**, runs checks and delivers a PR and `.arena/results/0007.md`.
+4. Delegator reads the [result](templates/result.md), actual diff and test evidence, and tells the user whether acceptance criteria were met. User decides whether to merge.
 
-| Task | Read |
-|---|---|
-| GitHub coding / Astro / UI tests | [Workflows](docs/workflows.md), [GitHub](docs/github.md), [Browser](docs/browser.md) |
-| Research / source verification | [Research](docs/research.md) |
-| Public website audit | [Limitations](docs/limitations.md), [Browser](docs/browser.md) |
-| Assess a new tool or claim | [Evidence rules](docs/evidence.md), [Capability matrix](docs/capabilities.md) |
-| Reusable prompts | [prompts/](prompts/README.md) |
-| Data rights / customer data | [Data handling](docs/data-handling.md) |
-| Task usefulness & repeatability | [Benchmark protocol](docs/benchmark.md) |
+No step requires programmatic access to Arena itself. GitHub is the coordination and artifact channel.
 
-## Repository layout
+## Where Arena has been useful
 
-- `AGENTS.md` — short, portable instructions for agents using this knowledge base.
-- `docs/` — curated facts, recipes, limitations and open questions.
-- `prompts/` — ready-to-run, task-specific prompts.
-- `docs/archive/` — historical probe logs and original reports. Archival content is **not** a current capability guarantee.
-- [PR #2](https://github.com/FullThrottle83/arena/pull/2) and [PR #3](https://github.com/FullThrottle83/arena/pull/3) — original experimental delivery history.
+- GitHub commit/push/PR, native public research, npm/pip, Python/Node and local servers were demonstrated.
+- Local Chromium checks were demonstrated both on a synthetic fixture and on the real generated **Design Spells static build** ([PR #43](https://github.com/FullThrottle83/design-spells/pull/43)). Its `npm run build` executes `python3 scripts/build.py`; **this was not proof of an Astro runtime or an Astro CLI build**.
+- A 14-source research exercise with a 36-claim ledger is in [PR #6](https://github.com/FullThrottle83/arena/pull/6); those verification counts are the agent's recorded checks, not an independent accuracy score.
+- The browser package emitted effective security-bypass flags internally during the Design Spells benchmark, despite the script not supplying them. See [browser caveat](docs/browser.md).
 
-## Using this from another project
+**Not established:** unrestricted public browser access, exact Agent Mode quotas, a fixed model identity, customer-data confidentiality, or full Lighthouse/WCAG/CWV compliance. Read [limitations](docs/limitations.md) and [modes](docs/modes.md).
 
-Tell your agent: “Read `https://github.com/FullThrottle83/arena/blob/main/AGENTS.md` and the linked capability docs before planning. This repo is a reference, **not** the target codebase. Verify tools and permissions in your own Arena session; work only in my explicitly selected project repository.”
+## Reference library
 
-Last curated: 2026-09-26. This is a field guide, not an official Arena product specification.
+[Capability matrix](docs/capabilities.md) · [GitHub](docs/github.md) · [Research](docs/research.md) · [Browser](docs/browser.md) · [Data handling](docs/data-handling.md) · [Benchmark](docs/benchmark.md) · [Lightweight job ledger](docs/ledger.csv) · [Historical evidence](docs/archive/README.md)
+
+Last curated: 2026-09-26. This is an independent field guide, not official product documentation.

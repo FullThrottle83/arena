@@ -1,6 +1,6 @@
 # Instructions for agents using this reference
 
-Purpose: learn what **Arena Agent Mode has demonstrably done**, decide whether it suits the current project, then verify the current session before acting. This reference does not grant permission to edit another repo.
+Purpose: learn what **Arena Agent Mode has demonstrably done**, then check your role. **Delegating assistant:** read [DELEGATE.md](DELEGATE.md). **Arena executor:** read [EXECUTOR.md](EXECUTOR.md). Human initiation is required: [Arena Terms §5](https://help.arena.ai/articles/5629909088-terms-of-use) restrict automated/programmatic access to its service. This reference does not grant permission to edit another repo.
 
 1. **Data gate first:** read [docs/data-handling.md](docs/data-handling.md). Use synthetic/public material by default; never submit credentials, personal data or confidential client material. Then read [docs/capabilities.md](docs/capabilities.md) and only the relevant [workflow](docs/workflows.md). Open archived source logs only when you need the evidence.
 2. Separate **officially documented**, **tool exposed**, **executed in a past session**, **executed now**, **failed**, and **not tested**. Do not translate past success into a guarantee for the current session.
