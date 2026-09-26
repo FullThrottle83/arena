@@ -130,7 +130,7 @@ class TestSecretRedaction(unittest.TestCase):
         self.assertEqual(inventory.find_secrets_in_text(FAKE_AUTH_HEADER), ["AUTH_HEADER"])
         for scheme in ("Bearer", "Basic", "Token"):
             with self.subTest(scheme=scheme):
-                original = f"prefix\\nAuthorization: {scheme} syntheticvalue\\nnext line"
+                original = f"prefix\nAuthorization: {scheme} syntheticvalue\nnext line"
                 redacted = inventory.redact(original)
                 self.assertNotIn("syntheticvalue", redacted)
                 self.assertIn("authorization: <REDACTED>", redacted)
