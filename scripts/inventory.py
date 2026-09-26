@@ -70,7 +70,7 @@ _SECRET_PATTERNS: list[tuple[re.Pattern[str], str]] = [
     (re.compile(r"\bxox[baprs]-[A-Za-z0-9-]{10,}"), "SLACK_TOKEN"),
     (re.compile(r"\bAKIA[0-9A-Z]{16}\b"), "AWS_ACCESS_KEY"),
     (re.compile(r"\beyJ[A-Za-z0-9_-]{12,}\.[A-Za-z0-9_-]{12,}\.[A-Za-z0-9_-]{8,}\b"), "JWT_LIKE"),
-    (re.compile(r"(?i)\b(authorization)\s*[:=]\s*(bearer|basic|token)\b"), "AUTH_HEADER"),
+    (re.compile(r"(?i)\b(authorization)[ \t]*[:=][ \t]*(bearer|basic|token)\b[^\r\n]*"), "AUTH_HEADER"),
     # structural credential assignments are detected by find_secrets_in_text() so that
     # inventory's own boolean flags ("token_values_stored": false) are not false positives.
     (re.compile(r"[a-zA-Z][a-zA-Z0-9+.-]*://[^/\s@]+:[^/\s@]+@"), "URL_USERINFO"),
@@ -1694,9 +1694,18 @@ def collect_persistence(session_dir: pathlib.Path, fingerprints: dict) -> dict:
             entry["previous_collected_utc"] = previous.get("collected_utc")
             entry["previous_fingerprints"] = previous.get("fingerprints")
             entry["age_hours"] = round((now - dt.datetime.fromisoformat(previous["collected_utc"])).total_seconds() / 3600, 2) if previous.get("collected_utc") else None
-            same = {k: (previous.get("fingerprints", {}).get(k) == fingerprints.get(k)) for k in fingerprints} if isinstance(previous.get("fingerprints"), dict) else {}
+            previous_values = previous.get("fingerprints")
+            current_values = fingerprints.get("fingerprints")
+            if isinstance(previous_values, dict) and isinstance(current_values, dict):
+                keys = sorted(previous_values.keys() | current_values.keys())
+                same = {key: (key in previous_values and key in current_values and previous_values[key] == current_values[key]) for key in keys}
+            else:
+                same = {}
             entry["fingerprint_match"] = same
-            entry["environment_changed_since_previous"] = any(v is False for v in same.values()) if same else None
+            entry["environment_changed_since_previous"] = (
+                any(value is False for value in same.values())
+                if same and entry["usable_for_cross_session_comparison"] else None
+            )
         else:
             entry["previous_session_id"] = None
             entry["environment_changed_since_previous"] = None
