@@ -1,0 +1,7 @@
+claim_id,claim,primary_source,status,corroboration
+C1,Connected repo delivers via working branch + PR (no zip),S1,SUPPORTED_AND_OBSERVED,S2;R1
+C2,Agent can push directly to main,S2,CONTRADICTED_BY_RUNTIME_POLICY,S5 agrees; R1 session restricted to assigned branch
+C3,Workspace downloadable (zip or /download-workspace),S1,DOCUMENTED_INTERNAL_TENSION,Not tested
+C4,Sandbox has open internet access,none,PARTIAL,R1: pypi ok; arena/arxiv TLS failure
+C5,Browser automation available,none,NOT_DOCUMENTED_NOT_OBSERVED,R1: no chromium/playwright
+C6,Usage is rate limited,S4,SUPPORTED_UNQUANTIFIED,S7 third-party numbers unverified
