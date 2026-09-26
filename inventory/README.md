@@ -15,6 +15,26 @@ Output goes to `inventory/<UTC date>/session-<UTC>-<rand>/` and the two human-fa
 
 Install probes are **off by default**. Obtain operator approval and pass `--probe-install` to run the isolated pip/npm install checks. `--skip-install` overrides that flag. If an explicit `--observations` path is missing or invalid, the run reports an error rather than silently treating the native tool inventory as complete.
 
+## Regression tests
+
+[`tests/test_inventory.py`](../tests/test_inventory.py) pins the engine's safety-relevant behaviour with the standard
+library's `unittest` only — redaction and the structural secret scan, missing/malformed `--observations` input, install
+probes staying opt-in, manifest validation and persistence-marker semantics. The GitHub Actions workflow that runs it on
+every pull request is delivered at [`ci/tests.workflow.yml`](../ci/tests.workflow.yml) and still has to be moved to
+`.github/workflows/tests.yml`: the authoring session's GitHub App token was refused the `workflows` permission, so it
+could not create a file under `.github/workflows/` (the file is inert until moved; the command is in its header).
+
+```bash
+python3 -m unittest discover -s tests -v      # offline, ~0.5 s
+```
+
+The suite performs **no** network I/O, installs nothing and writes only inside temporary directories: every collector
+that touches the system is replaced by a fixed synthetic payload before `main()` is called. (Single documented exception:
+`collect_persistence()` hardcodes `/tmp`, so those tests write one uniquely named marker there — never the production
+`arena-inventory-marker.json` — and delete it again.) A green suite is therefore regression evidence about the engine,
+**not** capability evidence about a session, and never a substitute for a real run. The committed 2026-09-26 snapshot is
+read-only for the tests, which assert it is left unchanged.
+
 ## Layout
 
 | File | Contents |
