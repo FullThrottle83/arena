@@ -1,0 +1,488 @@
+{
+ "agent_tools": {
+  "declared_count": 15,
+  "executed_count": 12,
+  "source": "operator/agent-declared interface description (inventory/observations file); not introspectable from the sandbox shell",
+  "tools": [
+   {
+    "execution_result": "13+ invocations: environment probes, py_compile, inventory runs, curl to loopback, git operations \u2014 all returned real stdout/exit codes",
+    "name": "bash",
+    "status": "EXECUTED_NOW"
+   },
+   {
+    "execution_result": "read AGENTS.md, EXECUTOR.md and docs/*.md; then read inventory/2026-09-26/artifacts/capability-probe.png which returned the generated image (verified visually: ",
+    "name": "read_file",
+    "status": "EXECUTED_NOW"
+   },
+   {
+    "execution_result": "created scripts/inventory.py (~2100 lines) and the preview probe page; file content verified by python3 -m py_compile and by re-reading",
+    "name": "write_file",
+    "status": "EXECUTED_NOW"
+   },
+   {
+    "execution_result": "6 successful edits to scripts/inventory.py (regex fixes, scanner rework); one edit initially failed to match and was corrected by re-reading the exact source li",
+    "name": "edit_file",
+    "status": "EXECUTED_NOW"
+   },
+   {
+    "execution_result": "started `python3 -m http.server 8099 --bind 0.0.0.0`; returned pid 2380, listening port 8099, no origin/embedding warnings; server log later showed GET / 200 fr",
+    "name": "start_process",
+    "status": "EXECUTED_NOW"
+   },
+   {
+    "execution_result": "returned the running state and the three access-log lines quoted above",
+    "name": "get_process_output",
+    "status": "EXECUTED_NOW"
+   },
+   {
+    "execution_result": "stopped the preview server cleanly; port no longer listening afterwards",
+    "name": "stop_process",
+    "status": "EXECUTED_NOW"
+   },
+   {
+    "execution_result": "one depth-1 query returned first-party Arena help/blog results plus an unrelated vendor doc; snippets were usable and dated",
+    "name": "web_search",
+    "status": "EXECUTED_NOW"
+   },
+   {
+    "execution_result": "3 hosts fetched successfully: example.com (1 chunk), pudas.se (1 chunk, Swedish content preserved), pypi.org/project/numpy (33 chunks, only chunk 0 read). Retri",
+    "name": "fetch_page",
+    "status": "EXECUTED_NOW"
+   },
+   {
+    "execution_result": "NOT_TESTED \u2014 deliberately not exercised: no visual reference material is required by this inventory and the call would consume credits",
+    "name": "image_search",
+    "status": "EXPOSED_NOT_EXERCISED"
+   },
+   {
+    "execution_result": "generated inventory/2026-09-26/artifacts/capability-probe.png \u2014 70822 bytes, 1408x768, valid PNG signature, sha256 prefix 744ffed18ff007b9; read back through re",
+    "name": "generate_image",
+    "status": "EXECUTED_NOW"
+   },
+   {
+    "execution_result": "NOT_TESTED \u2014 no narration is required by this task, and registering a voice forces an interactive A/B vote in the UI",
+    "name": "generate_speech",
+    "status": "EXPOSED_NOT_EXERCISED"
+   },
+   {
+    "execution_result": "NOT_TESTED \u2014 see generate_speech",
+    "name": "add_voice",
+    "status": "EXPOSED_NOT_EXERCISED"
+   },
+   {
+    "execution_result": "used to present inventory/2026-09-26/SUMMARY.md after the manifests were generated",
+    "name": "present_file",
+    "status": "EXECUTED_NOW"
+   },
+   {
+    "execution_result": "used once to obtain approval for the tiny isolated install probes and to confirm the commit scope; both answers returned and were honoured (approved pip+npm tem",
+    "name": "ask_user",
+    "status": "EXECUTED_NOW"
+   }
+  ]
+ },
+ "browsers": {
+  "caches": [
+   {
+    "exists": false,
+    "path": "~/.cache/ms-playwright"
+   },
+   {
+    "exists": false,
+    "path": "~/.cache/puppeteer"
+   },
+   {
+    "exists": false,
+    "path": "~/.cache/chromium"
+   },
+   {
+    "exists": false,
+    "path": "~/.cache/google-chrome"
+   },
+   {
+    "exists": false,
+    "path": "~/.cache/mozilla"
+   },
+   {
+    "exists": false,
+    "path": "~/.mozilla/firefox"
+   },
+   {
+    "exists": false,
+    "path": "~/.config/chromium"
+   },
+   {
+    "exists": false,
+    "path": "~/.config/google-chrome"
+   },
+   {
+    "exists": false,
+    "path": "/usr/lib/chromium"
+   },
+   {
+    "exists": false,
+    "path": "/opt/google/chrome"
+   },
+   {
+    "exists": false,
+    "path": "/usr/lib/firefox"
+   },
+   {
+    "exists": false,
+    "path": "/tmp/ms-playwright"
+   },
+   {
+    "exists": false,
+    "path": "/tmp/playwright-browsers"
+   },
+   {
+    "exists": false,
+    "path": "/tmp/puppeteer"
+   }
+  ],
+  "detail": {
+   "brave-browser": "NOT_INSTALLED",
+   "chrome": "NOT_INSTALLED",
+   "chrome-headless-shell": "NOT_INSTALLED",
+   "chromium": "NOT_INSTALLED",
+   "chromium-browser": "NOT_INSTALLED",
+   "firefox": "NOT_INSTALLED",
+   "firefox-esr": "NOT_INSTALLED",
+   "google-chrome": "NOT_INSTALLED",
+   "google-chrome-stable": "NOT_INSTALLED",
+   "headless_shell": "NOT_INSTALLED",
+   "microsoft-edge": "NOT_INSTALLED",
+   "playwright": "NOT_INSTALLED",
+   "puppeteer": "NOT_INSTALLED"
+  },
+  "navigation": "NOT_TESTED",
+  "status": "NOT_INSTALLED"
+ },
+ "classification_note": "INSTALLED = binary/library present; REGISTRY_REACHABLE = index answered but nothing installed; INSTALLATION_TESTED = the engine actually installed and executed a tiny package this session; EXPOSED = callable in this agent session but not necessarily exercised; EXECUTED_NOW = ran successfully in this session; NOT_TESTED = no evidence either way, not a negative claim.",
+ "date_utc": "2026-09-26T14:22:01+00:00",
+ "document_and_media": {
+  "convert": "INSTALLED",
+  "ffmpeg": "NOT_INSTALLED",
+  "gs": "NOT_INSTALLED",
+  "inkscape": "NOT_INSTALLED",
+  "magick": "NOT_INSTALLED",
+  "pandoc": "NOT_INSTALLED",
+  "pdfinfo": "NOT_INSTALLED",
+  "pdftotext": "NOT_INSTALLED",
+  "rsvg-convert": "NOT_INSTALLED",
+  "soffice": "NOT_INSTALLED",
+  "tesseract": "NOT_INSTALLED"
+ },
+ "document_generation_libraries_python": {
+  "note": "presence derived from installed distribution names; no document was produced by this engine, so no PDF/DOCX/XLSX rendering is implied",
+  "present": [],
+  "status": "NOT_INSTALLED (none of the document-generation distributions were found)"
+ },
+ "environment": {
+  "arch": "x86_64",
+  "cpus": 2,
+  "distribution": "Debian GNU/Linux 12 (bookworm)",
+  "kernel": "6.1.158+",
+  "memory_mb": 3940,
+  "privilege": "unprivileged_non_root"
+ },
+ "github_delivery": {
+  "authentication": "EXPOSED",
+  "connected_repository": "https://github.com/FullThrottle83/arena.git",
+  "gh": "gh version 2.23.0 (2023-02-27 Debian 2.23.0+dfsg1-1)",
+  "git": "git version 2.39.5",
+  "pr_open_not_merged": true,
+  "pull_request": "https://github.com/FullThrottle83/arena/pull/8",
+  "read": "EXECUTED_NOW",
+  "working_branch": "arena/01a0dd2c-arena",
+  "write": "SUCCEEDED (new branch created on origin from origin/main 43e25c3; no force-push)"
+ },
+ "network": {
+  "browser_navigation": {
+   "reason": "no browser installed; none launched for discovery (per safety boundary)",
+   "status": "NOT_TESTED"
+  },
+  "independent_paths_note": "SHELL_HTTP, NATIVE_WEB_FETCH and BROWSER_NAVIGATION are recorded separately; success of one is never treated as proof for another.",
+  "native_web_fetch": {
+   "note": "executed through the agent's own tool, outside the sandbox shell",
+   "status": "EXECUTED_NOW",
+   "tests": [
+    {
+     "host": "example.com",
+     "result": "ok: 1 chunk, title 'Example Domain', text retrieved",
+     "shell_https_comparison": "BLOCKED (TLS handshake EOF from the sandbox)",
+     "tool": "fetch_page",
+     "url": "https://example.com/"
+    },
+    {
+     "host": "pudas.se",
+     "result": "ok: 1 chunk, Swedish-language page retrieved with image and link markdown",
+     "shell_https_comparison": "BLOCKED (TLS handshake EOF from the sandbox)",
+     "tool": "fetch_page",
+     "url": "https://pudas.se"
+    },
+    {
+     "host": "pypi.org",
+     "result": "ok: chunked (totalChunks 33); chunk 0 read and used for the numpy Python>=3.12 finding",
+     "shell_https_comparison": "ALLOWED (shell HTTPS 200 to pypi.org)",
+     "tool": "fetch_page",
+     "url": "https://pypi.org/project/numpy/"
+    },
+    {
+     "host": "huggingface.co",
+     "result": "ok: model metadata JSON retrieved in 1 chunk (google-bert/bert-base-uncased: 110,106,428 params, 16 siblings listed, apache-2.0)",
+     "shell_https_comparison": "BLOCKED (TLS handshake EOF from the sandbox)",
+     "tool": "fetch_page",
+     "url": "https://huggingface.co/api/models/google-bert/bert-base-uncased"
+    },
+    {
+     "host": "deb.debian.org",
+     "result": "ok: Debian 'stable' Release index retrieved (Version 13.7, codename trixie, dated 12 Sep 2026, 17 chunks, only chunk 0 read)",
+     "shell_https_comparison": "BLOCKED (TLS handshake EOF from the sandbox) \u2014 so apt could not refresh its index even if elevation were available",
+     "tool": "fetch_page",
+     "url": "https://deb.debian.org/debian/dists/stable/Release"
+    },
+    {
+     "host": "(not tested via native tool)",
+     "result": "not_tested: files.pythonhosted.org, registry.npmjs.org, cdn.playwright.dev, storage.googleapis.com, cdn.jsdelivr.net, api.github.com, github.com, raw.githubusercontent.com were probed from the sandbox shell only",
+     "tool": "fetch_page",
+     "url": null
+    }
+   ]
+  },
+  "shell_http": {
+   "dns_ok": 13,
+   "hosts_total": 13,
+   "https_failed": 9,
+   "https_ok": 4,
+   "max_request_seconds": 8.0,
+   "tls_handshake_ok": 5
+  },
+  "shell_vs_native_comparison": [
+   {
+    "divergent": true,
+    "host": "deb.debian.org",
+    "native_fetch": "OK",
+    "shell_https": "BLOCKED_AT_TLS"
+   },
+   {
+    "divergent": true,
+    "host": "example.com",
+    "native_fetch": "OK",
+    "shell_https": "BLOCKED_AT_TLS"
+   },
+   {
+    "divergent": true,
+    "host": "huggingface.co",
+    "native_fetch": "OK",
+    "shell_https": "BLOCKED_AT_TLS"
+   },
+   {
+    "divergent": true,
+    "host": "pudas.se",
+    "native_fetch": "OK",
+    "shell_https": "BLOCKED_AT_TLS"
+   },
+   {
+    "divergent": null,
+    "host": "(not tested via native tool)",
+    "native_fetch": "not_tested: files.pythonhosted.org, registry.npmjs.org, cdn.playwright.dev, storage.googleapis.com, cdn.jsdelivr.net, api.github.com, github.com, raw.githubusercontent.com were probed from the sandbox shell only",
+    "shell_https": "NOT_PROBED"
+   },
+   {
+    "divergent": false,
+    "host": "pypi.org",
+    "native_fetch": "OK",
+    "shell_https": "ALLOWED"
+   }
+  ],
+  "unreachable_hosts": [
+   "raw.githubusercontent.com",
+   "deb.debian.org",
+   "cdn.playwright.dev",
+   "storage.googleapis.com",
+   "huggingface.co",
+   "cdn.jsdelivr.net",
+   "example.com",
+   "pudas.se"
+  ]
+ },
+ "not_tested_or_unknown": [
+  "Lighthouse / axe-core / WCAG audits (no runtime available this session)",
+  "UI preview panel behaviour (browser-side rendering)",
+  "account privacy controls",
+  "add_voice:not-exercised",
+  "apt/system package installation",
+  "browser binary installation and navigation",
+  "credit balance, per-tool credit cost, reset time",
+  "file upload size limits",
+  "generate_speech:not-exercised",
+  "image_search:not-exercised",
+  "model identity and per-request model routing",
+  "office/PDF rendering in a real application",
+  "persistent storage across sessions (needs a second run)",
+  "session/concurrency limits enforced by the platform",
+  "workspace ZIP export / /download-workspace"
+ ],
+ "package_installation": {
+  "apt_debian": {
+   "apt_index_present": false,
+   "installation": "NOT_TESTED",
+   "reason": "apt-get update/install changes system packages and needs elevation; deliberately not attempted",
+   "registry_from_shell": "REGISTRY_BLOCKED_FROM_SHELL"
+  },
+  "caveat": "A reachable registry does not prove that every package can be installed, built or executed (no compilers/HEADs for many wheels, no apt, no native builds tested).",
+  "npm": {
+   "index_reachable_count": 15,
+   "installation": "INSTALLATION_TESTED",
+   "probed": 15,
+   "registry": "REGISTRY_REACHABLE"
+  },
+  "playwright_browsers": {
+   "binary_download": "NOT_TESTED",
+   "installation": "NOT_TESTED",
+   "reason": "large binaries were not downloaded for inventory purposes",
+   "registry": "REGISTRY_UNREACHABLE"
+  },
+  "pypi": {
+   "index_reachable_count": 15,
+   "installation": "INSTALLATION_TESTED",
+   "probed": 15,
+   "registry": "REGISTRY_REACHABLE"
+  }
+ },
+ "persistence": {
+  "checked_utc": "2026-09-26T14:22:01+00:00",
+  "cross_session_persistence_conclusion": "DEFERRED \u2014 a first run cannot demonstrate persistence; compare with the next session",
+  "home_writable": true,
+  "new_markers_written": {
+   "home": {
+    "bytes": 915,
+    "path": "~/.arena-inventory-marker.json",
+    "written": true
+   },
+   "repo": {
+    "bytes": 915,
+    "path": "~/arena/inventory/last-session-marker.json",
+    "written": true
+   },
+   "tmp": {
+    "bytes": 915,
+    "path": "/tmp/arena-inventory-marker.json",
+    "written": true
+   }
+  },
+  "previous_markers": {
+   "home": {
+    "environment_changed_since_previous": null,
+    "exists": false,
+    "note": "no readable marker from an earlier session at this path",
+    "path": "~/.arena-inventory-marker.json",
+    "previous_session_id": null
+   },
+   "repo": {
+    "environment_changed_since_previous": null,
+    "exists": false,
+    "note": "no readable marker from an earlier session at this path",
+    "path": "~/arena/inventory/last-session-marker.json",
+    "previous_session_id": null
+   },
+   "tmp": {
+    "environment_changed_since_previous": null,
+    "exists": false,
+    "note": "no readable marker from an earlier session at this path",
+    "path": "/tmp/arena-inventory-marker.json",
+    "previous_session_id": null
+   }
+  },
+  "repo_writable": true,
+  "schema": "arena-inventory/1.1",
+  "tmp_writable": true
+ },
+ "practical_capability_tests": {
+  "details_in": "native-tools.json -> engine_capability_tests",
+  "executed_by_agent": [
+   "agent_local_server_and_preview_ports",
+   "agent_python_node_execution",
+   "agent_json_validation",
+   "agent_image_generation_and_readback",
+   "agent_git_function",
+   "agent_approval_gate",
+   "artifact_presentation"
+  ],
+  "executed_by_engine": {
+   "executed_now": 13,
+   "failed": 1,
+   "not_installed": 1,
+   "total": 15
+  },
+  "generated_artifacts": {
+   "count": 1,
+   "directory": "inventory/2026-09-26/artifacts",
+   "items": [
+    {
+     "bytes": 70822,
+     "height": 768,
+     "kind": "png",
+     "path": "2026-09-26/artifacts/capability-probe.png",
+     "sha256": "744ffed18ff007b9f744fc6603a0f9287ef305cb1ec43b507fbc943baa32a2fa",
+     "signature_valid": true,
+     "width": 1408
+    }
+   ]
+  }
+ },
+ "runtimes": {
+  "node": {
+   "npm": "10.9.8",
+   "status": "INSTALLED",
+   "version": "v22.22.3",
+   "yarn": "1.22.22"
+  },
+  "other": {
+   "bun": "NOT_INSTALLED",
+   "clang": "NOT_INSTALLED",
+   "cmake": "NOT_INSTALLED",
+   "deno": "NOT_INSTALLED",
+   "go": "NOT_INSTALLED",
+   "java": "NOT_INSTALLED",
+   "php": "NOT_INSTALLED",
+   "ruby": "NOT_INSTALLED",
+   "rustc": "NOT_INSTALLED"
+  },
+  "python": {
+   "interpreters_on_path": [
+    "/usr/bin/python",
+    "/usr/bin/python3",
+    "/usr/bin/python3.11"
+   ],
+   "status": "INSTALLED",
+   "version": "3.11.2"
+  }
+ },
+ "schema": "arena-inventory/1.1",
+ "software_inventory": {
+  "font_families": 2,
+  "font_files": 6,
+  "node_builtin_modules": 68,
+  "node_global_packages": 2,
+  "os_packages_installed": 283,
+  "path_executables": 643,
+  "python_distributions": 3,
+  "python_stdlib_modules": 305,
+  "shared_libraries": 206
+ },
+ "status_vocabulary": [
+  "INSTALLED",
+  "REGISTRY_REACHABLE",
+  "INSTALLATION_TESTED",
+  "INSTALLATION_FAILED",
+  "EXPOSED",
+  "EXECUTED_NOW",
+  "PARTIAL",
+  "FAILED",
+  "NOT_TESTED",
+  "NOT_INSTALLED",
+  "UNKNOWN"
+ ]
+}

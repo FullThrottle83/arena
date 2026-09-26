@@ -1,0 +1,21 @@
+{
+ "argv": [
+  "--observations",
+  "inventory/2026-09-26/observations.json"
+ ],
+ "collector_errors": {},
+ "cwd": "~/arena",
+ "engine": "scripts/inventory.py",
+ "engine_sha256_12": "a845139a89ec",
+ "observations_file": "inventory/2026-09-26/observations.json",
+ "out_dir": "inventory/2026-09-26/session-20260926T142147Z-a9e08b",
+ "python": "3.11.2",
+ "schema": "arena-inventory/1.1",
+ "session_id": "session-20260926T142147Z-a9e08b",
+ "skips": {
+  "github": false,
+  "install": false,
+  "network": false,
+  "registry": false
+ }
+}

@@ -1,0 +1,507 @@
+{
+ "caveat": "REGISTRY_REACHABLE means the index responded. It does not prove any specific package can be installed, built or executed here (no apt/DPG install, no wheel build test, no binary download).",
+ "documented_download_endpoints": {
+  "chromium_snapshots_listing": {
+   "content_length": null,
+   "elapsed_ms": 31.1,
+   "http_status": null,
+   "method": "GET",
+   "note": "public GCS bucket listing, 1 key requested",
+   "outcome": "TLS_HANDSHAKE_ERROR",
+   "url": "https://storage.googleapis.com/chromium-browser-snapshots/?list-type=2&max-keys=1"
+  },
+  "debian_security_release": {
+   "content_length": null,
+   "elapsed_ms": 34.1,
+   "http_status": null,
+   "method": "HEAD",
+   "note": "HEAD only",
+   "outcome": "TLS_HANDSHAKE_ERROR",
+   "url": "https://deb.debian.org/debian-security/dists/bookworm-security/Release"
+  },
+  "debian_stable_release": {
+   "content_length": null,
+   "elapsed_ms": 32.5,
+   "http_status": null,
+   "method": "HEAD",
+   "note": "Debian package metadata (Release index), HEAD only",
+   "outcome": "TLS_HANDSHAKE_ERROR",
+   "url": "https://deb.debian.org/debian/dists/stable/Release"
+  },
+  "huggingface_model_metadata": {
+   "content_length": null,
+   "elapsed_ms": 31.7,
+   "http_status": null,
+   "method": "HEAD",
+   "note": "public model metadata JSON; no weights downloaded",
+   "outcome": "TLS_HANDSHAKE_ERROR",
+   "url": "https://huggingface.co/api/models/google-bert/bert-base-uncased"
+  },
+  "huggingface_resolve_head": {
+   "content_length": null,
+   "elapsed_ms": 31.0,
+   "http_status": null,
+   "method": "GET",
+   "note": "tiny public file, GET 512 bytes",
+   "outcome": "TLS_HANDSHAKE_ERROR",
+   "url": "https://huggingface.co/google-bert/bert-base-uncased/resolve/main/config.json"
+  },
+  "jsdelivr_package_metadata": {
+   "content_length": null,
+   "elapsed_ms": 31.7,
+   "http_status": null,
+   "method": "GET",
+   "note": "GET 2048 bytes",
+   "outcome": "TLS_HANDSHAKE_ERROR",
+   "url": "https://cdn.jsdelivr.net/npm/playwright/package.json"
+  },
+  "playwright_cdn_build_path": {
+   "content_length": null,
+   "elapsed_ms": 38.3,
+   "http_status": null,
+   "method": "HEAD",
+   "note": "representative documented build path, HEAD only",
+   "outcome": "TLS_HANDSHAKE_ERROR",
+   "url": "https://cdn.playwright.dev/dbazure/download/playwright/builds/chromium/1140/chromium-linux.zip"
+  },
+  "playwright_cdn_root": {
+   "content_length": null,
+   "elapsed_ms": 46.5,
+   "http_status": null,
+   "method": "HEAD",
+   "note": "reachability only; browser binaries were deliberately NOT downloaded",
+   "outcome": "TLS_HANDSHAKE_ERROR",
+   "url": "https://cdn.playwright.dev/"
+  }
+ },
+ "github_public_resources": {
+  "github_codeload_tarball_head": {
+   "body_sha256_12": "e8f500056f4d",
+   "bytes_read": 512,
+   "content_length": "144126",
+   "content_type": "application/x-gzip",
+   "elapsed_ms": 220.8,
+   "http_status": 200,
+   "method": "GET",
+   "outcome": "OK",
+   "server": null,
+   "timeout_s": 8.0,
+   "url": "https://codeload.github.com/FullThrottle83/arena/tar.gz/refs/heads/main"
+  },
+  "github_public_repo_api": {
+   "body_sha256_12": "73760c03498a",
+   "bytes_read": 512,
+   "content_length": "5615",
+   "content_type": "application/json; charset=utf-8",
+   "elapsed_ms": 344.4,
+   "http_status": 200,
+   "method": "GET",
+   "outcome": "OK",
+   "server": "github.com",
+   "timeout_s": 8.0,
+   "url": "https://api.github.com/repos/FullThrottle83/arena"
+  },
+  "github_raw_file": {
+   "elapsed_ms": 40.0,
+   "error_detail": "TLS/SSL connection has been closed (EOF) (_ssl.c:992)",
+   "method": "GET",
+   "outcome": "TLS_HANDSHAKE_ERROR",
+   "timeout_s": 8.0,
+   "url": "https://raw.githubusercontent.com/FullThrottle83/arena/main/AGENTS.md"
+  }
+ },
+ "install_probes": {
+  "authorization": "operator approved in-session 2026-09-26: tiny isolated probes only, no system packages, no browser binaries",
+  "cleanup": {
+   "path_still_exists": false,
+   "removed": true
+  },
+  "not_tested": [
+   "apt/dpkg installation (requires root and mutates system packages)",
+   "Playwright browser binary download",
+   "large or compiled wheels (build toolchain exercise)",
+   "pip --break-system-packages (deliberately not used)"
+  ],
+  "results": {
+   "npm_is_number": {
+    "execute_check": {
+     "exit_code": 0,
+     "stdout": "executed true"
+    },
+    "exit_code": 0,
+    "method": "npm install --prefix <temp dir> (project-local, reversible)",
+    "package_present_after_install": true,
+    "status": "INSTALLATION_TESTED",
+    "stderr_tail": "",
+    "stdout_tail": "\nadded 1 package in 254ms\n"
+   },
+   "pypi_pip_six": {
+    "error": null,
+    "exit_code": 0,
+    "import_execute_check": {
+     "exit_code": 0,
+     "note": "isolated subprocess; this executes the freshly installed package on purpose",
+     "stdout": "1.17.0 True"
+    },
+    "installed_files": [
+     "__pycache__",
+     "six-1.17.0.dist-info",
+     "six.py"
+    ],
+    "method": "pip install --target (isolated dir; system site-packages untouched)",
+    "status": "INSTALLATION_TESTED",
+    "stdout_tail": "Collecting six\n  Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)\nInstalling collected packages: six\nSuccessfully installed six-1.17.0\n"
+   }
+  },
+  "sandbox_dir": "/tmp/arena-inventory-install-1790432517",
+  "schema": "arena-inventory/1.1",
+  "system_state_modified": false
+ },
+ "npm": {
+  "endpoint": "https://registry.npmjs.org/<name> (install-v1 abbreviated metadata)",
+  "items": {
+   "@sparticuz/chromium": {
+    "elapsed_ms": 113.5,
+    "http_status": 200,
+    "json_parsed": true,
+    "latest_version": "153.0.0",
+    "note": null,
+    "outcome": "OK",
+    "reachable": true,
+    "status_label": "REGISTRY_REACHABLE"
+   },
+   "axe-core": {
+    "elapsed_ms": 104.2,
+    "http_status": 200,
+    "json_parsed": false,
+    "latest_version": null,
+    "note": "metadata document exceeded the read limit; reachability still established by the HTTP 200 response",
+    "outcome": "OK_BODY_TRUNCATED",
+    "reachable": true,
+    "status_label": "REGISTRY_REACHABLE"
+   },
+   "docx": {
+    "elapsed_ms": 102.7,
+    "http_status": 200,
+    "json_parsed": true,
+    "latest_version": "9.7.2",
+    "note": null,
+    "outcome": "OK",
+    "reachable": true,
+    "status_label": "REGISTRY_REACHABLE"
+   },
+   "exceljs": {
+    "elapsed_ms": 87.7,
+    "http_status": 200,
+    "json_parsed": true,
+    "latest_version": "4.4.0",
+    "note": null,
+    "outcome": "OK",
+    "reachable": true,
+    "status_label": "REGISTRY_REACHABLE"
+   },
+   "express": {
+    "elapsed_ms": 108.1,
+    "http_status": 200,
+    "json_parsed": true,
+    "latest_version": "5.2.1",
+    "note": null,
+    "outcome": "OK",
+    "reachable": true,
+    "status_label": "REGISTRY_REACHABLE"
+   },
+   "lighthouse": {
+    "elapsed_ms": 116.9,
+    "http_status": 200,
+    "json_parsed": false,
+    "latest_version": null,
+    "note": "metadata document exceeded the read limit; reachability still established by the HTTP 200 response",
+    "outcome": "OK_BODY_TRUNCATED",
+    "reachable": true,
+    "status_label": "REGISTRY_REACHABLE"
+   },
+   "pdf-lib": {
+    "elapsed_ms": 94.7,
+    "http_status": 200,
+    "json_parsed": true,
+    "latest_version": "1.17.1",
+    "note": null,
+    "outcome": "OK",
+    "reachable": true,
+    "status_label": "REGISTRY_REACHABLE"
+   },
+   "playwright": {
+    "elapsed_ms": 119.4,
+    "http_status": 200,
+    "json_parsed": false,
+    "latest_version": null,
+    "note": "metadata document exceeded the read limit; reachability still established by the HTTP 200 response",
+    "outcome": "OK_BODY_TRUNCATED",
+    "reachable": true,
+    "status_label": "REGISTRY_REACHABLE"
+   },
+   "playwright-core": {
+    "elapsed_ms": 124.6,
+    "http_status": 200,
+    "json_parsed": false,
+    "latest_version": null,
+    "note": "metadata document exceeded the read limit; reachability still established by the HTTP 200 response",
+    "outcome": "OK_BODY_TRUNCATED",
+    "reachable": true,
+    "status_label": "REGISTRY_REACHABLE"
+   },
+   "postcss": {
+    "elapsed_ms": 110.5,
+    "http_status": 200,
+    "json_parsed": true,
+    "latest_version": "8.5.28",
+    "note": null,
+    "outcome": "OK",
+    "reachable": true,
+    "status_label": "REGISTRY_REACHABLE"
+   },
+   "puppeteer": {
+    "elapsed_ms": 112.0,
+    "http_status": 200,
+    "json_parsed": false,
+    "latest_version": null,
+    "note": "metadata document exceeded the read limit; reachability still established by the HTTP 200 response",
+    "outcome": "OK_BODY_TRUNCATED",
+    "reachable": true,
+    "status_label": "REGISTRY_REACHABLE"
+   },
+   "pyright": {
+    "elapsed_ms": 108.8,
+    "http_status": 200,
+    "json_parsed": false,
+    "latest_version": null,
+    "note": "metadata document exceeded the read limit; reachability still established by the HTTP 200 response",
+    "outcome": "OK_BODY_TRUNCATED",
+    "reachable": true,
+    "status_label": "REGISTRY_REACHABLE"
+   },
+   "sharp": {
+    "elapsed_ms": 99.2,
+    "http_status": 200,
+    "json_parsed": true,
+    "latest_version": "0.35.4",
+    "note": null,
+    "outcome": "OK",
+    "reachable": true,
+    "status_label": "REGISTRY_REACHABLE"
+   },
+   "tailwindcss": {
+    "elapsed_ms": 126.7,
+    "http_status": 200,
+    "json_parsed": false,
+    "latest_version": null,
+    "note": "metadata document exceeded the read limit; reachability still established by the HTTP 200 response",
+    "outcome": "OK_BODY_TRUNCATED",
+    "reachable": true,
+    "status_label": "REGISTRY_REACHABLE"
+   },
+   "vitest": {
+    "elapsed_ms": 129.7,
+    "http_status": 200,
+    "json_parsed": false,
+    "latest_version": null,
+    "note": "metadata document exceeded the read limit; reachability still established by the HTTP 200 response",
+    "outcome": "OK_BODY_TRUNCATED",
+    "reachable": true,
+    "status_label": "REGISTRY_REACHABLE"
+   }
+  },
+  "probed_count": 15,
+  "reachable_count": 15
+ },
+ "per_request_timeout_s": 8.0,
+ "policy": "metadata endpoints only; no package downloads, no browser binaries, no installs implied",
+ "pypi": {
+  "endpoint": "https://pypi.org/pypi/<name>/json + /simple/<name>/",
+  "items": {
+   "black": {
+    "elapsed_ms": 90.6,
+    "http_status": 200,
+    "json_parsed": false,
+    "latest_version": null,
+    "outcome": "OK_BODY_TRUNCATED",
+    "reachable": true,
+    "requires_python": null,
+    "simple_index_status": 200,
+    "status_label": "REGISTRY_REACHABLE",
+    "yanked": null
+   },
+   "fpdf2": {
+    "elapsed_ms": 75.5,
+    "http_status": 200,
+    "json_parsed": true,
+    "latest_version": "2.8.8",
+    "outcome": "OK",
+    "reachable": true,
+    "requires_python": ">=3.10",
+    "simple_index_status": 200,
+    "status_label": "REGISTRY_REACHABLE",
+    "yanked": false
+   },
+   "lxml": {
+    "elapsed_ms": 107.6,
+    "http_status": 200,
+    "json_parsed": false,
+    "latest_version": null,
+    "outcome": "OK_BODY_TRUNCATED",
+    "reachable": true,
+    "requires_python": null,
+    "simple_index_status": 200,
+    "status_label": "REGISTRY_REACHABLE",
+    "yanked": null
+   },
+   "matplotlib": {
+    "elapsed_ms": 97.6,
+    "http_status": 200,
+    "json_parsed": false,
+    "latest_version": null,
+    "outcome": "OK_BODY_TRUNCATED",
+    "reachable": true,
+    "requires_python": null,
+    "simple_index_status": 200,
+    "status_label": "REGISTRY_REACHABLE",
+    "yanked": null
+   },
+   "numpy": {
+    "elapsed_ms": 105.9,
+    "http_status": 200,
+    "json_parsed": false,
+    "latest_version": null,
+    "outcome": "OK_BODY_TRUNCATED",
+    "reachable": true,
+    "requires_python": null,
+    "simple_index_status": 200,
+    "status_label": "REGISTRY_REACHABLE",
+    "yanked": null
+   },
+   "openpyxl": {
+    "elapsed_ms": 91.0,
+    "http_status": 200,
+    "json_parsed": true,
+    "latest_version": "3.1.5",
+    "outcome": "OK",
+    "reachable": true,
+    "requires_python": ">=3.8",
+    "simple_index_status": 200,
+    "status_label": "REGISTRY_REACHABLE",
+    "yanked": false
+   },
+   "pandas": {
+    "elapsed_ms": 97.8,
+    "http_status": 200,
+    "json_parsed": false,
+    "latest_version": null,
+    "outcome": "OK_BODY_TRUNCATED",
+    "reachable": true,
+    "requires_python": null,
+    "simple_index_status": 200,
+    "status_label": "REGISTRY_REACHABLE",
+    "yanked": null
+   },
+   "pillow": {
+    "elapsed_ms": 91.6,
+    "http_status": 200,
+    "json_parsed": false,
+    "latest_version": null,
+    "outcome": "OK_BODY_TRUNCATED",
+    "reachable": true,
+    "requires_python": null,
+    "simple_index_status": 200,
+    "status_label": "REGISTRY_REACHABLE",
+    "yanked": null
+   },
+   "playwright": {
+    "elapsed_ms": 131.0,
+    "http_status": 200,
+    "json_parsed": false,
+    "latest_version": null,
+    "outcome": "OK_BODY_TRUNCATED",
+    "reachable": true,
+    "requires_python": null,
+    "simple_index_status": 200,
+    "status_label": "REGISTRY_REACHABLE",
+    "yanked": null
+   },
+   "pypdf": {
+    "elapsed_ms": 69.9,
+    "http_status": 200,
+    "json_parsed": true,
+    "latest_version": "6.19.0",
+    "outcome": "OK",
+    "reachable": true,
+    "requires_python": ">=3.9",
+    "simple_index_status": 200,
+    "status_label": "REGISTRY_REACHABLE",
+    "yanked": false
+   },
+   "pytest": {
+    "elapsed_ms": 83.7,
+    "http_status": 200,
+    "json_parsed": true,
+    "latest_version": "9.1.1",
+    "outcome": "OK",
+    "reachable": true,
+    "requires_python": ">=3.10",
+    "simple_index_status": 200,
+    "status_label": "REGISTRY_REACHABLE",
+    "yanked": false
+   },
+   "reportlab": {
+    "elapsed_ms": 101.9,
+    "http_status": 200,
+    "json_parsed": false,
+    "latest_version": null,
+    "outcome": "OK_BODY_TRUNCATED",
+    "reachable": true,
+    "requires_python": null,
+    "simple_index_status": 200,
+    "status_label": "REGISTRY_REACHABLE",
+    "yanked": null
+   },
+   "requests": {
+    "elapsed_ms": 85.0,
+    "http_status": 200,
+    "json_parsed": true,
+    "latest_version": "2.34.2",
+    "outcome": "OK",
+    "reachable": true,
+    "requires_python": ">=3.10",
+    "simple_index_status": 200,
+    "status_label": "REGISTRY_REACHABLE",
+    "yanked": false
+   },
+   "selenium": {
+    "elapsed_ms": 82.8,
+    "http_status": 200,
+    "json_parsed": true,
+    "latest_version": "4.49.0",
+    "outcome": "OK",
+    "reachable": true,
+    "requires_python": ">=3.10",
+    "simple_index_status": 200,
+    "status_label": "REGISTRY_REACHABLE",
+    "yanked": false
+   },
+   "weasyprint": {
+    "elapsed_ms": 76.6,
+    "http_status": 200,
+    "json_parsed": true,
+    "latest_version": "70.0",
+    "outcome": "OK",
+    "reachable": true,
+    "requires_python": ">=3.10",
+    "simple_index_status": 200,
+    "status_label": "REGISTRY_REACHABLE",
+    "yanked": false
+   }
+  },
+  "probed_count": 15,
+  "reachable_count": 15
+ },
+ "schema": "arena-inventory/1.1"
+}

@@ -1,0 +1,1073 @@
+{
+ "cloud_metadata": {
+  "aws_link_local": "NOT_ATTEMPTED",
+  "note": "169.254.169.254 and other link-local/metadata endpoints were deliberately not contacted, per the task's safety boundary."
+ },
+ "collector_errors": {},
+ "counts": {
+  "dns_ok": 13,
+  "hosts_with_any_http_response": 5,
+  "https_failed": 9,
+  "https_ok": 4,
+  "tls_handshake_ok": 5
+ },
+ "dns_resolver": {
+  "nameserver_count": 1,
+  "note": "resolver addresses not stored",
+  "resolv_names_present": true
+ },
+ "egress_ip": {
+  "note": "resolved public IP addresses are not stored (would be a host/network identifier); only reachability outcomes are kept",
+  "stored": false
+ },
+ "egress_probe": {
+  "ipv4_literal_service": {
+   "bytes_read": null,
+   "http_status": null,
+   "note": "content not stored",
+   "outcome": "TLS_HANDSHAKE_ERROR",
+   "url": "https://api.ipify.org/"
+  },
+  "ipv6_service": {
+   "bytes_read": null,
+   "http_status": null,
+   "note": "content not stored",
+   "outcome": "NETWORK_ERROR_OSError",
+   "url": "https://6.ifcfg.me/"
+  }
+ },
+ "failures": [
+  [
+   "files.pythonhosted.org",
+   "HTTP_ERROR"
+  ],
+  [
+   "cdn.jsdelivr.net",
+   "TLS_HANDSHAKE_ERROR"
+  ],
+  [
+   "cdn.playwright.dev",
+   "TLS_HANDSHAKE_ERROR"
+  ],
+  [
+   "deb.debian.org",
+   "TLS_HANDSHAKE_ERROR"
+  ],
+  [
+   "example.com",
+   "TLS_HANDSHAKE_ERROR"
+  ],
+  [
+   "huggingface.co",
+   "TLS_HANDSHAKE_ERROR"
+  ],
+  [
+   "pudas.se",
+   "TLS_HANDSHAKE_ERROR"
+  ],
+  [
+   "raw.githubusercontent.com",
+   "TLS_HANDSHAKE_ERROR"
+  ],
+  [
+   "storage.googleapis.com",
+   "TLS_HANDSHAKE_ERROR"
+  ]
+ ],
+ "hosts": {
+  "api.github.com": {
+   "dns": {
+    "elapsed_ms": 2.6,
+    "host": "api.github.com",
+    "ipv4": [
+     "20.29.134.17"
+    ],
+    "ipv4_count": 1,
+    "ipv6_count": 0,
+    "resolved": true
+   },
+   "https": {
+    "body_sha256_12": "ef965ff7b277",
+    "bytes_read": 2048,
+    "content_length": "2262",
+    "content_type": "application/json; charset=utf-8",
+    "elapsed_ms": 334.7,
+    "http_status": 200,
+    "method": "GET",
+    "outcome": "OK",
+    "server": "github.com",
+    "timeout_s": 8.0,
+    "url": "https://api.github.com/"
+   },
+   "tcp_tls_http_egress": "ALLOWED",
+   "tls": {
+    "cert_issuer_cn": "E2B",
+    "cert_sha256_12": "ff646ee8998e",
+    "cert_subject_cn": "E2B",
+    "cipher": "TLS_AES_128_GCM_SHA256",
+    "handshake": "OK",
+    "host": "api.github.com",
+    "not_after": "Sep 27 14:11:42 2026 GMT",
+    "port": 443,
+    "tls_version": "TLSv1.3"
+   }
+  },
+  "cdn.jsdelivr.net": {
+   "dns": {
+    "elapsed_ms": 2.9,
+    "host": "cdn.jsdelivr.net",
+    "ipv4": [
+     "104.17.207.5",
+     "104.17.208.5"
+    ],
+    "ipv4_count": 2,
+    "ipv6_count": 2,
+    "resolved": true
+   },
+   "https": {
+    "elapsed_ms": 49.1,
+    "error_detail": "TLS/SSL connection has been closed (EOF) (_ssl.c:992)",
+    "method": "GET",
+    "outcome": "TLS_HANDSHAKE_ERROR",
+    "timeout_s": 8.0,
+    "url": "https://cdn.jsdelivr.net/"
+   },
+   "tcp_tls_http_egress": "BLOCKED_AT_TLS",
+   "tls": {
+    "error_detail": "TLS/SSL connection has been closed (EOF) (_ssl.c:992)",
+    "handshake": "TLS_HANDSHAKE_ERROR",
+    "host": "cdn.jsdelivr.net",
+    "port": 443
+   }
+  },
+  "cdn.playwright.dev": {
+   "dns": {
+    "elapsed_ms": 17.9,
+    "host": "cdn.playwright.dev",
+    "ipv4": [
+     "150.171.110.152"
+    ],
+    "ipv4_count": 1,
+    "ipv6_count": 1,
+    "resolved": true
+   },
+   "https": {
+    "elapsed_ms": 62.4,
+    "error_detail": "TLS/SSL connection has been closed (EOF) (_ssl.c:992)",
+    "method": "GET",
+    "outcome": "TLS_HANDSHAKE_ERROR",
+    "timeout_s": 8.0,
+    "url": "https://cdn.playwright.dev/"
+   },
+   "tcp_tls_http_egress": "BLOCKED_AT_TLS",
+   "tls": {
+    "error_detail": "TLS/SSL connection has been closed (EOF) (_ssl.c:992)",
+    "handshake": "TLS_HANDSHAKE_ERROR",
+    "host": "cdn.playwright.dev",
+    "port": 443
+   }
+  },
+  "deb.debian.org": {
+   "dns": {
+    "elapsed_ms": 14.6,
+    "host": "deb.debian.org",
+    "ipv4": [
+     "151.101.130.132",
+     "151.101.194.132",
+     "151.101.2.132",
+     "151.101.66.132"
+    ],
+    "ipv4_count": 4,
+    "ipv6_count": 4,
+    "resolved": true
+   },
+   "https": {
+    "elapsed_ms": 68.8,
+    "error_detail": "TLS/SSL connection has been closed (EOF) (_ssl.c:992)",
+    "method": "GET",
+    "outcome": "TLS_HANDSHAKE_ERROR",
+    "timeout_s": 8.0,
+    "url": "https://deb.debian.org/"
+   },
+   "tcp_tls_http_egress": "BLOCKED_AT_TLS",
+   "tls": {
+    "error_detail": "TLS/SSL connection has been closed (EOF) (_ssl.c:992)",
+    "handshake": "TLS_HANDSHAKE_ERROR",
+    "host": "deb.debian.org",
+    "port": 443
+   }
+  },
+  "example.com": {
+   "dns": {
+    "elapsed_ms": 13.0,
+    "host": "example.com",
+    "ipv4": [
+     "104.20.23.154",
+     "172.66.147.243"
+    ],
+    "ipv4_count": 2,
+    "ipv6_count": 2,
+    "resolved": true
+   },
+   "https": {
+    "elapsed_ms": 114.8,
+    "error_detail": "TLS/SSL connection has been closed (EOF) (_ssl.c:992)",
+    "method": "GET",
+    "outcome": "TLS_HANDSHAKE_ERROR",
+    "timeout_s": 8.0,
+    "url": "https://example.com/"
+   },
+   "tcp_tls_http_egress": "BLOCKED_AT_TLS",
+   "tls": {
+    "error_detail": "TLS/SSL connection has been closed (EOF) (_ssl.c:992)",
+    "handshake": "TLS_HANDSHAKE_ERROR",
+    "host": "example.com",
+    "port": 443
+   }
+  },
+  "files.pythonhosted.org": {
+   "dns": {
+    "elapsed_ms": 13.0,
+    "host": "files.pythonhosted.org",
+    "ipv4": [
+     "151.101.0.223",
+     "151.101.128.223",
+     "151.101.192.223",
+     "151.101.64.223"
+    ],
+    "ipv4_count": 4,
+    "ipv6_count": 4,
+    "resolved": true
+   },
+   "https": {
+    "elapsed_ms": 126.4,
+    "http_status": 404,
+    "method": "GET",
+    "outcome": "HTTP_ERROR",
+    "reached_http_layer": true,
+    "reason": "Not Found",
+    "timeout_s": 8.0,
+    "url": "https://files.pythonhosted.org/"
+   },
+   "tcp_tls_http_egress": "ALLOWED",
+   "tls": {
+    "cert_issuer_cn": "GlobalSign nv-sa",
+    "cert_sha256_12": "fad0ad5bf0f0",
+    "cert_subject_cn": "*.pythonhosted.org",
+    "cipher": "TLS_AES_128_GCM_SHA256",
+    "handshake": "OK",
+    "host": "files.pythonhosted.org",
+    "not_after": "Jan  9 21:08:02 2027 GMT",
+    "port": 443,
+    "tls_version": "TLSv1.3"
+   }
+  },
+  "github.com": {
+   "dns": {
+    "elapsed_ms": 3.6,
+    "host": "github.com",
+    "ipv4": [
+     "20.29.134.23"
+    ],
+    "ipv4_count": 1,
+    "ipv6_count": 0,
+    "resolved": true
+   },
+   "https": {
+    "body_sha256_12": "2103a350ee6c",
+    "bytes_read": 2048,
+    "content_length": null,
+    "content_type": "text/html; charset=utf-8",
+    "elapsed_ms": 318.7,
+    "http_status": 200,
+    "method": "GET",
+    "outcome": "OK",
+    "server": "github.com",
+    "timeout_s": 8.0,
+    "url": "https://github.com/"
+   },
+   "tcp_tls_http_egress": "ALLOWED",
+   "tls": {
+    "cert_issuer_cn": "E2B",
+    "cert_sha256_12": "5b483375a0a8",
+    "cert_subject_cn": "E2B",
+    "cipher": "TLS_AES_128_GCM_SHA256",
+    "handshake": "OK",
+    "host": "github.com",
+    "not_after": "Sep 27 13:57:39 2026 GMT",
+    "port": 443,
+    "tls_version": "TLSv1.3"
+   }
+  },
+  "huggingface.co": {
+   "dns": {
+    "elapsed_ms": 9.0,
+    "host": "huggingface.co",
+    "ipv4": [
+     "99.86.101.36",
+     "99.86.101.39",
+     "99.86.101.56",
+     "99.86.101.64"
+    ],
+    "ipv4_count": 4,
+    "ipv6_count": 8,
+    "resolved": true
+   },
+   "https": {
+    "elapsed_ms": 98.2,
+    "error_detail": "TLS/SSL connection has been closed (EOF) (_ssl.c:992)",
+    "method": "GET",
+    "outcome": "TLS_HANDSHAKE_ERROR",
+    "timeout_s": 8.0,
+    "url": "https://huggingface.co/"
+   },
+   "tcp_tls_http_egress": "BLOCKED_AT_TLS",
+   "tls": {
+    "error_detail": "TLS/SSL connection has been closed (EOF) (_ssl.c:992)",
+    "handshake": "TLS_HANDSHAKE_ERROR",
+    "host": "huggingface.co",
+    "port": 443
+   }
+  },
+  "pudas.se": {
+   "dns": {
+    "elapsed_ms": 9.6,
+    "host": "pudas.se",
+    "ipv4": [
+     "104.21.22.33",
+     "172.67.202.57"
+    ],
+    "ipv4_count": 2,
+    "ipv6_count": 2,
+    "resolved": true
+   },
+   "https": {
+    "elapsed_ms": 64.8,
+    "error_detail": "TLS/SSL connection has been closed (EOF) (_ssl.c:992)",
+    "method": "GET",
+    "outcome": "TLS_HANDSHAKE_ERROR",
+    "timeout_s": 8.0,
+    "url": "https://pudas.se/"
+   },
+   "tcp_tls_http_egress": "BLOCKED_AT_TLS",
+   "tls": {
+    "error_detail": "TLS/SSL connection has been closed (EOF) (_ssl.c:992)",
+    "handshake": "TLS_HANDSHAKE_ERROR",
+    "host": "pudas.se",
+    "port": 443
+   }
+  },
+  "pypi.org": {
+   "dns": {
+    "elapsed_ms": 4.6,
+    "host": "pypi.org",
+    "ipv4": [
+     "151.101.0.223",
+     "151.101.128.223",
+     "151.101.192.223",
+     "151.101.64.223"
+    ],
+    "ipv4_count": 4,
+    "ipv6_count": 4,
+    "resolved": true
+   },
+   "https": {
+    "body_sha256_12": "9c76e2b1faf3",
+    "bytes_read": 2048,
+    "content_length": "27965",
+    "content_type": "text/html; charset=UTF-8",
+    "elapsed_ms": 123.1,
+    "http_status": 200,
+    "method": "GET",
+    "outcome": "OK",
+    "server": "gunicorn",
+    "timeout_s": 8.0,
+    "url": "https://pypi.org/"
+   },
+   "tcp_tls_http_egress": "ALLOWED",
+   "tls": {
+    "cert_issuer_cn": "GlobalSign nv-sa",
+    "cert_sha256_12": "15581c41023f",
+    "cert_subject_cn": "pypi.org",
+    "cipher": "TLS_AES_128_GCM_SHA256",
+    "handshake": "OK",
+    "host": "pypi.org",
+    "not_after": "Jan 29 04:33:07 2027 GMT",
+    "port": 443,
+    "tls_version": "TLSv1.3"
+   }
+  },
+  "raw.githubusercontent.com": {
+   "dns": {
+    "elapsed_ms": 1.6,
+    "host": "raw.githubusercontent.com",
+    "ipv4": [
+     "185.199.108.133",
+     "185.199.109.133",
+     "185.199.110.133",
+     "185.199.111.133"
+    ],
+    "ipv4_count": 4,
+    "ipv6_count": 4,
+    "resolved": true
+   },
+   "https": {
+    "elapsed_ms": 52.9,
+    "error_detail": "TLS/SSL connection has been closed (EOF) (_ssl.c:992)",
+    "method": "GET",
+    "outcome": "TLS_HANDSHAKE_ERROR",
+    "timeout_s": 8.0,
+    "url": "https://raw.githubusercontent.com/"
+   },
+   "tcp_tls_http_egress": "BLOCKED_AT_TLS",
+   "tls": {
+    "error_detail": "TLS/SSL connection has been closed (EOF) (_ssl.c:992)",
+    "handshake": "TLS_HANDSHAKE_ERROR",
+    "host": "raw.githubusercontent.com",
+    "port": 443
+   }
+  },
+  "registry.npmjs.org": {
+   "dns": {
+    "elapsed_ms": 12.8,
+    "host": "registry.npmjs.org",
+    "ipv4": [
+     "104.16.0.34",
+     "104.16.1.34",
+     "104.16.10.34",
+     "104.16.11.34",
+     "104.16.2.34",
+     "104.16.3.34",
+     "104.16.4.34",
+     "104.16.5.34",
+     "104.16.6.34",
+     "104.16.7.34",
+     "104.16.8.34",
+     "104.16.9.34"
+    ],
+    "ipv4_count": 12,
+    "ipv6_count": 12,
+    "resolved": true
+   },
+   "https": {
+    "body_sha256_12": "b8a4120408a7",
+    "bytes_read": 2,
+    "content_length": "2",
+    "content_type": "application/json",
+    "elapsed_ms": 139.3,
+    "http_status": 200,
+    "method": "GET",
+    "outcome": "OK",
+    "server": "cloudflare",
+    "timeout_s": 8.0,
+    "url": "https://registry.npmjs.org/"
+   },
+   "tcp_tls_http_egress": "ALLOWED",
+   "tls": {
+    "cert_issuer_cn": "Google Trust Services",
+    "cert_sha256_12": "4c765b8d622f",
+    "cert_subject_cn": "npmjs.org",
+    "cipher": "ECDHE-ECDSA-CHACHA20-POLY1305",
+    "handshake": "OK",
+    "host": "registry.npmjs.org",
+    "not_after": "Nov 22 02:49:24 2026 GMT",
+    "port": 443,
+    "tls_version": "TLSv1.2"
+   }
+  },
+  "storage.googleapis.com": {
+   "dns": {
+    "elapsed_ms": 4.5,
+    "host": "storage.googleapis.com",
+    "ipv4": [
+     "108.177.98.207",
+     "142.250.107.207",
+     "142.250.99.207",
+     "142.251.188.207",
+     "172.253.117.207",
+     "173.194.202.207",
+     "173.194.203.207",
+     "173.194.43.207",
+     "192.178.163.207",
+     "192.179.26.207",
+     "74.125.135.207",
+     "74.125.142.207",
+     "74.125.195.207",
+     "74.125.199.207",
+     "74.125.20.207"
+    ],
+    "ipv4_count": 15,
+    "ipv6_count": 4,
+    "resolved": true
+   },
+   "https": {
+    "elapsed_ms": 76.3,
+    "error_detail": "TLS/SSL connection has been closed (EOF) (_ssl.c:992)",
+    "method": "GET",
+    "outcome": "TLS_HANDSHAKE_ERROR",
+    "timeout_s": 8.0,
+    "url": "https://storage.googleapis.com/"
+   },
+   "tcp_tls_http_egress": "BLOCKED_AT_TLS",
+   "tls": {
+    "error_detail": "TLS/SSL connection has been closed (EOF) (_ssl.c:992)",
+    "handshake": "TLS_HANDSHAKE_ERROR",
+    "host": "storage.googleapis.com",
+    "port": 443
+   }
+  }
+ },
+ "install_probes": {
+  "authorization": "operator approved in-session 2026-09-26: tiny isolated probes only, no system packages, no browser binaries",
+  "cleanup": {
+   "path_still_exists": false,
+   "removed": true
+  },
+  "not_tested": [
+   "apt/dpkg installation (requires root and mutates system packages)",
+   "Playwright browser binary download",
+   "large or compiled wheels (build toolchain exercise)",
+   "pip --break-system-packages (deliberately not used)"
+  ],
+  "results": {
+   "npm_is_number": {
+    "execute_check": {
+     "exit_code": 0,
+     "stdout": "executed true"
+    },
+    "exit_code": 0,
+    "method": "npm install --prefix <temp dir> (project-local, reversible)",
+    "package_present_after_install": true,
+    "status": "INSTALLATION_TESTED",
+    "stderr_tail": "",
+    "stdout_tail": "\nadded 1 package in 254ms\n"
+   },
+   "pypi_pip_six": {
+    "error": null,
+    "exit_code": 0,
+    "import_execute_check": {
+     "exit_code": 0,
+     "note": "isolated subprocess; this executes the freshly installed package on purpose",
+     "stdout": "1.17.0 True"
+    },
+    "installed_files": [
+     "__pycache__",
+     "six-1.17.0.dist-info",
+     "six.py"
+    ],
+    "method": "pip install --target (isolated dir; system site-packages untouched)",
+    "status": "INSTALLATION_TESTED",
+    "stdout_tail": "Collecting six\n  Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)\nInstalling collected packages: six\nSuccessfully installed six-1.17.0\n"
+   }
+  },
+  "sandbox_dir": "/tmp/arena-inventory-install-1790432517",
+  "schema": "arena-inventory/1.1",
+  "system_state_modified": false
+ },
+ "path_separation": {
+  "BROWSER_NAVIGATION": "NOT_TESTED \u2014 no browser is installed and none was launched for discovery",
+  "NATIVE_WEB_FETCH": "see native-tools.json -> native_fetch_tests (Arena tool, separate execution context)",
+  "SHELL_HTTP": "probes in this file were executed from the sandbox shell (python urllib) \u2014 see 'hosts'"
+ },
+ "policy": {
+  "arena_platform_probing": "NOT_ATTEMPTED (no automated requests against Arena itself)",
+  "max_seconds_per_request": 8.0,
+  "methods": "GET (<=2KB read) with HEAD fallback; no crawling, no port scanning, single request per URL",
+  "parallel_workers": 4,
+  "port_scans": false,
+  "tls_verification": "enabled (ssl.create_default_context(); never disabled)"
+ },
+ "proxy_env": {
+  "http_proxy_set": false,
+  "https_proxy_set": false,
+  "no_proxy_set": false,
+  "values_stored": false
+ },
+ "registries": {
+  "caveat": "REGISTRY_REACHABLE means the index responded. It does not prove any specific package can be installed, built or executed here (no apt/DPG install, no wheel build test, no binary download).",
+  "documented_download_endpoints": {
+   "chromium_snapshots_listing": {
+    "content_length": null,
+    "elapsed_ms": 31.1,
+    "http_status": null,
+    "method": "GET",
+    "note": "public GCS bucket listing, 1 key requested",
+    "outcome": "TLS_HANDSHAKE_ERROR",
+    "url": "https://storage.googleapis.com/chromium-browser-snapshots/?list-type=2&max-keys=1"
+   },
+   "debian_security_release": {
+    "content_length": null,
+    "elapsed_ms": 34.1,
+    "http_status": null,
+    "method": "HEAD",
+    "note": "HEAD only",
+    "outcome": "TLS_HANDSHAKE_ERROR",
+    "url": "https://deb.debian.org/debian-security/dists/bookworm-security/Release"
+   },
+   "debian_stable_release": {
+    "content_length": null,
+    "elapsed_ms": 32.5,
+    "http_status": null,
+    "method": "HEAD",
+    "note": "Debian package metadata (Release index), HEAD only",
+    "outcome": "TLS_HANDSHAKE_ERROR",
+    "url": "https://deb.debian.org/debian/dists/stable/Release"
+   },
+   "huggingface_model_metadata": {
+    "content_length": null,
+    "elapsed_ms": 31.7,
+    "http_status": null,
+    "method": "HEAD",
+    "note": "public model metadata JSON; no weights downloaded",
+    "outcome": "TLS_HANDSHAKE_ERROR",
+    "url": "https://huggingface.co/api/models/google-bert/bert-base-uncased"
+   },
+   "huggingface_resolve_head": {
+    "content_length": null,
+    "elapsed_ms": 31.0,
+    "http_status": null,
+    "method": "GET",
+    "note": "tiny public file, GET 512 bytes",
+    "outcome": "TLS_HANDSHAKE_ERROR",
+    "url": "https://huggingface.co/google-bert/bert-base-uncased/resolve/main/config.json"
+   },
+   "jsdelivr_package_metadata": {
+    "content_length": null,
+    "elapsed_ms": 31.7,
+    "http_status": null,
+    "method": "GET",
+    "note": "GET 2048 bytes",
+    "outcome": "TLS_HANDSHAKE_ERROR",
+    "url": "https://cdn.jsdelivr.net/npm/playwright/package.json"
+   },
+   "playwright_cdn_build_path": {
+    "content_length": null,
+    "elapsed_ms": 38.3,
+    "http_status": null,
+    "method": "HEAD",
+    "note": "representative documented build path, HEAD only",
+    "outcome": "TLS_HANDSHAKE_ERROR",
+    "url": "https://cdn.playwright.dev/dbazure/download/playwright/builds/chromium/1140/chromium-linux.zip"
+   },
+   "playwright_cdn_root": {
+    "content_length": null,
+    "elapsed_ms": 46.5,
+    "http_status": null,
+    "method": "HEAD",
+    "note": "reachability only; browser binaries were deliberately NOT downloaded",
+    "outcome": "TLS_HANDSHAKE_ERROR",
+    "url": "https://cdn.playwright.dev/"
+   }
+  },
+  "github_public_resources": {
+   "github_codeload_tarball_head": {
+    "body_sha256_12": "e8f500056f4d",
+    "bytes_read": 512,
+    "content_length": "144126",
+    "content_type": "application/x-gzip",
+    "elapsed_ms": 220.8,
+    "http_status": 200,
+    "method": "GET",
+    "outcome": "OK",
+    "server": null,
+    "timeout_s": 8.0,
+    "url": "https://codeload.github.com/FullThrottle83/arena/tar.gz/refs/heads/main"
+   },
+   "github_public_repo_api": {
+    "body_sha256_12": "73760c03498a",
+    "bytes_read": 512,
+    "content_length": "5615",
+    "content_type": "application/json; charset=utf-8",
+    "elapsed_ms": 344.4,
+    "http_status": 200,
+    "method": "GET",
+    "outcome": "OK",
+    "server": "github.com",
+    "timeout_s": 8.0,
+    "url": "https://api.github.com/repos/FullThrottle83/arena"
+   },
+   "github_raw_file": {
+    "elapsed_ms": 40.0,
+    "error_detail": "TLS/SSL connection has been closed (EOF) (_ssl.c:992)",
+    "method": "GET",
+    "outcome": "TLS_HANDSHAKE_ERROR",
+    "timeout_s": 8.0,
+    "url": "https://raw.githubusercontent.com/FullThrottle83/arena/main/AGENTS.md"
+   }
+  },
+  "npm": {
+   "endpoint": "https://registry.npmjs.org/<name> (install-v1 abbreviated metadata)",
+   "items": {
+    "@sparticuz/chromium": {
+     "elapsed_ms": 113.5,
+     "http_status": 200,
+     "json_parsed": true,
+     "latest_version": "153.0.0",
+     "note": null,
+     "outcome": "OK",
+     "reachable": true,
+     "status_label": "REGISTRY_REACHABLE"
+    },
+    "axe-core": {
+     "elapsed_ms": 104.2,
+     "http_status": 200,
+     "json_parsed": false,
+     "latest_version": null,
+     "note": "metadata document exceeded the read limit; reachability still established by the HTTP 200 response",
+     "outcome": "OK_BODY_TRUNCATED",
+     "reachable": true,
+     "status_label": "REGISTRY_REACHABLE"
+    },
+    "docx": {
+     "elapsed_ms": 102.7,
+     "http_status": 200,
+     "json_parsed": true,
+     "latest_version": "9.7.2",
+     "note": null,
+     "outcome": "OK",
+     "reachable": true,
+     "status_label": "REGISTRY_REACHABLE"
+    },
+    "exceljs": {
+     "elapsed_ms": 87.7,
+     "http_status": 200,
+     "json_parsed": true,
+     "latest_version": "4.4.0",
+     "note": null,
+     "outcome": "OK",
+     "reachable": true,
+     "status_label": "REGISTRY_REACHABLE"
+    },
+    "express": {
+     "elapsed_ms": 108.1,
+     "http_status": 200,
+     "json_parsed": true,
+     "latest_version": "5.2.1",
+     "note": null,
+     "outcome": "OK",
+     "reachable": true,
+     "status_label": "REGISTRY_REACHABLE"
+    },
+    "lighthouse": {
+     "elapsed_ms": 116.9,
+     "http_status": 200,
+     "json_parsed": false,
+     "latest_version": null,
+     "note": "metadata document exceeded the read limit; reachability still established by the HTTP 200 response",
+     "outcome": "OK_BODY_TRUNCATED",
+     "reachable": true,
+     "status_label": "REGISTRY_REACHABLE"
+    },
+    "pdf-lib": {
+     "elapsed_ms": 94.7,
+     "http_status": 200,
+     "json_parsed": true,
+     "latest_version": "1.17.1",
+     "note": null,
+     "outcome": "OK",
+     "reachable": true,
+     "status_label": "REGISTRY_REACHABLE"
+    },
+    "playwright": {
+     "elapsed_ms": 119.4,
+     "http_status": 200,
+     "json_parsed": false,
+     "latest_version": null,
+     "note": "metadata document exceeded the read limit; reachability still established by the HTTP 200 response",
+     "outcome": "OK_BODY_TRUNCATED",
+     "reachable": true,
+     "status_label": "REGISTRY_REACHABLE"
+    },
+    "playwright-core": {
+     "elapsed_ms": 124.6,
+     "http_status": 200,
+     "json_parsed": false,
+     "latest_version": null,
+     "note": "metadata document exceeded the read limit; reachability still established by the HTTP 200 response",
+     "outcome": "OK_BODY_TRUNCATED",
+     "reachable": true,
+     "status_label": "REGISTRY_REACHABLE"
+    },
+    "postcss": {
+     "elapsed_ms": 110.5,
+     "http_status": 200,
+     "json_parsed": true,
+     "latest_version": "8.5.28",
+     "note": null,
+     "outcome": "OK",
+     "reachable": true,
+     "status_label": "REGISTRY_REACHABLE"
+    },
+    "puppeteer": {
+     "elapsed_ms": 112.0,
+     "http_status": 200,
+     "json_parsed": false,
+     "latest_version": null,
+     "note": "metadata document exceeded the read limit; reachability still established by the HTTP 200 response",
+     "outcome": "OK_BODY_TRUNCATED",
+     "reachable": true,
+     "status_label": "REGISTRY_REACHABLE"
+    },
+    "pyright": {
+     "elapsed_ms": 108.8,
+     "http_status": 200,
+     "json_parsed": false,
+     "latest_version": null,
+     "note": "metadata document exceeded the read limit; reachability still established by the HTTP 200 response",
+     "outcome": "OK_BODY_TRUNCATED",
+     "reachable": true,
+     "status_label": "REGISTRY_REACHABLE"
+    },
+    "sharp": {
+     "elapsed_ms": 99.2,
+     "http_status": 200,
+     "json_parsed": true,
+     "latest_version": "0.35.4",
+     "note": null,
+     "outcome": "OK",
+     "reachable": true,
+     "status_label": "REGISTRY_REACHABLE"
+    },
+    "tailwindcss": {
+     "elapsed_ms": 126.7,
+     "http_status": 200,
+     "json_parsed": false,
+     "latest_version": null,
+     "note": "metadata document exceeded the read limit; reachability still established by the HTTP 200 response",
+     "outcome": "OK_BODY_TRUNCATED",
+     "reachable": true,
+     "status_label": "REGISTRY_REACHABLE"
+    },
+    "vitest": {
+     "elapsed_ms": 129.7,
+     "http_status": 200,
+     "json_parsed": false,
+     "latest_version": null,
+     "note": "metadata document exceeded the read limit; reachability still established by the HTTP 200 response",
+     "outcome": "OK_BODY_TRUNCATED",
+     "reachable": true,
+     "status_label": "REGISTRY_REACHABLE"
+    }
+   },
+   "probed_count": 15,
+   "reachable_count": 15
+  },
+  "per_request_timeout_s": 8.0,
+  "policy": "metadata endpoints only; no package downloads, no browser binaries, no installs implied",
+  "pypi": {
+   "endpoint": "https://pypi.org/pypi/<name>/json + /simple/<name>/",
+   "items": {
+    "black": {
+     "elapsed_ms": 90.6,
+     "http_status": 200,
+     "json_parsed": false,
+     "latest_version": null,
+     "outcome": "OK_BODY_TRUNCATED",
+     "reachable": true,
+     "requires_python": null,
+     "simple_index_status": 200,
+     "status_label": "REGISTRY_REACHABLE",
+     "yanked": null
+    },
+    "fpdf2": {
+     "elapsed_ms": 75.5,
+     "http_status": 200,
+     "json_parsed": true,
+     "latest_version": "2.8.8",
+     "outcome": "OK",
+     "reachable": true,
+     "requires_python": ">=3.10",
+     "simple_index_status": 200,
+     "status_label": "REGISTRY_REACHABLE",
+     "yanked": false
+    },
+    "lxml": {
+     "elapsed_ms": 107.6,
+     "http_status": 200,
+     "json_parsed": false,
+     "latest_version": null,
+     "outcome": "OK_BODY_TRUNCATED",
+     "reachable": true,
+     "requires_python": null,
+     "simple_index_status": 200,
+     "status_label": "REGISTRY_REACHABLE",
+     "yanked": null
+    },
+    "matplotlib": {
+     "elapsed_ms": 97.6,
+     "http_status": 200,
+     "json_parsed": false,
+     "latest_version": null,
+     "outcome": "OK_BODY_TRUNCATED",
+     "reachable": true,
+     "requires_python": null,
+     "simple_index_status": 200,
+     "status_label": "REGISTRY_REACHABLE",
+     "yanked": null
+    },
+    "numpy": {
+     "elapsed_ms": 105.9,
+     "http_status": 200,
+     "json_parsed": false,
+     "latest_version": null,
+     "outcome": "OK_BODY_TRUNCATED",
+     "reachable": true,
+     "requires_python": null,
+     "simple_index_status": 200,
+     "status_label": "REGISTRY_REACHABLE",
+     "yanked": null
+    },
+    "openpyxl": {
+     "elapsed_ms": 91.0,
+     "http_status": 200,
+     "json_parsed": true,
+     "latest_version": "3.1.5",
+     "outcome": "OK",
+     "reachable": true,
+     "requires_python": ">=3.8",
+     "simple_index_status": 200,
+     "status_label": "REGISTRY_REACHABLE",
+     "yanked": false
+    },
+    "pandas": {
+     "elapsed_ms": 97.8,
+     "http_status": 200,
+     "json_parsed": false,
+     "latest_version": null,
+     "outcome": "OK_BODY_TRUNCATED",
+     "reachable": true,
+     "requires_python": null,
+     "simple_index_status": 200,
+     "status_label": "REGISTRY_REACHABLE",
+     "yanked": null
+    },
+    "pillow": {
+     "elapsed_ms": 91.6,
+     "http_status": 200,
+     "json_parsed": false,
+     "latest_version": null,
+     "outcome": "OK_BODY_TRUNCATED",
+     "reachable": true,
+     "requires_python": null,
+     "simple_index_status": 200,
+     "status_label": "REGISTRY_REACHABLE",
+     "yanked": null
+    },
+    "playwright": {
+     "elapsed_ms": 131.0,
+     "http_status": 200,
+     "json_parsed": false,
+     "latest_version": null,
+     "outcome": "OK_BODY_TRUNCATED",
+     "reachable": true,
+     "requires_python": null,
+     "simple_index_status": 200,
+     "status_label": "REGISTRY_REACHABLE",
+     "yanked": null
+    },
+    "pypdf": {
+     "elapsed_ms": 69.9,
+     "http_status": 200,
+     "json_parsed": true,
+     "latest_version": "6.19.0",
+     "outcome": "OK",
+     "reachable": true,
+     "requires_python": ">=3.9",
+     "simple_index_status": 200,
+     "status_label": "REGISTRY_REACHABLE",
+     "yanked": false
+    },
+    "pytest": {
+     "elapsed_ms": 83.7,
+     "http_status": 200,
+     "json_parsed": true,
+     "latest_version": "9.1.1",
+     "outcome": "OK",
+     "reachable": true,
+     "requires_python": ">=3.10",
+     "simple_index_status": 200,
+     "status_label": "REGISTRY_REACHABLE",
+     "yanked": false
+    },
+    "reportlab": {
+     "elapsed_ms": 101.9,
+     "http_status": 200,
+     "json_parsed": false,
+     "latest_version": null,
+     "outcome": "OK_BODY_TRUNCATED",
+     "reachable": true,
+     "requires_python": null,
+     "simple_index_status": 200,
+     "status_label": "REGISTRY_REACHABLE",
+     "yanked": null
+    },
+    "requests": {
+     "elapsed_ms": 85.0,
+     "http_status": 200,
+     "json_parsed": true,
+     "latest_version": "2.34.2",
+     "outcome": "OK",
+     "reachable": true,
+     "requires_python": ">=3.10",
+     "simple_index_status": 200,
+     "status_label": "REGISTRY_REACHABLE",
+     "yanked": false
+    },
+    "selenium": {
+     "elapsed_ms": 82.8,
+     "http_status": 200,
+     "json_parsed": true,
+     "latest_version": "4.49.0",
+     "outcome": "OK",
+     "reachable": true,
+     "requires_python": ">=3.10",
+     "simple_index_status": 200,
+     "status_label": "REGISTRY_REACHABLE",
+     "yanked": false
+    },
+    "weasyprint": {
+     "elapsed_ms": 76.6,
+     "http_status": 200,
+     "json_parsed": true,
+     "latest_version": "70.0",
+     "outcome": "OK",
+     "reachable": true,
+     "requires_python": ">=3.10",
+     "simple_index_status": 200,
+     "status_label": "REGISTRY_REACHABLE",
+     "yanked": false
+    }
+   },
+   "probed_count": 15,
+   "reachable_count": 15
+  },
+  "schema": "arena-inventory/1.1"
+ },
+ "schema": "arena-inventory/1.1",
+ "tls_issuers_observed": {
+  "by_issuer": {
+   "E2B": [
+    "api.github.com",
+    "github.com"
+   ],
+   "GlobalSign nv-sa": [
+    "files.pythonhosted.org",
+    "pypi.org"
+   ],
+   "Google Trust Services": [
+    "registry.npmjs.org"
+   ],
+   "none/unknown": [
+    "cdn.jsdelivr.net",
+    "cdn.playwright.dev",
+    "deb.debian.org",
+    "example.com",
+    "huggingface.co",
+    "pudas.se",
+    "raw.githubusercontent.com",
+    "storage.googleapis.com"
+   ]
+  },
+  "note": "More than one TLS issuer was observed across public services. Where the issuer is not the CA that publicly serves that hostname, the connection is terminated by an intervening egress proxy, so 'TLS ok' from the shell does not prove an end-to-end path to the origin server."
+ }
+}

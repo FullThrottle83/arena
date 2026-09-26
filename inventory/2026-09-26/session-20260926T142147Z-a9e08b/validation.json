@@ -1,0 +1,387 @@
+{
+ "all_expected_files_present_and_valid": true,
+ "capability_tests": {
+  "executed_now": 13,
+  "failed": 1,
+  "not_installed": 1,
+  "total": 15
+ },
+ "capability_tests_failures": [
+  {
+   "command": "/usr/bin/convert probe.png probe.pdf",
+   "detail": "convert: attempt to perform an operation not allowed by the security policy `PDF' @ error/constitute.c/IsCoderAuthorized/426.",
+   "id": "pdf_generation_via_imagemagick",
+   "note": "Debian's ImageMagick policy.xml denies the PDF coder (ghostscript CVE mitigation) and ghostscript is not installed. The policy was NOT modified and no bypass was attempted - circumventing a security control is out of scope.",
+   "pdf_renderer_present": false,
+   "status": "FAILED"
+  }
+ ],
+ "delivery": {
+  "base_branch": "main",
+  "branch_sharing_check": "arena/01a0dd2c-arena did not exist on origin before this push; no other session uses it",
+  "commit_sha": "9967cfa0dea2e728b1a77dbb2c51eedbdeaf896a",
+  "commit_short": "9967cfa",
+  "credentials_read_or_printed": false,
+  "delivery_method": "git push + gh pr create from the sandbox shell; no dedicated GitHub agent tool exists in this session",
+  "force_push_used": false,
+  "note": "delivery evidence recorded after the inventory scan via scripts/inventory.py --record-delivery; it is the only write-capability proof (repo metadata alone cannot prove push rights)",
+  "other_open_prs_left_untouched": [
+   2,
+   3,
+   6
+  ],
+  "pr_number": 8,
+  "pr_state": {
+   "base": "main",
+   "commits": 1,
+   "head": "arena/01a0dd2c-arena",
+   "merged": false,
+   "state": "OPEN"
+  },
+  "pr_url": "https://github.com/FullThrottle83/arena/pull/8",
+  "push_status": "SUCCEEDED (new branch created on origin from origin/main 43e25c3; no force-push)",
+  "pushed_to_main": false,
+  "recorded_utc": "2026-09-26T14:23:56+00:00",
+  "remote_head_matches_local": true,
+  "remote_head_sha": "9967cfa0dea2e728b1a77dbb2c51eedbdeaf896a",
+  "repository": "FullThrottle83/arena",
+  "verified_utc": "2026-09-26T14:23:37+00:00",
+  "working_branch": "arena/01a0dd2c-arena"
+ },
+ "directory_listing": [
+  {
+   "bytes": 4479,
+   "file": "SUMMARY.md",
+   "is_file": true
+  },
+  {
+   "bytes": 2330,
+   "file": "UI-CHECKLIST.md",
+   "is_file": true
+  },
+  {
+   "bytes": 15549,
+   "file": "capabilities.json",
+   "is_file": true,
+   "json_valid": true
+  },
+  {
+   "bytes": 50470,
+   "file": "executables.json",
+   "is_file": true,
+   "json_valid": true
+  },
+  {
+   "bytes": 23952,
+   "file": "fingerprints.json",
+   "is_file": true,
+   "json_valid": true
+  },
+  {
+   "bytes": 2362,
+   "file": "fonts.json",
+   "is_file": true,
+   "json_valid": true
+  },
+  {
+   "bytes": 6310,
+   "file": "github.json",
+   "is_file": true,
+   "json_valid": true
+  },
+  {
+   "bytes": 15694,
+   "file": "libraries.json",
+   "is_file": true,
+   "json_valid": true
+  },
+  {
+   "bytes": 24129,
+   "file": "native-tools.json",
+   "is_file": true,
+   "json_valid": true
+  },
+  {
+   "bytes": 29072,
+   "file": "network.json",
+   "is_file": true,
+   "json_valid": true
+  },
+  {
+   "bytes": 2648,
+   "file": "node.json",
+   "is_file": true,
+   "json_valid": true
+  },
+  {
+   "bytes": 31849,
+   "file": "os-packages.json",
+   "is_file": true,
+   "json_valid": true
+  },
+  {
+   "bytes": 915,
+   "file": "persistence-marker.json",
+   "is_file": true,
+   "json_valid": true
+  },
+  {
+   "bytes": 1352,
+   "file": "persistence.json",
+   "is_file": true,
+   "json_valid": true
+  },
+  {
+   "bytes": 529,
+   "file": "provenance.json",
+   "is_file": true,
+   "json_valid": true
+  },
+  {
+   "bytes": 10208,
+   "file": "python.json",
+   "is_file": true,
+   "json_valid": true
+  },
+  {
+   "bytes": 14675,
+   "file": "registries.json",
+   "is_file": true,
+   "json_valid": true
+  },
+  {
+   "bytes": 6801,
+   "file": "system.json",
+   "is_file": true,
+   "json_valid": true
+  },
+  {
+   "bytes": 7033,
+   "file": "validation.json",
+   "is_file": true,
+   "json_valid": true
+  }
+ ],
+ "environment_values_stored": false,
+ "expected_files": [
+  "system.json",
+  "executables.json",
+  "python.json",
+  "node.json",
+  "os-packages.json",
+  "libraries.json",
+  "fonts.json",
+  "network.json",
+  "registries.json",
+  "native-tools.json",
+  "github.json",
+  "persistence.json",
+  "fingerprints.json",
+  "capabilities.json",
+  "validation.json"
+ ],
+ "extra_files_beyond_required": [
+  "SUMMARY.md",
+  "UI-CHECKLIST.md",
+  "persistence-marker.json",
+  "provenance.json"
+ ],
+ "failed_commands": {
+  "count": 2,
+  "items": [
+   {
+    "argv": [
+     "/usr/bin/gh",
+     "api",
+     "user",
+     "--jq",
+     ".login"
+    ],
+    "error": null,
+    "exit_code": 1,
+    "label": "gh api user",
+    "stderr_head": "gh: Resource not accessible by integration (HTTP 403)\n"
+   },
+   {
+    "argv": [
+     "/usr/bin/convert",
+     "/tmp/arena-inv-tests-yqgxhk7m/probe.png",
+     "/tmp/arena-inv-tests-yqgxhk7m/probe.pdf"
+    ],
+    "error": null,
+    "exit_code": 1,
+    "label": "test:pdf-coder",
+    "stderr_head": "convert: attempt to perform an operation not allowed by the security policy `PDF' @ error/constitute.c/IsCoderAuthorized/426.\n"
+   }
+  ],
+  "note": "non-zero exits and probe errors are retained rather than silently dropped"
+ },
+ "file_checks": [
+  {
+   "bytes": 6801,
+   "exists": true,
+   "file": "system.json",
+   "json_valid": true,
+   "ok": true
+  },
+  {
+   "bytes": 50470,
+   "exists": true,
+   "file": "executables.json",
+   "json_valid": true,
+   "ok": true
+  },
+  {
+   "bytes": 10208,
+   "exists": true,
+   "file": "python.json",
+   "json_valid": true,
+   "ok": true
+  },
+  {
+   "bytes": 2648,
+   "exists": true,
+   "file": "node.json",
+   "json_valid": true,
+   "ok": true
+  },
+  {
+   "bytes": 31849,
+   "exists": true,
+   "file": "os-packages.json",
+   "json_valid": true,
+   "ok": true
+  },
+  {
+   "bytes": 15694,
+   "exists": true,
+   "file": "libraries.json",
+   "json_valid": true,
+   "ok": true
+  },
+  {
+   "bytes": 2362,
+   "exists": true,
+   "file": "fonts.json",
+   "json_valid": true,
+   "ok": true
+  },
+  {
+   "bytes": 29072,
+   "exists": true,
+   "file": "network.json",
+   "json_valid": true,
+   "ok": true
+  },
+  {
+   "bytes": 14675,
+   "exists": true,
+   "file": "registries.json",
+   "json_valid": true,
+   "ok": true
+  },
+  {
+   "bytes": 24129,
+   "exists": true,
+   "file": "native-tools.json",
+   "json_valid": true,
+   "ok": true
+  },
+  {
+   "bytes": 6310,
+   "exists": true,
+   "file": "github.json",
+   "json_valid": true,
+   "ok": true
+  },
+  {
+   "bytes": 1352,
+   "exists": true,
+   "file": "persistence.json",
+   "json_valid": true,
+   "ok": true
+  },
+  {
+   "bytes": 23952,
+   "exists": true,
+   "file": "fingerprints.json",
+   "json_valid": true,
+   "ok": true
+  },
+  {
+   "bytes": 15549,
+   "exists": true,
+   "file": "capabilities.json",
+   "json_valid": true,
+   "ok": true
+  },
+  {
+   "bytes": 7033,
+   "exists": true,
+   "file": "validation.json",
+   "json_valid": true,
+   "ok": true
+  }
+ ],
+ "files_written_by_engine": [
+  "system.json",
+  "executables.json",
+  "python.json",
+  "node.json",
+  "os-packages.json",
+  "libraries.json",
+  "fonts.json",
+  "network.json",
+  "registries.json",
+  "native-tools.json",
+  "github.json",
+  "persistence.json",
+  "fingerprints.json",
+  "capabilities.json",
+  "provenance.json",
+  "validation.json"
+ ],
+ "json_parser": "json.loads (CPython 3.11.2)",
+ "limitations": [
+  "capability claims here describe THIS session only",
+  "agent tool inventory is operator-declared, not machine-introspectable",
+  "not every registry entry can necessarily be installed or executed"
+ ],
+ "missing_or_invalid": [],
+ "network_safety": {
+  "arena_platform_automated_access": false,
+  "cloud_metadata_probed": false,
+  "crawling": false,
+  "port_scans": false,
+  "tls_verification_disabled": false
+ },
+ "privacy": {
+  "credential_values_stored": false,
+  "hostnames_stored": false,
+  "ip_addresses_stored": false,
+  "private_repo_names_stored": false,
+  "usernames_stored": false
+ },
+ "schema": "arena-inventory/1.1",
+ "secret_scan": {
+  "clean": true,
+  "findings": [],
+  "patterns": [
+   "AUTH_HEADER",
+   "AWS_ACCESS_KEY",
+   "GITHUB_FINE_GRAINED_TOKEN",
+   "GITHUB_TOKEN",
+   "JWT_LIKE",
+   "PEM_PRIVATE_KEY",
+   "SLACK_TOKEN",
+   "URL_USERINFO"
+  ],
+  "scope": "every file in the session directory plus this script"
+ },
+ "subprocess_timeouts": {
+  "all_calls_bounded": true,
+  "max_timeout_seconds_used": 240,
+  "note": "every Runner.run call passes an explicit timeout= and HTTP probes pass timeout= to urlopen/socket"
+ },
+ "validated_utc": "2026-09-26T14:22:01+00:00"
+}

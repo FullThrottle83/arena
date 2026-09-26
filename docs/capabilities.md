@@ -25,4 +25,4 @@
 | Session quotas / exact token savings | UNKNOWN | The official daily period starts with the first prompt; no trustworthy account-specific per-task token/credit figure from probes. |
 | `/tmp` across new sessions | NOT RELIED ON | Browser install was under `/tmp`; rerun/bootstrap on each new session. |
 
-**Rule:** read [evidence.md](evidence.md) before promoting a capability to `verified`; use `EXECUTED_NOW` only with current-session outputs.
+**Rule:** read [evidence.md](evidence.md) before promoting a capability to `verified`; use `EXECUTED_NOW` only with current-session outputs. For a new session, optionally run the [reusable inventory](../inventory/README.md) and compare its evidence before updating this curated matrix. Do not run a full inventory for routine coding tasks.
