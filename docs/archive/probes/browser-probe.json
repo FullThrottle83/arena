@@ -1,0 +1,224 @@
+{
+  "probe": "arena-browser-probe",
+  "session": {
+    "date": "2026-09-26",
+    "repo": "FullThrottle83/arena",
+    "requested_branch": "arena/probe-browser",
+    "actual_branch": "arena/01a0dc7f-arena",
+    "base_commit": "12630762fd28d6fdad782bd99964b961de7f9dd0",
+    "note": "Arena assigned branch arena/01a0dc7f-arena (branched from main commit 1263076). The requested name arena/probe-browser was not used because this session is fixed to the Arena-assigned branch."
+  },
+  "environment": {
+    "os": "Debian GNU/Linux 12 (bookworm), kernel 6.1.158+ x86_64",
+    "cpu_count": 2,
+    "ram_mb_total": 3939,
+    "disk_free_gb": 20,
+    "python": "3.11.2",
+    "node": "v22.22.3",
+    "npm": "10.9.8",
+    "privileges": "unprivileged user with passwordless sudo (verified: sudo whoami -> root)",
+    "pip_pep668": "EXTERNALLY-MANAGED present; install performed in venv /tmp/pw-venv"
+  },
+  "inventory_before_install": {
+    "playwright_python": "ABSENT (pip show playwright -> not found; import playwright -> ModuleNotFoundError)",
+    "playwright_node": "ABSENT (require.resolve('playwright') -> MODULE_NOT_FOUND)",
+    "puppeteer_node": "ABSENT (MODULE_NOT_FOUND)",
+    "selenium_python": "ABSENT (ModuleNotFoundError)",
+    "playwright_cli": "ABSENT (not on PATH)",
+    "browser_executables": "NONE (which chromium/chrome/firefox empty; find / -xdev for chromium|chrome|firefox|headless_shell returned nothing; /usr/bin/sensible-browser is a wrapper with no backend)",
+    "browser_caches": "NONE (~/.cache/ms-playwright, ~/.cache/puppeteer, ~/.cache/selenium absent)",
+    "arena_browser_tool": "NONE (no dedicated browser automation tool exposed in the agent toolset)",
+    "system_chromium_libs": "libnss3/libnspr4/libnssutil3 absent from /usr/lib/x86_64-linux-gnu"
+  },
+  "network_egress_matrix": [
+    {"host": "pypi.org", "via": "shell curl https", "result": "HTTP 200"},
+    {"host": "registry.npmjs.org", "via": "shell curl https / npm view", "result": "HTTP 200"},
+    {"host": "files.pythonhosted.org", "via": "pip install (wheel download)", "result": "OK"},
+    {"host": "deb.debian.org", "via": "shell curl http+https / apt-get update", "result": "BLOCKED (empty reply on :80, SSL_ERROR_SYSCALL on :443)"},
+    {"host": "cdn.playwright.dev", "via": "shell curl https (playwright install download url)", "result": "BLOCKED (000)"},
+    {"host": "playwright.azureedge.net", "via": "shell curl https", "result": "BLOCKED (000)"},
+    {"host": "playwright.download.prss.microsoft.com", "via": "shell curl https (documented fallback CDN)", "result": "BLOCKED (000)"},
+    {"host": "storage.googleapis.com", "via": "shell curl https (Chrome-for-Testing / puppeteer CDN)", "result": "BLOCKED (000)"},
+    {"host": "edgedl.me.gvt1.com", "via": "shell curl https", "result": "BLOCKED (000)"},
+    {"host": "example.com", "via": "shell curl https", "result": "BLOCKED (000)"},
+    {"host": "example.com", "via": "Arena native fetch_page tool", "result": "OK (title 'Example Domain')"},
+    {"host": "127.0.0.1:8123", "via": "shell curl / browser navigation", "result": "OK (local loopback)"},
+    {"conclusion": "Shell egress is host-allowlisted (package registries reachable; general web, Debian mirrors and all browser CDNs blocked). Arena native fetch_page/web_search use a separate, unrestricted egress path. Browser (Chromium) egress matches the shell allowlist."}
+  ],
+  "installation": {
+    "approved_by_user": true,
+    "approval_quote": "Approved. Proceed with the full Playwright + Chromium installation inside this session's isolated sandbox. Use a Python virtual environment rather than modifying the system Python installation. ... Do not use security-bypassing browser flags automatically.",
+    "steps": [
+      "python3 -m venv /tmp/pw-venv && /tmp/pw-venv/bin/pip install playwright  (playwright 1.63.0, greenlet 3.5.6, pyee 13.0.1)",
+      "sudo apt-get update -> PARTIAL FAILURE: deb.debian.org unreachable (network allowlist), index not refreshed",
+      "sudo /tmp/pw-venv/bin/playwright install --with-deps chromium -> FAILED: browser CDN blocked + apt packages not locatable",
+      "npm (in /tmp/pwnode) install playwright-core@1.63.0 @sparticuz/chromium@153.0.0 -> OK (browser binary distributed as package payload through registry.npmjs.org, an allowed host)",
+      "@sparticuz/chromium executablePath() inflated 67 MB brotli payload to /tmp/chromium (chrome-headless-shell build, 209 MB)",
+      "bundled al2023.tar.br extracted to /tmp/al2023/lib (libnss3, libnspr4, libnssutil3, libexpat, freebl/softokn) and swiftshader.tar.br to /tmp/swiftshader",
+      "LD_LIBRARY_PATH=/tmp/al2023/lib:/tmp/swiftshader ldd /tmp/chromium -> ALL LIBS RESOLVED (only libnspr4/libnss3/libnssutil3 were missing system-wide)"
+    ],
+    "security_flags_policy": "@sparticuz/chromium default args include --no-sandbox, --disable-web-security, --allow-running-insecure-content; these were NOT used. Browser launched with sandbox enabled and only --disable-dev-shm-usage --disable-gpu.",
+    "resource_observation": "install footprint ~350 MB in /tmp (venv ~60 MB, node_modules ~85 MB, inflated binary 209 MB); launch time 120 ms; no measurable system impact afterwards.",
+    "persistence_assessment": "NOT persistent across sessions: venv, node_modules and /tmp/chromium live in /tmp (outside the persisted workspace); ~/.cache/ms-playwright was never populated; apt is unusable (mirror blocked) so a system-level install is impossible in this sandbox. Only committed repository files persist. Recreating the browser requires the same npm-based path again (registry.npmjs.org allowlisted)."
+  },
+  "tests": [
+    {
+      "test_id": "B01",
+      "operation": "Browser-specific Arena tool discovery",
+      "prerequisites": "none",
+      "status": "PASS",
+      "actual_result": "No dedicated browser automation tool is exposed in this agent session. Toolset = bash/file tools, start/stop/get_process, web_search, fetch_page, image_search, generate_image, generate_speech, add_voice, present_file, ask_user. Browser automation is only possible by installing tooling via bash.",
+      "error": null,
+      "evidence_reference": "agent toolset enumeration; see browser-probe.md section 2"
+    },
+    {
+      "test_id": "B02",
+      "operation": "Playwright package discovery (pre-install)",
+      "prerequisites": "none",
+      "status": "PASS",
+      "actual_result": "python: 'WARNING: Package(s) not found: playwright' + ModuleNotFoundError (exit 1). node: require.resolve('playwright') -> MODULE_NOT_FOUND, require.resolve('puppeteer') -> MODULE_NOT_FOUND. npm -g: only corepack, npm. python selenium: ModuleNotFoundError. Post-install: playwright 1.63.0 (pip, venv) and playwright-core 1.63.0 (npm).",
+      "error": null,
+      "evidence_reference": "inventory_before_install; browser-probe.md section 2"
+    },
+    {
+      "test_id": "B03",
+      "operation": "Browser executable discovery (pre-install)",
+      "prerequisites": "none",
+      "status": "PASS",
+      "actual_result": "No browser executable anywhere: which chromium/chromium-browser/google-chrome/google-chrome-stable/firefox empty (exit 1); find / -xdev -iname '*chrom*'|'*firefox*'|'headless_shell*' -> no results; /usr/bin/sensible-browser is a debian wrapper with no backend; browser caches absent. Post-install binary: /tmp/chromium = Chrome for Testing headless shell 153.0.8010.0 from @sparticuz/chromium npm payload.",
+      "error": null,
+      "evidence_reference": "inventory_before_install; browser-probe.md section 2"
+    },
+    {
+      "test_id": "B04",
+      "operation": "Headless browser launch",
+      "prerequisites": "B02/B03 satisfied post-install (playwright-core + bundled chrome-headless-shell)",
+      "status": "PASS",
+      "actual_result": "chromium.launch({executablePath:'/tmp/chromium', headless:true, args:['--disable-dev-shm-usage','--disable-gpu']}) -> LAUNCH OK in 120 ms; browser.version() = 153.0.8010.0; clean close. Sandbox left ENABLED (no --no-sandbox or other security-bypass flags).",
+      "error": null,
+      "evidence_reference": "probe-suite log line [B04]; browser-probe.md section 3"
+    },
+    {
+      "test_id": "B05",
+      "operation": "Local HTML rendering over HTTP",
+      "prerequisites": "B04",
+      "status": "PASS",
+      "actual_result": "page.goto('http://127.0.0.1:8123/') -> HTTP 200, title 'Arena Browser Probe Fixture'; local python3 -m http.server fixture with inline JS executed by the browser (window.__jsRan true, in-page fetch of /probe-network.json returned {\"ok\":true}).",
+      "error": null,
+      "evidence_reference": "probe-suite log line [B05]; fixture HTML in browser-probe.md appendix A"
+    },
+    {
+      "test_id": "B06",
+      "operation": "DOM inspection",
+      "prerequisites": "B05",
+      "status": "PASS",
+      "actual_result": "textContent('#title')='Arena Browser Probe Fixture'; getAttribute('#probe','data-probe')='arena-browser-2026'; evaluate(window.__jsRan)=true; locator('.card').count()=3; evaluate(window.__fetched)={\"ok\":true,\"probe\":\"network\"} proving JS-rendered state is readable.",
+      "error": null,
+      "evidence_reference": "probe-suite log line [B06]"
+    },
+    {
+      "test_id": "B07",
+      "operation": "Screenshot generation (desktop, fullPage)",
+      "prerequisites": "B05",
+      "status": "PASS",
+      "actual_result": "page.screenshot fullPage at viewport 1280x800 saved docs/probes/assets/browser-fixture.png (27302 bytes). Rendering method: Chromium 153 headless shell rasterisation (NOT an AI-generated image).",
+      "error": null,
+      "evidence_reference": "docs/probes/assets/browser-fixture.png"
+    },
+    {
+      "test_id": "B08",
+      "operation": "Screenshot validation (PNG signature, dimensions, SHA-256)",
+      "prerequisites": "B07",
+      "status": "PASS",
+      "actual_result": "PNG signature 89504e470d0a1a0a valid; IHDR dimensions 1456x800 (fullPage widened to scrollWidth of the intentional 1400px element); 27302 bytes; sha256=408b8755db460a23ea123598a28fb0707532e79d5e48a85252eac717328d8cd2; visually inspected: styled cards, native button/input widgets, overflowing pink bar = genuine browser render.",
+      "error": null,
+      "evidence_reference": "docs/probes/assets/browser-fixture.png; sha256sum output recorded in browser-probe.md section 4"
+    },
+    {
+      "test_id": "B09",
+      "operation": "Responsive viewport testing + horizontal overflow detection",
+      "prerequisites": "B05",
+      "status": "PASS",
+      "actual_result": "375x667: innerWidth=375 scrollWidth=1456 hOverflow=true; 768x1024: innerWidth=768 scrollWidth=1456 hOverflow=true; 1920x1080: innerWidth=1920 scrollWidth=1920 hOverflow=false. Per-viewport screenshots captured (/tmp/shot-375x667.png 375x667, /tmp/shot-768x1024.png, /tmp/shot-1920x1080.png).",
+      "error": null,
+      "evidence_reference": "probe-suite log line [B09]"
+    },
+    {
+      "test_id": "B10",
+      "operation": "Keyboard and pointer interaction incl. focus state",
+      "prerequisites": "B05",
+      "status": "PASS",
+      "actual_result": "Two page.click('#btn') -> counter 'clicks: 2'; page.keyboard.type('Arena probe') -> input value 'Arena probe'; Enter keydown handler set window.__enterPressed=true; focus state computed style on #btn: outlineWidth=3px outlineColor=rgb(255, 136, 0) with activeElement='btn'; focus-state screenshot /tmp/shot-focus.png (1280x800).",
+      "error": null,
+      "evidence_reference": "probe-suite log line [B10]"
+    },
+    {
+      "test_id": "B11",
+      "operation": "Console message/error collection",
+      "prerequisites": "B05",
+      "status": "PASS",
+      "actual_result": "3 console messages captured via page.on('console'): log:'fixture: inline script executed', warning:'fixture: deliberate warning', error:'fixture: deliberate error' (deliberate fixture emissions, correctly attributed by type).",
+      "error": null,
+      "evidence_reference": "probe-suite log line [B11]"
+    },
+    {
+      "test_id": "B12",
+      "operation": "Network request inspection",
+      "prerequisites": "B05",
+      "status": "PASS",
+      "actual_result": "2 requests observed with method/url/resourceType/status: GET http://127.0.0.1:8123/ [document] -> 200; GET http://127.0.0.1:8123/probe-network.json [fetch] -> 200. (Full timing waterfall not collected in this run -> waterfall timing marked PARTIAL in capability matrix.)",
+      "error": null,
+      "evidence_reference": "probe-suite log line [B12]"
+    },
+    {
+      "test_id": "B13",
+      "operation": "Browser-generated PDF",
+      "prerequisites": "B05",
+      "status": "PASS",
+      "actual_result": "page.pdf(format A4, printBackground) -> /tmp/probe-fixture.pdf, 48084 bytes, header '%PDF-1.4'.",
+      "error": null,
+      "evidence_reference": "probe-suite log line [B13]"
+    },
+    {
+      "test_id": "B14",
+      "operation": "Public HTTPS navigation from the browser",
+      "prerequisites": "B04",
+      "status": "FAIL",
+      "actual_result": "page.goto('https://example.com/') -> net::ERR_CONNECTION_CLOSED. Browser egress inherits the sandbox shell allowlist (only package registries reachable). Distinct from Arena-native networking: fetch_page('https://example.com/') succeeded (title 'Example Domain'), so web content retrieval remains available through the native tool path, not through the browser.",
+      "error": "net::ERR_CONNECTION_CLOSED at https://example.com/",
+      "evidence_reference": "probe-suite log line [B14]; network_egress_matrix"
+    },
+    {
+      "test_id": "B15",
+      "operation": "Artifact delivery through GitHub (commit, push, PR on dedicated branch)",
+      "prerequisites": "B07/B08 artifacts + git/gh auth",
+      "status": "PASS",
+      "actual_result": "docs/probes/browser-probe.md, docs/probes/browser-probe.json and docs/probes/assets/browser-fixture.png committed to arena/01a0dc7f-arena, pushed to origin, one draft PR opened against main (no merge, no close). PR URL recorded in browser-probe.md section 8.",
+      "error": null,
+      "evidence_reference": "git log / gh pr view output referenced in browser-probe.md section 8"
+    }
+  ],
+  "capability_matrix": [
+    {"capability": "Rendered DOM inspection", "status": "VERIFIED_NOW"},
+    {"capability": "JavaScript-rendered content analysis", "status": "VERIFIED_NOW"},
+    {"capability": "Desktop screenshots", "status": "VERIFIED_NOW"},
+    {"capability": "Mobile screenshots", "status": "VERIFIED_NOW"},
+    {"capability": "Responsive overflow checks", "status": "VERIFIED_NOW"},
+    {"capability": "Keyboard accessibility tests (typing, key events, focus outline computation)", "status": "VERIFIED_NOW"},
+    {"capability": "Focus-state screenshots", "status": "VERIFIED_NOW"},
+    {"capability": "Network request inspection (method/url/type/status)", "status": "VERIFIED_NOW"},
+    {"capability": "Network waterfall timing inspection", "status": "PARTIAL", "note": "request/response events verified; per-request timing waterfall not collected this run"},
+    {"capability": "Console error analysis", "status": "VERIFIED_NOW"},
+    {"capability": "HTTP response observation (status codes, headers via browser and via shell curl)", "status": "VERIFIED_NOW"},
+    {"capability": "Visual regression testing", "status": "NOT_TESTED", "note": "baseline screenshots + sha256 baselines now exist; no pixel-diff comparison executed"},
+    {"capability": "Browser-based PDF generation", "status": "VERIFIED_NOW"},
+    {"capability": "Public-website browser audits", "status": "UNAVAILABLE_IN_THIS_SESSION", "note": "browser egress allowlisted to package registries; use fetch_page/web_search or serve mirrors locally instead"},
+    {"capability": "WCAG / Lighthouse / Core Web Vitals scoring", "status": "NOT_TESTED", "note": "not performed; must not be claimed"}
+  ],
+  "comparison_with_previous_session": {
+    "previous_session_claims": ["no Playwright in python/node", "no browser executable", "no browser tool", "local HTTP server worked", "native web search/fetch worked", "one failed direct shell HTTPS request"],
+    "confirmed": ["Playwright/puppeteer/selenium truly absent pre-install", "no browser executable pre-install", "no dedicated browser tool exposed", "local HTTP server works"],
+    "contradicted": ["direct shell HTTPS: WORKS for allowlisted hosts (pypi.org 200, registry.npmjs.org 200) in this session", "browser automation: ACHIEVABLE in-session via npm-bundled Chromium even though CDNs are blocked"],
+    "lesson": "Egress is host-allowlisted; a single failed HTTPS request must not be generalised to 'all networking blocked', and blocked browser CDNs do not block npm-distributed browser binaries."
+  }
+}
