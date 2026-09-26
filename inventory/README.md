@@ -19,10 +19,8 @@ Install probes are **off by default**. Obtain operator approval and pass `--prob
 
 [`tests/test_inventory.py`](../tests/test_inventory.py) pins the engine's safety-relevant behaviour with the standard
 library's `unittest` only — redaction and the structural secret scan, missing/malformed `--observations` input, install
-probes staying opt-in, manifest validation and persistence-marker semantics. The GitHub Actions workflow that runs it on
-every pull request is delivered at [`ci/tests.workflow.yml`](../ci/tests.workflow.yml) and still has to be moved to
-`.github/workflows/tests.yml`: the authoring session's GitHub App token was refused the `workflows` permission, so it
-could not create a file under `.github/workflows/` (the file is inert until moved; the command is in its header).
+probes staying opt-in, manifest validation and persistence-marker semantics. The active
+[GitHub Actions workflow](../.github/workflows/tests.yml) runs the suite on pull requests and pushes to `main`.
 
 ```bash
 python3 -m unittest discover -s tests -v      # offline, ~0.5 s
