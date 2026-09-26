@@ -1,1 +1,1 @@
-date_utc,task_id,type,repo,pr_url,result,review_minutes,checks,notes
+date_utc,task_id,type,repo,pr_url,result,launch_minutes,review_minutes,self_cheaper,checks,notes
