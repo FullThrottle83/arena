@@ -1668,7 +1668,7 @@ def collect_github(runner: Runner, repo_hint: str | None) -> dict:
 
 MARKER_HOME = ".arena-inventory-marker.json"
 MARKER_TMP = "arena-inventory-marker.json"
-MARKER_REPO = "inventory/last-session-marker.json"  # tracked in git, so a later session can compare even on a fresh sandbox
+MARKER_REPO = "inventory/last-session-marker.json"  # runtime-only: tracking it would confuse Git checkout with sandbox persistence
 
 
 def collect_persistence(session_dir: pathlib.Path, fingerprints: dict) -> dict:
