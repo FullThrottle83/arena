@@ -1,2 +1,9 @@
 __pycache__/
 *.py[cod]
+
+# Generated inventory: retain curated docs and the committed first baseline only.
+inventory/last-session-marker.json
+inventory/SUMMARY.md
+inventory/UI-CHECKLIST.md
+inventory/20??-??-??/session-*/
+inventory/20??-??-??/artifacts/

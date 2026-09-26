@@ -48,4 +48,6 @@ ImageMagick's `PDF` security policy was exercised read-only and **not** modified
 temporary directory, install only tiny pure packages, and are removed afterwards.
 
 Marker files: `~/.arena-inventory-marker.json`, `/tmp/arena-inventory-marker.json` and this directory's
-`last-session-marker.json`. One run cannot demonstrate cross-session persistence — compare markers between sessions.
+`last-session-marker.json`. The repository marker is deliberately **untracked**: a file inherited from Git would not prove sandbox persistence. A fresh session must compare `~` and `/tmp` separately. One run cannot demonstrate cross-session persistence.
+
+Generated per-session directories and mirrored `SUMMARY.md` / `UI-CHECKLIST.md` are ignored by Git by default. The first 2026-09-26 snapshot remains committed as historical evidence. To intentionally preserve another reproducible run, review its contents and explicitly force-add the selected evidence files.
