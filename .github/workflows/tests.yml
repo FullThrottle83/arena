@@ -20,12 +20,12 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Check out the branch under test
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # 3.11 is the interpreter the committed 2026-09-26 evidence was produced
       # with; scripts/inventory.py itself requires >= 3.10.
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.11"
 
