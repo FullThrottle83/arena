@@ -1,0 +1,46 @@
+name: tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  inventory-engine:
+    name: inventory.py regression tests
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out the branch under test
+        uses: actions/checkout@v4
+
+      # 3.11 is the interpreter the committed 2026-09-26 evidence was produced
+      # with; scripts/inventory.py itself requires >= 3.10.
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      # Nothing is pip-installed: the engine and its tests are standard library
+      # only, and the suite performs no network I/O and no package installs.
+      - name: Record the interpreter
+        run: python -VV
+
+      - name: Run the stdlib unittest suite
+        run: python -m unittest discover -s tests -v
+
+      # The suite must not touch the committed inventory evidence or leave
+      # generated output behind (only the ignored __pycache__ may appear).
+      - name: Verify the working tree is still clean
+        if: always()
+        run: |
+          git status --porcelain
+          test -z "$(git status --porcelain)" || { echo "::error::the test run modified or left files behind"; exit 1; }
