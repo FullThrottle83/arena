@@ -1,19 +1,3 @@
-# GitHub Actions workflow for tests/test_inventory.py (stdlib unittest, no
-# third-party packages, no network I/O, no installs).
-#
-# Delivered at this path instead of .github/workflows/tests.yml because the
-# GitHub App token used by the authoring session was refused the `workflows`
-# permission:
-#
-#   ! [remote rejected] arena/01a0de4d-arena -> arena/01a0de4d-arena
-#     (refusing to allow a GitHub App to create or update workflow
-#      `.github/workflows/tests.yml` without `workflows` permission)
-#
-# The file is inert here — Actions only reads .github/workflows/. Activate with:
-#
-#   mkdir -p .github/workflows
-#   git mv ci/tests.workflow.yml .github/workflows/tests.yml
-#
 name: tests
 
 on:
@@ -36,12 +20,12 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Check out the branch under test
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       # 3.11 is the interpreter the committed 2026-09-26 evidence was produced
       # with; scripts/inventory.py itself requires >= 3.10.
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.11"
 
